@@ -11060,7 +11060,7 @@ body {
 
 .masthead {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
@@ -11195,4 +11195,11 @@ body {
 
 .footer {
   padding: 5rem 0;
+}
+
+
+/*! add style */
+.border-gold{
+  border:4px outset; 
+  border-color:#f5d682;  
 }
