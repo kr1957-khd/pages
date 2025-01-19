@@ -1,12 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
-</head>
-<body>
-  <p>Hello, World!</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>故 김홍도 감독 추모 사이트</title>
+    <link rel="icon" type="image/x-icon" href="assets/01_main/favicon.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">故 김홍도 감독님</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">약력/프로필</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#photo-album">김홍도 감독 화보집</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#funeral-service"
+                >故 김홍도 감독 천국환송예배</a
+              >
+            </li>
+            <!-- Dropdown menu for 불기둥 설교자료 -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#sermon-resources"
+                id="sermonDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                불기둥 설교자료
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
+                <li>
+                  <a class="dropdown-item" href="#faith-stories">신앙 일화</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#ministry-philosophy"
+                    >목회 철학</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#faith-stories">신앙 일화</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#sermon-books">설교집</a>
+                </li>
+                <li><a class="dropdown-item" href="#columns">칼럼</a></li>
+                <li>
+                  <a class="dropdown-item" href="#pillar-of-fire"
+                    >The Pillar of Fire</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#special-resources"
+                    >특별 자료실</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#guestbook">추모게시판(방명록)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sections -->
+    <header class="masthead" id="page-top">
+      <!-- 비디오 배경 -->
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="background-video"
+        id="backgroundVideo"
+      >
+        <source src="assets/01_main/flower_gold.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <!-- 하단 오른쪽 텍스트 -->
+      <p class="blended-text right-bottom">故 김홍도 감독님을 그리며..</p>
+
+    </header>
+
+    <section id="about" class="about-section">
+      <div style="color: white" class="container">
+        <h2>약력/프로필</h2>
+        <p>故 김홍도 감독님의 생애와 업적을 기립니다.</p>
+        <!-- 학력 -->
+        <h3 style="color: white">학력</h3>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>연도</th>
+              <th>월</th>
+              <th>학력</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1963</td>
+              <td>2</td>
+              <td>서울 감리교 신학대학 졸업(BA)</td>
+            </tr>
+            <tr>
+              <td>1980</td>
+              <td>2</td>
+              <td>아세아 연합 신학대학원 졸업(MA)</td>
+            </tr>
+            <tr>
+              <td>1987</td>
+              <td>12</td>
+              <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
+            </tr>
+            <tr>
+              <td>1994</td>
+              <td>4</td>
+              <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
+            </tr>
+            <tr>
+              <td>2007</td>
+              <td>2.15</td>
+              <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 목회 경력 -->
+        <h3 style="color: white">목회 경력</h3>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>시작</th>
+              <th>종료</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1963.3</td>
+              <td>1967.3</td>
+              <td>가평군 상천교회 담임</td>
+            </tr>
+            <tr>
+              <td>1967.3</td>
+              <td>1971.3</td>
+              <td>광희문교회 부담임</td>
+            </tr>
+            <tr>
+              <td>1971.3</td>
+              <td>2008.4</td>
+              <td>금란교회 담임목사</td>
+            </tr>
+            <tr>
+              <td>2008.4</td>
+              <td>-</td>
+              <td>금란교회 동사목사 취임</td>
+            </tr>
+            <tr>
+              <td>2013</td>
+              <td>-</td>
+              <td>성역 50년</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 교단 경력 -->
+        <h3 style="color: white">교단 경력</h3>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>시작</th>
+              <th>종료</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1989.3</td>
+              <td>-</td>
+              <td>중랑지방 감리사 역임</td>
+            </tr>
+            <tr>
+              <td>1996.10</td>
+              <td>1998.10</td>
+              <td>기독교 대한감리회 서울연회 감독역임</td>
+            </tr>
+            <tr>
+              <td>1996.11</td>
+              <td>1998.11</td>
+              <td>한국기독교 교회협의회(KNCC) 대표회장 역임</td>
+            </tr>
+            <tr>
+              <td>2000.5</td>
+              <td>-</td>
+              <td>세계기독교 파워목회 대표회장 역임</td>
+            </tr>
+            <tr>
+              <td>2006.4.17</td>
+              <td>-</td>
+              <td>서울기독교 총연합회(HCCCSA) 대표회장 역임</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 상훈 -->
+        <h3 style="color: white">상훈</h3>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>연도</th>
+              <th>월일</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2007</td>
+              <td>6.24</td>
+              <td>세계평화상 수상 (세계평화봉사단 산하 - 세계평화상 위원회)</td>
+            </tr>
+            <tr>
+              <td>2008</td>
+              <td>1</td>
+              <td>2008 대한민국 종교그랑프리 수상 (한국일보 제정)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+    <br>
+    </section>
+    <br>
+    <br>
+    <section id="photo-album" class="projects-section bg-light">
+      <!-- <div class="container">
+        <h2>김홍도 감독 화보집</h2>
+        <p>추억의 사진을 모아 화보로 제공합니다.</p>
+      </div> -->
+      <!-- <img src="assets/02_img/prof_img_01.png" alt="이미지 1" /> -->
+      <h2 class="text-center mb-5">김홍도 감독 화보집</h2>
+       <!-- 메인 이미지 표시 -->
+    <div class="main-image-container">
+        <img
+          id="mainImage"
+          src="assets/02_img/prof_img_01.png"
+          alt="Main Image"
+          class="main-image"
+        />
+      </div>
+  
+      <!-- 썸네일 이미지 갤러리 -->
+      <div class="thumbnail-gallery">
+        <img
+          src="assets/02_img/prof_img_01.png"
+          alt="Thumbnail 1"
+          class="thumbnail active"
+          onclick="setMainImage(0)"
+        />
+        <img
+          src="assets/02_img/prof_img_02.png"
+          alt="Thumbnail 2"
+          class="thumbnail"
+          onclick="setMainImage(1)"
+        />
+        <img
+          src="assets/02_img/prof_img_03.png"
+          alt="Thumbnail 3"
+          class="thumbnail"
+          onclick="setMainImage(2)"
+        />
+        <img
+          src="assets/02_img/prof_img_04.png"
+          alt="Thumbnail 4"
+          class="thumbnail"
+          onclick="setMainImage(3)"
+        />
+        <img
+          src="assets/02_img/prof_img_05.png"
+          alt="Thumbnail 5"
+          class="thumbnail"
+          onclick="setMainImage(4)"
+        />
+        <img
+          src="assets/02_img/prof_img_06.png"
+          alt="Thumbnail 6"
+          class="thumbnail"
+          onclick="setMainImage(5)"
+        />
+      </div>
+    </div>
+    </section>
+    <br>
+    <br>
+    <section id="funeral-service" class="funeral-service-section">
+      <div class="container">
+        <h2>故 김홍도 감독 천국환송예배</h2>
+        <p>천국환송예배 관련 자료를 확인할 수 있습니다.</p>
+
+        <div class="video-table">
+            <div class="video-row">
+              <!-- Local video -->
+              <div class="video-cell">
+                <video width="100%" height="auto" controls preload="metadata">
+                  <source src="assets/03_mv/5_aniv.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+      
+              <!-- YouTube video -->
+              <div class="video-cell">
+                <iframe
+                  width="100%"
+                  height="315"
+                  src="https://www.youtube.com/embed/QSqHfCe-l34?rel=0&showinfo=0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <br>
+    <br>
+    <section id="sermon-resources" class="sermon-resources-section bg-light">
+        <div class="container">
+        <h2>불기둥 설교자료</h2>
+        <p>故 김홍도 감독님의 설교자료를 제공합니다.</p>
+
+        <!-- 자료 테이블 -->
+        <table class="sermon-table">
+            <thead>
+              <tr>
+                <th>자료 종류</th>
+                <th>설명</th>
+                <th>링크</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>신앙 일화</td>
+                <td>신앙과 삶의 일화 모음</td>
+                <td><a href="#faith-stories" class="tooltip-link">신앙 일화</a></td>
+              </tr>
+              <tr>
+                <td>목회 철학</td>
+                <td>목회 철학과 비전</td>
+                <td><a href="#ministry-philosophy" class="tooltip-link">목회 철학</a></td>
+              </tr>
+              <tr>
+                <td>설교집</td>
+                <td>설교집 모음</td>
+                <td><a href="#sermon-books" class="tooltip-link">설교집</a></td>
+              </tr>
+              <tr>
+                <td>칼럼</td>
+                <td>기독교 칼럼 모음</td>
+                <td><a href="#columns" class="tooltip-link">칼럼</a></td>
+              </tr>
+              <tr>
+                <td>The Pillar of Fire</td>
+                <td>불기둥 설교자료</td>
+                <td><a href="#pillar-of-fire" class="tooltip-link">The Pillar of Fire</a></td>
+              </tr>
+              <tr>
+                <td>특별 자료실</td>
+                <td>故 김홍도 감독님과 관련된 특별 자료</td>
+                <td><a href="#special-resources" class="tooltip-link">특별 자료실</a></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+<!-- 게시물 그리드 형태 -->
+      <div class="sermon-grid-container">
+        <div class="lat-wrap">
+            <!-- 신앙 일화 -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#faith-stories">
+                        <img src="/api/placeholder/400/150" alt="신앙 일화" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#faith-stories">신앙과 삶의 일화 모음 1</a></li>
+                    <li><a href="#faith-stories">신앙과 삶의 일화 모음 2</a></li>
+                    <li><a href="#faith-stories">신앙과 삶의 일화 모음 3</a></li>
+                    <li><a href="#faith-stories">신앙과 삶의 일화 모음 4</a></li>
+                    <li><a href="#faith-stories">신앙과 삶의 일화 모음 5</a></li>
+                </ul>
+                <a href="#faith-stories" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+    
+            <!-- 목회 철학 -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#ministry-philosophy">
+                        <img src="/api/placeholder/400/150" alt="목회 철학" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#ministry-philosophy">목회 철학과 비전 1</a></li>
+                    <li><a href="#ministry-philosophy">목회 철학과 비전 2</a></li>
+                    <li><a href="#ministry-philosophy">목회 철학과 비전 3</a></li>
+                    <li><a href="#ministry-philosophy">목회 철학과 비전 4</a></li>
+                    <li><a href="#ministry-philosophy">목회 철학과 비전 5</a></li>
+                </ul>
+                <a href="#ministry-philosophy" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+    
+            <!-- 설교집 -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#sermon-books">
+                        <img src="/api/placeholder/400/150" alt="설교집" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#sermon-books">설교집 모음 1</a></li>
+                    <li><a href="#sermon-books">설교집 모음 2</a></li>
+                    <li><a href="#sermon-books">설교집 모음 3</a></li>
+                    <li><a href="#sermon-books">설교집 모음 4</a></li>
+                    <li><a href="#sermon-books">설교집 모음 5</a></li>
+                </ul>
+                <a href="#sermon-books" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+    
+            <!-- 칼럼 -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#columns">
+                        <img src="/api/placeholder/400/150" alt="칼럼" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#columns">기독교 칼럼 1</a></li>
+                    <li><a href="#columns">기독교 칼럼 2</a></li>
+                    <li><a href="#columns">기독교 칼럼 3</a></li>
+                    <li><a href="#columns">기독교 칼럼 4</a></li>
+                    <li><a href="#columns">기독교 칼럼 5</a></li>
+                </ul>
+                <a href="#columns" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+    
+            <!-- The Pillar of Fire -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#pillar-of-fire">
+                        <img src="/api/placeholder/400/150" alt="The Pillar of Fire" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#pillar-of-fire">불기둥 설교자료 1</a></li>
+                    <li><a href="#pillar-of-fire">불기둥 설교자료 2</a></li>
+                    <li><a href="#pillar-of-fire">불기둥 설교자료 3</a></li>
+                    <li><a href="#pillar-of-fire">불기둥 설교자료 4</a></li>
+                    <li><a href="#pillar-of-fire">불기둥 설교자료 5</a></li>
+                </ul>
+                <a href="#pillar-of-fire" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+    
+            <!-- 특별 자료실 -->
+            <div class="lat">
+                <h2 class="lat_title">
+                    <a href="#special-resources">
+                        <img src="/api/placeholder/400/150" alt="특별 자료실" />
+                    </a>
+                </h2>
+                <ul>
+                    <li><a href="#special-resources">특별 자료 1</a></li>
+                    <li><a href="#special-resources">특별 자료 2</a></li>
+                    <li><a href="#special-resources">특별 자료 3</a></li>
+                    <li><a href="#special-resources">특별 자료 4</a></li>
+                    <li><a href="#special-resources">특별 자료 5</a></li>
+                </ul>
+                <a href="#special-resources" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    </section>
+    <br>
+    <br>
+
+    <section id="guestbook" class="guestbook-section section-background text-white mb-5">
+        <div class="container">
+          <h2 class="mb-4">추모게시판(방명록)</h2>
+            <p class="mb-5">故 김홍도 감독님을 추모하는 메시지를 남겨주세요.</p>
+            <!-- 방명록 입력 및 테이블 영역 -->
+            <div class="guestbook-input mb-4">
+                <!-- 방명록 테이블 -->
+                <div class="guestbook-table mt-4">
+                <table class="table text-white mb-5">
+                    <thead>
+                        <tr>
+                        <th>작성일시</th>
+                        <th>작성자</th>
+                        <th>내용</th>
+                        <th>IP 주소</th>
+                        </tr>
+                    </thead>
+                <tbody id="guestbookEntries">
+                    <!-- 동적으로 추가되는 방명록 -->
+                </tbody>
+            </table>
+        
+            <!-- 페이지네이션 -->
+            <div class="pagination-container text-center mt-4">
+                <div class="pagination">
+                <a href="#" id="prevPage" class="pagination-link">&lt; 이전 페이지</a>
+                    <span id="currentPage" class="pagination-text">1</span>
+                <a href="#" id="nextPage" class="pagination-link">다음 페이지 &gt;</a>
+                </div>
+            </div>
+
+            <!-- 방명록 입력 -->
+            <div class="guestbook-input">
+                <table class="input-table">
+                <tr>
+                    <!-- 작성자 -->
+                    <td>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="작성자"
+                        id="guestbook-author"
+                    />
+                    </td>
+                    <!-- 비밀번호 -->
+                    <td>
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="비밀번호"
+                        id="guestbook-password"
+                    />
+                    </td>
+                    <!-- 버튼 -->
+                    <td rowspan="2" class="button-cell">
+                        <button class="btn btn-primary full-height-button">등록</button>
+                      </td>
+                </tr>
+                <tr>
+                    <!-- 내용 -->
+                    <td colspan="2">
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        placeholder="메시지를 입력하세요"
+                        id="guestbook-message"
+                    ></textarea>
+                    </td>
+                </tr>
+                </table>
+                <p class="mt-2 ">
+                방명록 작성 시 작성자의 IP 주소가 저장됩니다.
+                </p>
+            </div>
+        </div>
+    </section>   
+
+    <!-- Footer -->
+    <footer class="footer bg-white text-black-50">
+        <div class="container text-center">
+          <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <img src="assets/foot/klabs.png" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
+
+            <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" />
+
+          </a>
+        </div>
+        <div class="container text-center">
+          02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
+        </div>
+        <div class="container text-center">
+          Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
+        </div>
+      </footer>
+      <br> 
+      
+      
+     
+
+  </body>
 </html>
