@@ -11595,7 +11595,7 @@ body.scrolled .masthead::after {
 
 /* 하단 오른쪽 위치 */
 .right-bottom {
-  bottom: 450px; /* 화면 하단에서의 거리 */
+  bottom: 350px; /* 화면 하단에서의 거리 */
   right: 250px; /* 화면 오른쪽에서의 거리 */
   text-align: right;
 }
