@@ -36,6 +36,14 @@ function adjustBlendedTextOpacity() {
 // 스크롤 이벤트 연결
 window.addEventListener('scroll', adjustBlendedTextOpacity);
 
+document.addEventListener("scroll", function () {
+  if (window.scrollY > 100) {
+    document.body.classList.add("scrolled");
+  } else {
+    document.body.classList.remove("scrolled");
+  }
+});
+
 // 초기 상태 설정
 document.addEventListener('DOMContentLoaded', adjustBlendedTextOpacity);
 
