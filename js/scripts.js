@@ -33,7 +33,7 @@ function adjustBlendedTextOpacity() {
   });
 }
 
-// 스크롤 이벤트 연결
+// 스크롤 이벤트 연결 그림 변환 시 사용
 window.addEventListener('scroll', adjustBlendedTextOpacity);
 
 document.addEventListener("scroll", function () {
@@ -43,6 +43,155 @@ document.addEventListener("scroll", function () {
     document.body.classList.remove("scrolled");
   }
 });
+
+// 애니메이션 테스트
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const background = document.querySelector('.background');
+//   const textBlocks = document.querySelectorAll('.text-block');
+//   let lastScrollY = 0;
+  
+//   // 스크롤 이벤트 핸들러
+//   function onScroll() {
+//       const scrollY = window.scrollY;
+      
+//       // 배경 확대 효과 (미세하게)
+//       const scale = 1 + (scrollY * 0.0003);
+//       background.style.transform = `scale(${Math.min(scale, 1.1)})`;
+      
+//       // 텍스트 블록 표시 로직
+//       textBlocks.forEach((block, index) => {
+//           const blockTop = block.offsetTop - window.innerHeight/2;
+          
+//           // 스크롤 위치가 20px 단위로 변경될 때만 체크
+//           if (Math.abs(scrollY - lastScrollY) >= 20) {
+//               if (scrollY > blockTop) {
+//                   block.classList.add('visible');
+//               } else {
+//                   block.classList.remove('visible');
+//               }
+//           }
+//       });
+      
+//       // 마지막 스크롤 위치 저장
+//       if (Math.abs(scrollY - lastScrollY) >= 20) {
+//           lastScrollY = scrollY;
+//       }
+//   }
+  
+//   // 스크롤 이벤트 리스너 등록
+//   window.addEventListener('scroll', onScroll, { passive: true });
+  
+//   // 초기 로드 시 실행
+//   onScroll();
+// });
+
+/// 애니매이션 2번쨰
+// document.addEventListener("DOMContentLoaded", () => {
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   function homeAnimation() {
+//     const tl = gsap.timeline();
+
+//     tl.to(".home .item-kong", { opacity: 1, x: "0px", delay: 0.5, duration: 0.6, ease: "power1.inOut" })
+//       .to(".home .scroll-down", { opacity: 1, delay: 0.7, duration: 0.6, ease: "power1.inOut" })
+//       .to(".home .sec__text-box", { opacity: 1, scale: 1, y: "0px", delay: 0.3, duration: 0.8, ease: "power1" });
+
+//     gsap.timeline({
+//       scrollTrigger: {
+//         trigger: ".home",
+//         scroller: window,
+//         scrub: true,
+//         pin: true,
+//         pinSpacing: false,
+//         endTrigger: ".footer",
+//         end: "top top",
+//         anticipatePin: 1,
+//         markers: true // 디버깅용
+//       }
+//     }).to(".home", { opacity: 0 });
+//   }
+
+//   homeAnimation();
+// });
+
+// // 실행
+// homeAnimation();
+
+/// 애니매이션 3번쨰
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  function homeAnimation() {
+    const tl = gsap.timeline();
+
+    // 1. 홈 섹션 등장 애니메이션
+    tl.to(".home .item-kong", { opacity: 1, x: "0px", delay: 0.5, duration: 0.6, ease: "power1.inOut" })
+      .to(".home .scroll-down", { opacity: 1, delay: 0.7, duration: 0.6, ease: "power1.inOut" })
+      .to(".home .sec__text-box", { opacity: 1, scale: 1, y: "0px", delay: 0.3, duration: 0.8, ease: "power1" });
+
+    // 2. 홈 섹션이 스크롤 시 점점 사라짐
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".home",
+        scroller: window,
+        scrub: true,
+        pin: true,
+        pinSpacing: false,
+        // endTrigger: ".footer", // 푸터만날때까지
+        // end: "top top",
+        end: "+=2000px",       // 1000px 스크롤 후 종료
+        anticipatePin: 1,
+        // markers: true // 디버깅용 (완성 후 제거 가능)
+      }
+    }).to(".home", { opacity: 0 });
+
+    // 3. 모든 .home_title 요소를 처리
+    const titles = document.querySelectorAll(".home_title");
+
+    titles.forEach((title, index) => {
+      // 각 요소가 위에서 내려오면서 나타나는 효과
+      gsap.fromTo(
+        title,
+        { opacity: 0, y: -100 }, // 처음엔 위에서 시작 + 투명
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1, 
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: title,
+            start: `top center+=${index * 400}`, // 100px마다 등장
+            end: `+=400px`, 
+            scrub: true,
+            toggleActions: "play reverse play reverse" // ✅ 스크롤을 다시 올리면 복구
+          }
+        }
+      );
+
+      // 이전 요소가 사라지는 효과
+      if (index > 0) {
+        gsap.to(titles[index - 1], {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: title,
+            start: `top center+=${(index - 1) * 100}`,
+            end: `+=200px`,
+            scrub: true,
+            toggleActions: "play reverse play reverse" // ✅ 스크롤을 다시 올리면 복구
+          }
+        });
+      }
+    });
+  }
+  
+
+  homeAnimation();
+});
+
+
+
+
 
 // 초기 상태 설정
 document.addEventListener('DOMContentLoaded', adjustBlendedTextOpacity);
