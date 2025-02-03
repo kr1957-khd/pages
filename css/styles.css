@@ -12015,3 +12015,128 @@ body.scrolled .masthead::after {
 
 
 /* /////////////////////////////////////////////////// */
+/* 애니메이션 테스트 */
+.sec {
+  position: relative;
+}
+
+.sec__inner {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.sec__text-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  z-index: 2;
+}
+
+.sec__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 80px;
+  font-family: "SCDream", sans-serif;
+  opacity: 0;
+}
+
+.sec__logo-kong {
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: top;
+}
+
+.sec__logo-kong figure {
+  width: 390px;
+  height: 108px;
+  background: url("../assets/01_main/t1.png") 
+    no-repeat center top/100%;
+  margin: 0 auto;
+}
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 820px;
+  text-align: center;
+  color: var(--color-black);
+  overflow: hidden;
+}
+
+.home__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/01_main/bg_1.png") no-repeat center/cover;
+}
+
+.item-kong {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  opacity: 0;
+  transform: translate3d(-15px, 0, 0);
+}
+
+.item-kong::before {
+  content: "";
+  position: absolute;
+  bottom: -325px;
+  right: -38px;
+  width: 724px;
+  height: 724px;
+  background: var(--kong-black);
+  border-radius: 50%;
+}
+
+.item-kong::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -380px;
+  width: 1030px;
+  height: 1030px;
+  background: var(--kong-black-sub);
+  opacity: 0.04;
+  border-radius: 50%;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: calc(50% - 16px);
+  background: url(https://static.kbs.co.kr/www/20250124151241/resources/kong/img/ico/ico-scroll.svg) no-repeat;
+  width: 32px;
+  height: 68px;
+  z-index: 11;
+  opacity: 0;
+}
+
+.scroll-down__dot {
+  position: absolute;
+  top: 17%;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  background: var(--color-black);
+  border-radius: 50%;
+  display: block;
+  animation: mouse-dot-ani 2.5s linear infinite;
+}
+
+@keyframes mouse-dot-ani {
+  0% { opacity: 1; top: 17%; }
+  15% { opacity: 1; top: 30%; }
+  50% { opacity: 0; top: 30%; }
+  100% { opacity: 0; top: 17%; }
+}
+
+/* /////////////////////////////////////////////////// */
