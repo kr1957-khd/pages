@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // 스크롤에 따라 텍스트 숨기기
-function adjustBlendedTextOpacity() {
-  const blendedTextElements = document.querySelectorAll('.blended-text');
+function adjustBlendedTextOpacity1() {
+  const blendedTextElements = document.querySelectorAll('.main-text4');
   const fadeStart = 0; // 스크롤 시작 지점
-  const fadeEnd = 200; // 스크롤 끝 지점 (글씨가 완전히 사라지는 지점)
+  const fadeEnd = 400; // 스크롤 끝 지점 (글씨가 완전히 사라지는 지점)
   const fadeRange = fadeEnd - fadeStart;
 
   blendedTextElements.forEach((element) => {
@@ -32,165 +32,109 @@ function adjustBlendedTextOpacity() {
     element.style.opacity = opacity;
   });
 }
+window.addEventListener("scroll", adjustBlendedTextOpacity1);
 
+
+// 스크롤에 따라 텍스트 나오기
+function adjustBlendedTextOpacity2() {
+  const textElements = [
+    { selector: ".main-text1", fadeStart: 600, fadeEnd: 1000 },
+    { selector: ".main-text2", fadeStart: 1000, fadeEnd: 1400 },
+    { selector: ".main-text3", fadeStart: 1400, fadeEnd: 1800 }
+  ];
+  const imageElement = document.querySelector(".main-image1"); // `.main-text1`과 함께 동기화
+
+  const scrollY = window.scrollY;
+
+  textElements.forEach(({ selector, fadeStart, fadeEnd }) => {
+    const element = document.querySelector(selector);
+    if (!element) return; // 요소가 없으면 건너뛰기
+
+    const fadeRange = fadeEnd - fadeStart;
+    let opacity = Math.min(Math.max((scrollY - fadeStart) / fadeRange, 0), 1);
+
+    // 스크롤 범위에 맞춰 opacity 적용
+    element.style.opacity = opacity;
+    // `main-text1`이 보일 때만 이미지도 함께 보이도록 설정
+    if (selector === ".main-text1" && imageElement) {
+      imageElement.style.opacity = opacity;
+      imageElement.style.transform = `translateX(${-40 + opacity * 20}px)`; // 왼쪽에서 중앙으로 이동
+    }
+  });
+}
 // 스크롤 이벤트 연결 그림 변환 시 사용
-window.addEventListener('scroll', adjustBlendedTextOpacity);
+window.addEventListener('scroll', adjustBlendedTextOpacity2);
+
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".masthead", {
+    backgroundSize: "110%", // 배경을 110% 크기로 확대
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".masthead",
+      start: "top top",
+      end: "bottom+=2000 top",
+      scrub: 1,
+    }
+  });
+});
+
+
+
 
 document.addEventListener("scroll", function () {
-  if (window.scrollY > 100) {
+  if (window.scrollY > 2000) {
     document.body.classList.add("scrolled");
   } else {
     document.body.classList.remove("scrolled");
   }
 });
 
-// 애니메이션 테스트
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const background = document.querySelector('.background');
-//   const textBlocks = document.querySelectorAll('.text-block');
-//   let lastScrollY = 0;
-  
-//   // 스크롤 이벤트 핸들러
-//   function onScroll() {
-//       const scrollY = window.scrollY;
-      
-//       // 배경 확대 효과 (미세하게)
-//       const scale = 1 + (scrollY * 0.0003);
-//       background.style.transform = `scale(${Math.min(scale, 1.1)})`;
-      
-//       // 텍스트 블록 표시 로직
-//       textBlocks.forEach((block, index) => {
-//           const blockTop = block.offsetTop - window.innerHeight/2;
-          
-//           // 스크롤 위치가 20px 단위로 변경될 때만 체크
-//           if (Math.abs(scrollY - lastScrollY) >= 20) {
-//               if (scrollY > blockTop) {
-//                   block.classList.add('visible');
-//               } else {
-//                   block.classList.remove('visible');
-//               }
-//           }
-//       });
-      
-//       // 마지막 스크롤 위치 저장
-//       if (Math.abs(scrollY - lastScrollY) >= 20) {
-//           lastScrollY = scrollY;
-//       }
-//   }
-  
-//   // 스크롤 이벤트 리스너 등록
-//   window.addEventListener('scroll', onScroll, { passive: true });
-  
-//   // 초기 로드 시 실행
-//   onScroll();
-// });
-
-/// 애니매이션 2번쨰
-// document.addEventListener("DOMContentLoaded", () => {
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   function homeAnimation() {
-//     const tl = gsap.timeline();
-
-//     tl.to(".home .item-kong", { opacity: 1, x: "0px", delay: 0.5, duration: 0.6, ease: "power1.inOut" })
-//       .to(".home .scroll-down", { opacity: 1, delay: 0.7, duration: 0.6, ease: "power1.inOut" })
-//       .to(".home .sec__text-box", { opacity: 1, scale: 1, y: "0px", delay: 0.3, duration: 0.8, ease: "power1" });
-
-//     gsap.timeline({
-//       scrollTrigger: {
-//         trigger: ".home",
-//         scroller: window,
-//         scrub: true,
-//         pin: true,
-//         pinSpacing: false,
-//         endTrigger: ".footer",
-//         end: "top top",
-//         anticipatePin: 1,
-//         markers: true // 디버깅용
-//       }
-//     }).to(".home", { opacity: 0 });
-//   }
-
-//   homeAnimation();
-// });
-
-// // 실행
-// homeAnimation();
-
-/// 애니매이션 3번쨰
+/// 애니매이션 4번쨰
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  function homeAnimation() {
-    const tl = gsap.timeline();
-
-    // 1. 홈 섹션 등장 애니메이션
-    tl.to(".home .item-kong", { opacity: 1, x: "0px", delay: 0.5, duration: 0.6, ease: "power1.inOut" })
-      .to(".home .scroll-down", { opacity: 1, delay: 0.7, duration: 0.6, ease: "power1.inOut" })
-      .to(".home .sec__text-box", { opacity: 1, scale: 1, y: "0px", delay: 0.3, duration: 0.8, ease: "power1" });
-
-    // 2. 홈 섹션이 스크롤 시 점점 사라짐
+  function homeAnimation1() {
+    // `.masthead`가 500px 동안 고정 후 서서히 사라짐
     gsap.timeline({
       scrollTrigger: {
-        trigger: ".home",
+        trigger: ".masthead",
         scroller: window,
         scrub: true,
-        pin: true,
-        pinSpacing: false,
-        // endTrigger: ".footer", // 푸터만날때까지
-        // end: "top top",
-        end: "+=2000px",       // 1000px 스크롤 후 종료
+        pin: true, //  500px 동안 `.masthead` 고정
+        pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
+        start: "top top",
+        end: "+=2200", //   스크롤 후 효과 종료
         anticipatePin: 1,
-        // markers: true // 디버깅용 (완성 후 제거 가능)
+        // markers: true //  디버깅용 (완성 후 제거 가능)
       }
-    }).to(".home", { opacity: 0 });
+    }).to(".masthead", { opacity: 0 });
 
-    // 3. 모든 .home_title 요소를 처리
-    const titles = document.querySelectorAll(".home_title");
-
-    titles.forEach((title, index) => {
-      // 각 요소가 위에서 내려오면서 나타나는 효과
-      gsap.fromTo(
-        title,
-        { opacity: 0, y: -100 }, // 처음엔 위에서 시작 + 투명
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1, 
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: title,
-            start: `top center+=${index * 400}`, // 100px마다 등장
-            end: `+=400px`, 
-            scrub: true,
-            toggleActions: "play reverse play reverse" // ✅ 스크롤을 다시 올리면 복구
-          }
-        }
-      );
-
-      // 이전 요소가 사라지는 효과
-      if (index > 0) {
-        gsap.to(titles[index - 1], {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: title,
-            start: `top center+=${(index - 1) * 100}`,
-            end: `+=200px`,
-            scrub: true,
-            toggleActions: "play reverse play reverse" // ✅ 스크롤을 다시 올리면 복구
-          }
-        });
-      }
-    });
+    //  `#about` 애니메이션 제거 (masthead의 영향을 받지 않도록 설정)
+    gsap.set("#about", { clearProps: "all" }); //  불필요한 애니메이션 효과 제거
   }
-  
+  // function homeAnimation2() {
+  //   // 섹션이 스크롤 시 점점 사라짐
+  //   gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: ".home",
+  //       scroller: window,
+  //       scrub: true,
+  //       pin: true,
+  //       pinSpacing: false,
+  //       // endTrigger: ".footer", // 푸터만날때까지
+  //       // end: "top top",
+  //       end: "+=2000",       // 1000px 스크롤 후 종료
+  //       anticipatePin: 1,
+  //       // markers: true // 디버깅용 (완성 후 제거 가능)
+  //     }
+  //   }).to(".home", { opacity: 0 });
+  // }
 
-  homeAnimation();
+  homeAnimation1();
+  // homeAnimation2();
 });
-
-
-
 
 
 // 초기 상태 설정
