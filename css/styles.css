@@ -13583,6 +13583,80 @@ body.scrolled .main-image1::after {
 }
 
 
+/* achiv 스타일 */
+
+/* 마우스를 올리면 아이콘이 360도 회전 */
+/* 마우스를 올리면 360도 회전 */
+/* .rotate {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+} */
+
+/* .achv 이미지 스타일 */
+.achv {
+  display: block;
+  max-width: 100px; /* 크기 조정 */
+  height: auto;
+  margin: 10px auto; /* 중앙 정렬 */
+  /* max-width: 34px;
+        max-height: 36px; */
+  transition: transform 0.5s ease-in-out; /* 부드러운 애니메이션 */
+  transform-origin: center;
+}
+
+/* 기존 `.qMenu a` 스타일을 적용 */
+.achv-container {
+  display: block;
+  text-align: center;
+}
+
+/* 기존 `.qMenu a p` 스타일 적용 */
+.achv-text1 {
+  display: inline-block;
+  font-size: 15px;
+  font-family: NotoSansM, sans-serif;
+  color: #35373e;
+  position: relative;
+  word-break: keep-all;
+  vertical-align: top;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 기존 `.qMenu a p::after` 스타일 적용 */
+.achv-text1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 60%;
+  border-radius: 10px;
+  background-color: #f6ca4f;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+/* 마우스를 올리면 텍스트 강조 효과 */
+.achv:hover + .achv-text1::after {
+  width: 100%; /* 배경 강조 효과 */
+}
+
+/* 약력 숨기기 */
+/* 기본적으로 내용을 숨김 */
+.hidden-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.hidden-content.show {
+  max-height: 2000px;
+  opacity: 1;
+}
+
 /* /////////////////////////////////////////////////// */
 /* 테스트 */
 
