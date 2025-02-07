@@ -136,9 +136,66 @@ document.addEventListener("DOMContentLoaded", () => {
   // homeAnimation2();
 });
 
+// // 초기 상태 설정 애니메이션 알수없는 코드
+// document.addEventListener('DOMContentLoaded', adjustBlendedTextOpacity);
 
-// 초기 상태 설정
-document.addEventListener('DOMContentLoaded', adjustBlendedTextOpacity);
+
+// achive 관련 이벤트
+document.addEventListener("DOMContentLoaded", () => {
+  // .achv 이미지에 hover 이벤트 추가
+  document.querySelectorAll(".achv").forEach(img => {
+    img.addEventListener("mouseenter", function() {
+      this.style.transform = "scaleX(-1)" ; // 첫 번째 좌우 반전
+      setTimeout(() => {
+        this.style.transform = "scaleX(1)"; // 두 번째 반전 (원래 이미지로 복귀)
+      }, 400); // 초 후 다시 원래대로
+      // console.log("마우스 올림: 360회전 시작"); // 디버깅용
+      // this.classList.add("rotate");
+
+      // const text = this.nextElementSibling; // 바로 아래 텍스트 찾기
+      // if (text && text.classList.contains("achv-text1")) {
+      //   text.style.color = "#35373e"; // 강조 색상 변경
+      // }
+    });
+
+    img.addEventListener("mouseleave", function() {
+      console.log("마우스 벗어남: 회전 종료"); // 디버깅용
+      this.classList.remove("rotate");
+
+      // const text = this.nextElementSibling; // 텍스트 원래 상태로 복구
+      // if (text && text.classList.contains("achv-text1")) {
+      //   text.style.color = "#35373e"; // 원래 색상
+      // }
+    });
+  });
+});
+
+// 약력 숨기기/드러내기 이벤트
+document.addEventListener("DOMContentLoaded", () => { 
+  const toggleButton = document.getElementById("toggleButton"); // 버튼 가져오기
+  const toggleIcon = document.getElementById("toggleIcon");
+  const aboutContent = document.getElementById("aboutContent");
+
+  toggleButton.addEventListener("click", function () {
+    if (aboutContent.classList.contains("show")) {
+      aboutContent.style.maxHeight = "0px"; // 숨기기
+      aboutContent.style.opacity = "0"; // 투명하게
+      setTimeout(() => {
+        aboutContent.classList.remove("show");
+      }, 500); // 애니메이션 시간과 동일하게 설정 (0.5s)
+      toggleIcon.src = "assets/03_achv/qmenu5.png"; // "더 보기" 아이콘으로 변경
+    } else {
+      aboutContent.classList.add("show");
+      aboutContent.style.display = "block"; // 표시되도록 변경
+      setTimeout(() => {
+        aboutContent.style.maxHeight = "2000px"; // 충분한 높이 설정
+        aboutContent.style.opacity = "1"; // 완전히 보이도록 설정
+      }, 10); // display 속성이 적용된 후 max-height 변경 (애니메이션 적용)
+      toggleIcon.src = "assets/03_achv/qmenu5.png"; // "접기" 아이콘으로 변경
+    }
+  });
+});
+
 
 // 네비게이션 바 축소 효과 및 스크롤 스파이
 window.addEventListener("DOMContentLoaded", () => {
