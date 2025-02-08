@@ -38,9 +38,9 @@ window.addEventListener("scroll", adjustBlendedTextOpacity1);
 // 스크롤에 따라 텍스트 나오기
 function adjustBlendedTextOpacity2() {
   const textElements = [
-    { selector: ".main-text1", fadeStart: 600, fadeEnd: 1000 },
-    { selector: ".main-text2", fadeStart: 1000, fadeEnd: 1400 },
-    { selector: ".main-text3", fadeStart: 1400, fadeEnd: 1800 }
+    { selector: ".main-text1", fadeStart: 700, fadeEnd: 1200 },
+    { selector: ".main-text2", fadeStart: 1400, fadeEnd: 1900 },
+    { selector: ".main-text3", fadeStart: 2000, fadeEnd: 2500 }
   ];
   const imageElement = document.querySelector(".main-image1"); // `.main-text1`과 함께 동기화
 
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTrigger: {
       trigger: ".masthead",
       start: "top top",
-      end: "bottom+=2000 top",
+      end: "bottom+=2600 top",
       scrub: 1,
     }
   });
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("scroll", function () {
-  if (window.scrollY > 2000) {
+  if (window.scrollY > 3000) {
     document.body.classList.add("scrolled");
   } else {
     document.body.classList.remove("scrolled");
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pin: true, //  500px 동안 `.masthead` 고정
         pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
         start: "top top",
-        end: "+=2200", //   스크롤 후 효과 종료
+        end: "+=3100", //   스크롤 후 효과 종료
         anticipatePin: 1,
         // markers: true //  디버깅용 (완성 후 제거 가능)
       }
@@ -246,31 +246,138 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // 사진 갤러리 슬라이드
-const images = [
-  "assets/02_img/prof_img_01.png",
-  "assets/02_img/prof_img_02.png",
-  "assets/02_img/prof_img_03.png",
-  "assets/02_img/prof_img_04.png",
-  "assets/02_img/prof_img_05.png",
-  "assets/02_img/prof_img_06.png",
-];
+// const images = [
+//   "assets/02_img/prof_img_01.png",
+//   "assets/02_img/prof_img_02.png",
+//   "assets/02_img/prof_img_03.png",
+//   "assets/02_img/prof_img_04.png",
+//   "assets/02_img/prof_img_05.png",
+//   "assets/02_img/prof_img_06.png",
+// ];
 
-const mainImage = document.getElementById("mainImage");
-const thumbnails = document.querySelectorAll(".thumbnail");
+// const mainImage = document.getElementById("mainImage");
+// const thumbnails = document.querySelectorAll(".thumbnail");
+// const modal = document.getElementById("imageModal");
+// const modalImage = document.getElementById("modalImage");
 
-function setMainImage(index) {
-  // 메인 이미지 변경
-  mainImage.style.opacity = 0;
-  setTimeout(() => {
-    mainImage.src = images[index];
-    mainImage.style.opacity = 1;
-  }, 300);
+// // 메인 이미지 변경 함수
+// function setMainImage(index) {
+//   mainImage.style.opacity = 0;
+//   setTimeout(() => {
+//     mainImage.src = images[index];
+//     mainImage.style.opacity = 1;
+//   }, 300);
 
-  // 활성화 썸네일 업데이트
-  thumbnails.forEach((thumbnail, i) => {
-    thumbnail.classList.toggle("active", i === index);
+//   // 활성화 썸네일 업데이트
+//   thumbnails.forEach((thumbnail, i) => {
+//     thumbnail.classList.toggle("active", i === index);
+//   });
+// }
+
+// // 팝업 열기 함수
+// function openModal() {
+//   modal.style.display = "flex"; // 팝업 표시
+//   modalImage.src = mainImage.src; // 현재 메인 이미지를 팝업에 표시
+// }
+
+// // 팝업 닫기 함수 (팝업된 이미지를 클릭하면 닫힘)
+// function closeModal() {
+//   modal.style.display = "none"; // 팝업 숨기기
+// }
+
+// // 초기화
+// setMainImage(0);
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const mainImage = document.getElementById("mainImage");
+//   const modal = document.getElementById("imageModal");
+//   const modalImage = document.getElementById("modalImage");
+
+//   // 모달 요소가 존재하는지 확인
+//   if (!mainImage || !modal || !modalImage) {
+//     console.error("❌ `mainImage`, `imageModal`, 또는 `modalImage` 요소를 찾을 수 없습니다!");
+//     return;
+//   }
+
+//   // 메인 이미지를 클릭하면 팝업 열기
+//   mainImage.addEventListener("click", function () {
+//     console.log("✅ 메인 이미지 클릭됨"); // 디버깅용
+//     modal.style.display = "flex";
+//     modalImage.src = mainImage.src;
+//   });
+
+//   // 팝업된 이미지를 클릭하면 닫기
+//   modal.addEventListener("click", function () {
+//     console.log("✅ 팝업 닫힘"); // 디버깅용
+//     modal.style.display = "none";
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = [
+    "assets/02_img/prof_img_01.png",
+    "assets/02_img/prof_img_02.png",
+    "assets/02_img/prof_img_03.png",
+    "assets/02_img/prof_img_04.png",
+    "assets/02_img/prof_img_05.png",
+    "assets/02_img/prof_img_06.png",
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("modalImage");
+
+  // 초기 로딩 시 모달을 숨김
+  modal.style.display = "none";
+
+  // 요소가 정상적으로 로드되었는지 확인
+  if (!mainImage || !modal || !modalImage) {
+    console.error("`mainImage`, `imageModal`, 또는 `modalImage` 요소를 찾을 수 없습니다!");
+    return;
+  }
+
+  // 메인 이미지 변경 함수
+  function setMainImage(index) {
+    mainImage.style.opacity = 0;
+    setTimeout(() => {
+      mainImage.src = images[index];
+      mainImage.style.opacity = 1;
+    }, 300);
+
+    // 활성화 썸네일 업데이트
+    thumbnails.forEach((thumbnail, i) => {
+      thumbnail.classList.toggle("active", i === index);
+    });
+  }
+
+  // 팝업 열기 함수
+  function openModal() {
+    console.log("메인 이미지 클릭됨"); // 디버깅용
+    modal.style.display = "flex";
+    modalImage.src = mainImage.src;
+  }
+
+  // 팝업 닫기 함수
+  function closeModal() {
+    console.log(" 팝업 닫힘"); // 디버깅용
+    modal.style.display = "none";
+  }
+
+  // 초기 메인 이미지 설정 (초기 상태에서 opacity 문제 해결)
+  mainImage.style.opacity = "1";
+  setMainImage(0);
+
+  // 메인 이미지 클릭 시 팝업 열기
+  mainImage.addEventListener("click", openModal);
+
+  // 팝업 클릭 시 닫기
+  modal.addEventListener("click", closeModal);
+
+  // 썸네일 클릭 이벤트 추가
+  thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener("click", () => setMainImage(index));
   });
-}
+});
 
-// 초기화
-setMainImage(0);
