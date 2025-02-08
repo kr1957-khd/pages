@@ -13,6 +13,7 @@ css yyu. 230730
   --bs-pink: #d63384;
   --bs-red: #a16468;
   --bs-orange: #fd7e14;
+  --bs-gold:#ffa600	 ;
   --bs-yellow: #e4c662;
   --bs-green: #67c29c;
   --bs-teal: #64a19d;
@@ -12985,7 +12986,7 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: url("../assets/01_main/bg_1.png") center top/100% auto no-repeat;
+  background: url("../assets/01_main/bg_2.jpg") center top/100% auto no-repeat;
   z-index: 1;
   animation: fadeInBg 2s ease-in-out forwards;
   background-color: white;
@@ -13125,6 +13126,8 @@ body.scrolled .main-image1::after {
 .main-text1, .main-text2, .main-text3,  .main-text4{
   position: absolute;
   color: #A24D67;
+  left: 10%; /* 왼쪽에서 10% 떨어진 위치 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
   font-size: 3rem;
   font-weight: bold;
   z-index: 1;  /* 비디오 위에 표시 */
@@ -13132,25 +13135,25 @@ body.scrolled .main-image1::after {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 /* 공통 하단 위치 */
-.right-bottom {
-  text-align: right;
+.left-bottom {
+  text-align: left;
 }
 /* 각 텍스트의 위치 조정 */
-.main-text1 {  bottom: 500px;  right: 450px;}
-.main-text2 {  bottom: 400px;  right: 350px;}
-.main-text3 {  bottom: 300px;  right: 250px;}
+.main-text1 {  bottom: 500px;  left: 1100px;}
+.main-text2 {  bottom: 400px;  left: 1200px;}
+.main-text3 {  bottom: 300px;  left: 1400px;}
 
 .main-text4{
   position: absolute;
   text-align: center; /* 텍스트 중앙 정렬 */
   width: 100%; /* 부모 요소 너비를 따라가도록 설정 */
   max-width: 800px; /* 너무 길어지지 않도록 제한 */
-  top: 100px; /* 상단에서 100px 아래 */
+  top: 400px; /* 상단에서 100px 아래 */
   left: 50%; /* 부모 요소 기준 가로 중앙 */
   transform: translateX(-50%); /* 가운데 정렬 */
 
-  color: #A24D67;
-  font-size: 2rem;
+  color: var(--bs-gray-dark);
+  font-size: 4rem;
   font-weight: bold;
   z-index: 1;
   opacity: 1;  /* 처음에는 보이도록 설정 */
@@ -13162,8 +13165,8 @@ body.scrolled .main-image1::after {
 .about-section {
   padding-top: 10rem;
   background: linear-gradient(to bottom,
-      #000 0%,
-      rgba(0, 0, 0, 0.9) 75%,
+  var(--bs-gray-dark) 0%,
+      /* rgba(0, 0, 0, 0.9) 75%, */
       rgba(0, 0, 0, 0.8) 100%);
 }
 
@@ -13226,18 +13229,88 @@ body.scrolled .main-image1::after {
   }
 }
 
+
 /* 메인 이미지 컨테이너 */
 .main-image-container {
+  position: relative;
   text-align: center;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
-
 .main-image {
-  max-width: 100%;
+  max-width: 20%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   transition: opacity 0.5s ease-in-out;
+}
+/* 확대하기 메시지 */
+.zoom-message {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.main-image-container:hover .zoom-message {
+  opacity: 1;
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+  max-width: 15%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out, transform 0.3s;
+}
+
+/* 팝업 모달 */
+.modal {
+  display: none; /* 처음부터 숨김 */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* 반투명 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 팝업된 이미지 (원본 비율 유지) */
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px; /* 둥근 모서리 적용 */
+  animation: fadeIn 0.3s;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+  
+  /* 추가된 속성 */
+  object-fit: contain; /* 원본 비율 유지하면서 전체 화면에 맞춤 */
+  width: auto; /* 가로 자동 조절 */
+  height: auto; /* 세로 자동 조절 */
+}
+
+
+/* 모달 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* 썸네일 이미지 갤러리 */
@@ -13265,6 +13338,8 @@ body.scrolled .main-image1::after {
   border-color: #007bff;
   opacity: 1;
 }
+
+
 
 /* funeral-service */
 .video-table {
@@ -13389,20 +13464,6 @@ body.scrolled .main-image1::after {
   }
 }
 
-/* 테이블 스타일 */
-.sermon-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.sermon-table th,
-.sermon-table td {
-  padding: 10px 15px;
-  border-bottom: 1px solid #ddd;
-}
 
 /* 링크 스타일 */
 .tooltip-link {
@@ -13445,6 +13506,62 @@ body.scrolled .main-image1::after {
 .tooltip-link:hover::after {
   opacity: 1;
   /* 툴팁 보이기 */
+}
+
+/* 테이블  */
+.achv-table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.achv-table table {
+  width: 80%;
+  border-collapse: collapse;
+}
+
+.achv-table td {
+  width: 25%; /* 4열이므로 각 셀은 25% */
+  text-align: center;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* 투명한 테두리 */
+}
+
+/* 아이콘 크기 고정 */
+.achv-table img {
+  width: 60px; /* 가로 크기 고정 */
+  height: 60px; /* 세로 크기 고정 */
+  object-fit: contain; /* 원본 비율 유지하면서 크기 맞춤 */
+  transition: transform 0.3s ease-in-out;
+}
+
+.achv-table p {
+  font-size: 14px;
+  color: #000;
+  margin: 5px 0;
+}
+
+.achv-table a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.achv-table a i {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* hover 효과 */
+.achv-table td:hover img {
+  transform: scale(1.1);
+}
+
+.achv-table td:hover a i {
+  transform: translateX(5px);
 }
 
 /* guestbook */
