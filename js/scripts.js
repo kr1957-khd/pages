@@ -38,11 +38,13 @@ window.addEventListener("scroll", adjustBlendedTextOpacity1);
 // 스크롤에 따라 텍스트 나오기
 function adjustBlendedTextOpacity2() {
   const textElements = [
+    { selector: ".main-image2", fadeStart: 1100, fadeEnd: 1600 },
     { selector: ".main-text1", fadeStart: 700, fadeEnd: 1200 },
     { selector: ".main-text2", fadeStart: 1400, fadeEnd: 1900 },
     { selector: ".main-text3", fadeStart: 2000, fadeEnd: 2500 }
   ];
   const imageElement = document.querySelector(".main-image1"); // `.main-text1`과 함께 동기화
+  const imageElement2 = document.querySelector(".main-image2"); // `.main-text1`과 함께 동기화
 
   const scrollY = window.scrollY;
 
@@ -68,19 +70,17 @@ window.addEventListener('scroll', adjustBlendedTextOpacity2);
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to(".masthead", {
+  gsap.to(".main-image2", {
     backgroundSize: "110%", // 배경을 110% 크기로 확대
     ease: "none",
     scrollTrigger: {
-      trigger: ".masthead",
+      trigger: ".main-image2",
       start: "top top",
-      end: "bottom+=2600 top",
+      end: "bottom+=2800 top",
       scrub: 1,
     }
   });
 });
-
-
 
 
 document.addEventListener("scroll", function () {
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
       aboutContent.classList.add("show");
       aboutContent.style.display = "block"; // 표시되도록 변경
       setTimeout(() => {
-        aboutContent.style.maxHeight = "2000px"; // 충분한 높이 설정
+        aboutContent.style.maxHeight = "300px"; // 충분한 높이 설정
         aboutContent.style.opacity = "1"; // 완전히 보이도록 설정
       }, 10); // display 속성이 적용된 후 max-height 변경 (애니메이션 적용)
       toggleIcon.src = "assets/03_achv/qmenu5.png"; // "접기" 아이콘으로 변경
@@ -381,3 +381,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+// 진행바 
+document.addEventListener("DOMContentLoaded", () => {
+  const progressBar = document.querySelector(".progress-bar");
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY; // 현재 스크롤 위치
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + "%";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mainNav = document.getElementById("mainNav");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 1) { //  스크롤 100px 이후 나타남
+      mainNav.classList.add("show");
+    } else {
+      mainNav.classList.remove("show");
+    }
+  });
+});
