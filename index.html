@@ -17,22 +17,38 @@
 
 <body id="page-top">
   <!-- Navigation -->
+<!-- 네비게이션 바 -->
+<div class="nav_bar">  <div class="progress-bar"></div></div>
+
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#page-top">김홍도목사 영원한기억</a>
+      <a class="navbar-brand" href="#page-top">영원한기억</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              목사 김홍도
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
+              <li>
+                <a class="dropdown-item" href="#pillar-of-fire">화보집</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#reply">약력</a>
+              </li>
+            </ul>
           </li>
+
           <!-- Dropdown menu for 불기둥 설교자료 -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#sermon-resources" id="sermonDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              김홍도목사 자료
+            <a class="nav-link dropdown-toggle" href="#achv" id="sermonDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              자료실
             </a>
             <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
               <li>
@@ -59,12 +75,10 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#photo">화보집</a>
-          </li>
+<!-- 
           <li class="nav-item">
             <a class="nav-link" href="#about">약력/프로필</a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" href="#fdtn">정암 장학재단</a>
@@ -93,78 +107,32 @@
 
     <!-- main-text1`과 함께 등장하는 이미지 -->
     <div class="main-image1"></div>
+    <div class="main-image2"></div>
 
-    <p class="main-text4 right-bottom">김홍도목사님을 그리며</p>
+    <p class="main-text4 right-bottom">목사 김홍도</p>
+    <p class="main-text4 subtx right-bottom">(1938-2020)</p>
 
     <!--  텍스트 -->
-    <p class="main-text1 left-bottom">우리는 </p>
-    <p class="main-text2 left-bottom">김홍도 목사님을</p>
-    <p class="main-text3 left-bottom">추억합니다.</p>
+    <p class="main-text1 left-bottom">목사 김홍도 </p>
+    <!-- <p class="main-text2 left-bottom">김홍도 목사님을</p>
+    <p class="main-text3 left-bottom">추억합니다.</p> -->
 
   </header>
 
-  <br> <br> <br>
-  <!-- 자료실  -->
-  <div class="achv-table">
-    <table>
-      <tr>
-        <td>
-          <img src="assets/03_achv/qmenu7.png" alt="신앙 일화" class="achv" />
-          <p class="achv-text1">신앙 일화</p>
-          <a href="#stories" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu8.png" alt="목회 철학" class="achv" />
-          <p class="achv-text1">목회 철학</p>
-          <a href="#phpy" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu3.png" alt="불기둥 설교집" class="achv" />
-          <p class="achv-text1">불기둥 설교집</p>
-          <a href="#sermon" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu2.png" alt="The Pillar of Fire" class="achv" />
-          <p class="achv-text1">The Pillar of Fire</p>
-          <a href="#pof" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <img src="assets/03_achv/qmenu5.png" alt="불기둥 칼럼" class="achv" />
-          <p class="achv-text1">불기둥 칼럼</p>
-          <a href="#column" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu6.png" alt="특별 자료실" class="achv" />
-          <p class="achv-text1">특별 자료실</p>
-          <a href="#special" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu1.png" alt="환송 예배" class="achv" />
-          <p class="achv-text1">환송 예배</p>
-          <a href="#fnr" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-        <td>
-          <img src="assets/03_achv/qmenu4.png" alt="추모게시판" class="achv" />
-          <p class="achv-text1">방명록</p>
-          <a href="#reply" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        </td>
-      </tr>
-    </table>
-  </div>
-  </section>
-  <br>
-  <br>
+  <br> <br>
 
 
   <!-- 김홍도 감독 화보집 -->
   <section id="photo-album" class="projects-section bg-light">
-    <h2 class="text-center mb-5">김홍도 목사 화보집</h2>
+    <h1 class="text-center mb-3">목사 김홍도 </h2>
+    <h2 class="text-center mb-5">화보집</h2>
     <!-- 메인 이미지 표시 -->
     <div class="main-image-container">
       <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
       <div class="zoom-message">🔍 확대하기</div>
+
+
+
     </div>
 
     <!-- 썸네일 이미지 갤러리 -->
@@ -177,301 +145,254 @@
       <img src="assets/02_img/prof_img_06.png" alt="Thumbnail 6" class="thumbnail" onclick="setMainImage(5)" />
     </div>
     </div>
+
+
+
   </section>
 
-<!-- 팝업 모달 -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-  <img id="modalImage" class="modal-content">
-</div>
+  <!-- 팝업 모달 -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImage" class="modal-content">
+  </div>
 
-  <br>
-  <br>
+  <!-- "더 보기" 아이콘 버튼 -->
+  <div class="text-center mb-5 projects-section bg-light">
+    <h2>약력/프로필</h2>
+    <p>텍스트</p>
+    <button id="toggleButton" class="toggle-btn">
+      <img src="assets/03_achv/qmenu5.png" alt="더 보기" id="toggleIcon">
+      <p>내용 더 보기</p>
+    </button>
+    <br><br><br>
+    <!-- 확장될 내용 -->
+    <div id="aboutContent" class="hidden-content">
+      <!-- 학력 -->
+      <h3 style="color: black">학력</h3>
+      <table class="custom-table ">
+        <thead>
+          <tr>
+            <th>연도</th>
+            <th>월</th>
+            <th>학력</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1963</td>
+            <td>2</td>
+            <td>서울 감리교 신학대학 졸업(BA)</td>
+          </tr>
+          <tr>
+            <td>1980</td>
+            <td>2</td>
+            <td>아세아 연합 신학대학원 졸업(MA)</td>
+          </tr>
+          <tr>
+            <td>1987</td>
+            <td>12</td>
+            <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
+          </tr>
+          <tr>
+            <td>1994</td>
+            <td>4</td>
+            <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
+          </tr>
+          <tr>
+            <td>2007</td>
+            <td>2.15</td>
+            <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 목회 경력 -->
+    </div>
 
-  <!-- 약력 -->
-  <section id="about" class="about-section">
-    <div style="color: white" class="container">
-      <h2>약력/프로필</h2>
-      <p>텍스트</p>
+   
 
+    <br> <br>
+    <!-- 자료실  -->
+    <div id="achv" class="achv-table">
+      <table>
+        <tr>
+          <td>
+            <img src="assets/03_achv/qmenu7.png" alt="신앙 일화" class="achv" />
+            <p class="achv-text1">신앙 일화</p>
+            <a href="#stories" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu8.png" alt="목회 철학" class="achv" />
+            <p class="achv-text1">목회 철학</p>
+            <a href="#phpy" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu3.png" alt="불기둥 설교집" class="achv" />
+            <p class="achv-text1">불기둥 설교집</p>
+            <a href="#sermon" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu2.png" alt="The Pillar of Fire" class="achv" />
+            <p class="achv-text1">The Pillar of Fire</p>
+            <a href="#pof" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="assets/03_achv/qmenu5.png" alt="불기둥 칼럼" class="achv" />
+            <p class="achv-text1">불기둥 칼럼</p>
+            <a href="#column" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu6.png" alt="특별 자료실" class="achv" />
+            <p class="achv-text1">특별 자료실</p>
+            <a href="#special" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu1.png" alt="환송 예배" class="achv" />
+            <p class="achv-text1">환송 예배</p>
+            <a href="#fnr" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+          <td>
+            <img src="assets/03_achv/qmenu4.png" alt="추모게시판" class="achv" />
+            <p class="achv-text1">방명록</p>
+            <a href="#reply" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    </section>
+    <br>
+    <br>
 
+    <section id="funeral-service" class="funeral-service-section">
+      <div class="container">
+        <h2>천국환송예배</h2>
+        <p>텍스트</p>
 
-      <!-- "더 보기" 아이콘 버튼 -->
-
-      <button id="toggleButton" class="toggle-btn">
-
-        <img src="assets/03_achv/qmenu5.png" alt="더 보기" id="toggleIcon">
-        <p>내용 더 보기</p>
-      </button>
-
-
-
-      <!-- 확장될 내용 -->
-
-      <div id="aboutContent" class="hidden-content">
-
-
-        <!-- 학력 -->
-        <h3 style="color: white">학력</h3>
-        <table class="custom-table">
-          <thead>
-            <tr>
-              <th>연도</th>
-              <th>월</th>
-              <th>학력</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1963</td>
-              <td>2</td>
-              <td>서울 감리교 신학대학 졸업(BA)</td>
-            </tr>
-            <tr>
-              <td>1980</td>
-              <td>2</td>
-              <td>아세아 연합 신학대학원 졸업(MA)</td>
-            </tr>
-            <tr>
-              <td>1987</td>
-              <td>12</td>
-              <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
-            </tr>
-            <tr>
-              <td>1994</td>
-              <td>4</td>
-              <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
-            </tr>
-            <tr>
-              <td>2007</td>
-              <td>2.15</td>
-              <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- 목회 경력 -->
-        <h3 style="color: white">목회 경력</h3>
-        <table class="custom-table">
-          <thead>
-            <tr>
-              <th>시작</th>
-              <th>종료</th>
-              <th>내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1963.3</td>
-              <td>1967.3</td>
-              <td>가평군 상천교회 담임</td>
-            </tr>
-            <tr>
-              <td>1967.3</td>
-              <td>1971.3</td>
-              <td>광희문교회 부담임</td>
-            </tr>
-            <tr>
-              <td>1971.3</td>
-              <td>2008.4</td>
-              <td>금란교회 담임목사</td>
-            </tr>
-            <tr>
-              <td>2008.4</td>
-              <td>-</td>
-              <td>금란교회 동사목사 취임</td>
-            </tr>
-            <tr>
-              <td>2013</td>
-              <td>-</td>
-              <td>성역 50년</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- 교단 경력 -->
-        <h3 style="color: white">교단 경력</h3>
-        <table class="custom-table">
-          <thead>
-            <tr>
-              <th>시작</th>
-              <th>종료</th>
-              <th>내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1989.3</td>
-              <td>-</td>
-              <td>중랑지방 감리사 역임</td>
-            </tr>
-            <tr>
-              <td>1996.10</td>
-              <td>1998.10</td>
-              <td>기독교 대한감리회 서울연회 감독역임</td>
-            </tr>
-            <tr>
-              <td>1996.11</td>
-              <td>1998.11</td>
-              <td>한국기독교 교회협의회(KNCC) 대표회장 역임</td>
-            </tr>
-            <tr>
-              <td>2000.5</td>
-              <td>-</td>
-              <td>세계기독교 파워목회 대표회장 역임</td>
-            </tr>
-            <tr>
-              <td>2006.4.17</td>
-              <td>-</td>
-              <td>서울기독교 총연합회(HCCCSA) 대표회장 역임</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- 상훈 -->
-        <h3 style="color: white">상훈</h3>
-        <table class="custom-table">
-          <thead>
-            <tr>
-              <th>연도</th>
-              <th>월일</th>
-              <th>내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2007</td>
-              <td>6.24</td>
-              <td>세계평화상 수상 (세계평화봉사단 산하 - 세계평화상 위원회)</td>
-            </tr>
-            <tr>
-              <td>2008</td>
-              <td>1</td>
-              <td>2008 대한민국 종교그랑프리 수상 (한국일보 제정)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      <br>
-  </section>
-  <br>
-  <br>
-
-
-  <section id="funeral-service" class="funeral-service-section">
-    <div class="container">
-      <h2>천국환송예배</h2>
-      <p>텍스트</p>
-
-      <div class="video-table">
-        <div class="video-row">
-          <!-- Local video -->
-          <div class="video-cell">
+        <div class="video-table">
+          <div class="video-row">
+            <!-- Local video -->
+            <!-- <div class="video-cell">
             <video width="100%" height="auto" controls preload="metadata">
               <source src="assets/03_mv/5_aniv.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          </div>
+          </div> -->
 
-          <!-- YouTube video -->
-          <div class="video-cell">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/QSqHfCe-l34?rel=0&showinfo=0"
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+            <!-- YouTube video -->
+            <div class="video-cell">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/QSqHfCe-l34?rel=0&showinfo=0"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <br>
-  <br>
+    </section>
+    <br>
+    <br>
 
 
-  <section id="guestbook" class="guestbook-section section-background text-white mb-5">
-    <div class="container">
-      <h2 class="mb-4">추모게시판(방명록)</h2>
-      <p class="mb-5">텍스트</p>
-      <!-- 방명록 입력 및 테이블 영역 -->
-      <div class="guestbook-input mb-4">
-        <!-- 방명록 테이블 -->
-        <div class="guestbook-table mt-4">
-          <table class="table text-white mb-5">
-            <thead>
-              <tr>
-                <th>작성일시</th>
-                <th>작성자</th>
-                <th>내용</th>
-                <th>IP 주소</th>
-              </tr>
-            </thead>
-            <tbody id="guestbookEntries">
-              <!-- 동적으로 추가되는 방명록 -->
-            </tbody>
-          </table>
+    <section id="guestbook" class="guestbook-section section-background text-white mb-5">
+      <div class="container">
+        <h2 class="mb-4">추모게시판(방명록)</h2>
+        <p class="mb-5">텍스트</p>
+        <!-- 방명록 입력 및 테이블 영역 -->
+        <div class="guestbook-input mb-4">
+          <!-- 방명록 테이블 -->
+          <div class="guestbook-table mt-4">
+            <table class="table text-white mb-5">
+              <thead>
+                <tr>
+                  <th>작성일시</th>
+                  <th>작성자</th>
+                  <th>내용</th>
+                  <th>IP 주소</th>
+                </tr>
+              </thead>
+              <tbody id="guestbookEntries">
+                <!-- 동적으로 추가되는 방명록 -->
+              </tbody>
+            </table>
 
-          <!-- 페이지네이션 -->
-          <div class="pagination-container text-center mt-4">
-            <div class="pagination">
-              <a href="#" id="prevPage" class="pagination-link">&lt; 이전 페이지</a>
-              <span id="currentPage" class="pagination-text">1</span>
-              <a href="#" id="nextPage" class="pagination-link">다음 페이지 &gt;</a>
+            <!-- 페이지네이션 -->
+            <div class="pagination-container text-center mt-4">
+              <div class="pagination">
+                <a href="#" id="prevPage" class="pagination-link">&lt; 이전 페이지</a>
+                <span id="currentPage" class="pagination-text">1</span>
+                <a href="#" id="nextPage" class="pagination-link">다음 페이지 &gt;</a>
+              </div>
+            </div>
+
+            <!-- 방명록 입력 -->
+            <div class="guestbook-input">
+              <table class="input-table">
+                <tr>
+                  <!-- 작성자 -->
+                  <td>
+                    <input type="text" class="form-control" placeholder="작성자" id="guestbook-author" />
+                  </td>
+                  <!-- 비밀번호 -->
+                  <td>
+                    <input type="password" class="form-control" placeholder="비밀번호" id="guestbook-password" />
+                  </td>
+                  <!-- 버튼 -->
+                  <td rowspan="2" class="button-cell">
+                    <button class="btn btn-primary full-height-button">등록</button>
+                  </td>
+                </tr>
+                <tr>
+                  <!-- 내용 -->
+                  <td colspan="2">
+                    <textarea class="form-control" rows="3" placeholder="메시지를 입력하세요" id="guestbook-message"></textarea>
+                  </td>
+                </tr>
+              </table>
+              <p class="mt-2 ">
+                방명록 작성 시 작성자의 IP 주소가 저장됩니다.
+              </p>
             </div>
           </div>
+    </section>
 
-          <!-- 방명록 입력 -->
-          <div class="guestbook-input">
-            <table class="input-table">
-              <tr>
-                <!-- 작성자 -->
-                <td>
-                  <input type="text" class="form-control" placeholder="작성자" id="guestbook-author" />
-                </td>
-                <!-- 비밀번호 -->
-                <td>
-                  <input type="password" class="form-control" placeholder="비밀번호" id="guestbook-password" />
-                </td>
-                <!-- 버튼 -->
-                <td rowspan="2" class="button-cell">
-                  <button class="btn btn-primary full-height-button">등록</button>
-                </td>
-              </tr>
-              <tr>
-                <!-- 내용 -->
-                <td colspan="2">
-                  <textarea class="form-control" rows="3" placeholder="메시지를 입력하세요" id="guestbook-message"></textarea>
-                </td>
-              </tr>
-            </table>
-            <p class="mt-2 ">
-              방명록 작성 시 작성자의 IP 주소가 저장됩니다.
-            </p>
-          </div>
-        </div>
-  </section>
+    <!-- 테스트  -->
 
-  <!-- 테스트  -->
+    <section id="comments" class="comment-section">
+      <h2>댓글</h2>
+
+      <!-- 댓글 입력 폼 -->
+      <form id="commentForm" class="comment-form">
+        <input type="text" id="author" name="author" placeholder="작성자" required>
+        <input type="password" id="password" name="password" placeholder="비밀번호" required>
+        <textarea id="content" name="content" placeholder="댓글을 입력하세요..." required></textarea>
+        <button type="submit">댓글 작성</button>
+      </form>
+
+      <!-- 댓글 목록 -->
+      <div id="commentList" class="comment-list"></div>
+    </section>
 
 
 
 
+    <!-- Footer -->
+    <footer class="footer bg-white text-black-50">
+      <div class="container text-center">
+        <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
 
-  <!-- Footer -->
-  <footer class="footer bg-white text-black-50">
-    <div class="container text-center">
-      <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
+          <img src="assets/foot/klabs.png" alt="labs" class="footer-logo achv" style="width: auto; height: 50px;" />
 
-        <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
-        <img src="assets/foot/klabs.png" alt="labs" class="footer-logo achv" style="width: auto; height: 50px;" />
-
-      </a>
-    </div>
-    <div class="container text-center">
-      02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
-    </div>
-    <div class="container text-center">
-      Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
-    </div>
-  </footer>
-  <br>
+        </a>
+      </div>
+      <div class="container text-center">
+        02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
+      </div>
+      <div class="container text-center">
+        Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
+      </div>
+    </footer>
+    <br>
 
 
 
