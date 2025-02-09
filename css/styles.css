@@ -82,6 +82,7 @@ css yyu. 230730
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
   --bs-link-color: #A24D67;
+  /* --bs-link-color: #ddc7ce; */
   --bs-link-hover-color: #A24D67;
   /* 링크 색 */
   --bs-code-color: #d63384;
@@ -12812,10 +12813,10 @@ body {
   letter-spacing: 0.0625em;
 }
 
-#mainNav {
+/* #mainNav {
   min-height: 3.5rem;
   background-color: #fff;
-}
+} */
 
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -12986,11 +12987,12 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: url("../assets/01_main/bg_2.jpg") center top/100% auto no-repeat;
+  /* background: url("../assets/01_main/bg_2.jpg") center top/100% auto no-repeat; */
   z-index: 1;
   animation: fadeInBg 2s ease-in-out forwards;
   background-color: white;
   /* 배경을 흰색으로 설정 */
+  
 }
 
 
@@ -13086,14 +13088,10 @@ body {
   position: absolute;
   width: 85%; /* 부모 요소의 50% 크기 */
   aspect-ratio: 16 / 9; /* 가로:세로 비율 유지 */
-
   top: 10%;
   right: 10%; /* 오른쪽에서 20% 위치 */
-  
   background: url("../assets/01_main/khd1.png") center top/contain  no-repeat;
-
   transform: translateX(-20px);
-  /* 처음에 왼쪽으로 20px 이동 */
   opacity: 0;
   /* 처음에는 안 보이도록 설정 */
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -13113,6 +13111,23 @@ body {
   transition: opacity 1.5s ease-in-out;
   z-index: 2;
 }
+.main-image2 {
+
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+
+
+  aspect-ratio: 16 / 9; /* 가로:세로 비율 유지 */
+  background: url("../assets/01_main/bg_2.jpg") center top/100% auto no-repeat;
+  /* transform: translateY(-20px); */
+  /* 처음에 왼쪽으로 20px 이동 */
+  opacity: 0;
+  /* 처음에는 안 보이도록 설정 */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: -99;
+}
 
 /* 스크롤을 내리면 새로운 배경이 보이도록 */
 body.scrolled .main-image1::after {
@@ -13123,9 +13138,10 @@ body.scrolled .main-image1::after {
   from {    opacity: 0;  }
   to {    opacity: 1;  }
 }
-.main-text1, .main-text2, .main-text3,  .main-text4{
+.main-text1, .main-text2, .main-text3{
   position: absolute;
-  color: #A24D67;
+  /* color: #A24D67; */
+  color: var(--bs-gray-dark);
   left: 10%; /* 왼쪽에서 10% 떨어진 위치 */
   text-align: left; /* 텍스트 왼쪽 정렬 */
   font-size: 3rem;
@@ -13152,7 +13168,8 @@ body.scrolled .main-image1::after {
   left: 50%; /* 부모 요소 기준 가로 중앙 */
   transform: translateX(-50%); /* 가운데 정렬 */
 
-  color: var(--bs-gray-dark);
+  /* color: var(--bs-gray-dark); */
+  color: #000;
   font-size: 4rem;
   font-weight: bold;
   z-index: 1;
@@ -13160,6 +13177,11 @@ body.scrolled .main-image1::after {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
+/* `.subtx`가 추가된 경우 글자 크기 변경 */
+.main-text4.subtx {
+  font-size: 1.5rem; /* `4rem → 2rem`으로 변경 */
+  top: 500px; /* 상단에서 100px 아래 */
+}
 
 /*table/profile >>>*/
 .about-section {
@@ -13178,27 +13200,34 @@ body.scrolled .main-image1::after {
   width: 100%;
   margin: 20px 0;
   border-collapse: collapse;
+  border: 2px solid #A24D67; /* 테이블 테두리 색상 */
+
 }
 
 .custom-table th,
 .custom-table td {
   padding: 10px;
   text-align: left;
-  color: white;
+  color:  var(--bs-gray-dark) ;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  
 }
 
 .custom-table th {
   background: rgba(255, 255, 255, 0.1);
   font-weight: bold;
+  
 }
 
 .custom-table tbody tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.05);
+  
 }
 
 .custom-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.15);
+  background-color: #e9ecef; /* 헤더 배경색 */
+
 }
 
 /* photo-album */
@@ -13732,7 +13761,8 @@ body.scrolled .main-image1::after {
   display: inline-block;
   font-size: 15px;
   font-family: NotoSansM, sans-serif;
-  color: #35373e;
+  /* color: #35373e;  */
+  color: #A24D67;
   position: relative;
   word-break: keep-all;
   vertical-align: top;
@@ -13746,7 +13776,7 @@ body.scrolled .main-image1::after {
   width: 0;
   height: 60%;
   border-radius: 10px;
-  background-color: #f6ca4f;
+  background-color: #A24D67;
   opacity: 0.5;
   position: absolute;
   left: 0;
@@ -13767,15 +13797,138 @@ body.scrolled .main-image1::after {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
   opacity: 0;
+
+    /* 중앙 정렬 */
+    margin: 0 auto;
+    text-align: center;
+  
+    /* 크기 조절 */
+    max-width: 800px;
+    width: 100%; /* 작은 화면에서는 100% 사용 */
+
 }
 
 .hidden-content.show {
-  max-height: 2000px;
+  max-height: 500px;
   opacity: 1;
+  overflow-y: auto; /* 내용이 넘치면 세로 스크롤 표시 */
+  padding-right: 10px; /* 스크롤바가 있을 때 내용이 가려지지 않도록 */
 }
 
 /* /////////////////////////////////////////////////// */
 /* 테스트 */
 
+/* 댓글 */
+.comment-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.comment-form button {
+  background: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.comment-form button:hover {
+  background: #45a049;
+}
+
+/* 댓글 목록 */
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment-item {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.comment-item strong {
+  color: #333;
+}
+
+.comment-item span {
+  font-size: 14px;
+  color: gray;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 진행 바 스타일 */
+.nav_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /*  진행 바 높이 */
+  background: #fff; /*  흰색 배경 */
+  z-index: 999; /*  네비게이션보다 위에 위치 */
+}
+
+
+/*진행 바 색상 */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background-color: #A24D67; /*  진행 바 색상 */
+  transition: width 0.2s ease-in-out;
+}
+
+#mainNav {
+  position: fixed;
+  top: 4px; /*  진행 바 아래에 위치 */
+  width: 100%;
+  z-index: 99; /*  진행 바보다 낮게 설정 */
+  opacity: 0; /*  처음에는 안 보이도록 설정 */
+  transform: translateY(-100%); /*  위로 숨김 */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/*  스크롤 시 네비게이션 나타나기 */
+#mainNav.show {
+  opacity: 1; /*  서서히 나타남 */
+  transform: translateY(0); /*  원래 위치로 이동 */
+}
 /* /////////////////////////////////////////////////// */
