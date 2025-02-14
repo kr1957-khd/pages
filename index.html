@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>목사 김홍도 영원한 기억</title>
 
-
+  <!-- 딜레이 개선 -->
   <style>
     .js #fouc {
       display: none
     }
   </style>
-  <script> 
+  <script>
     (function (H) { H.className = H.className.replace(/\bno-js\b/, 'js') })(document.documentElement)         
   </script>
+
+
   <link rel="icon" type="image/x-icon" href="assets/01_main/favicon.png" />
+  <!-- 스타일을 미리 로드 (preload) -->
+  <link rel="preload" href="css/styles.css" as="style" />
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -27,77 +31,78 @@
 </head>
 
 <body id="page-top">
-  <!-- Navigation -->
-  <!-- 네비게이션 바 -->
-  <div class="nav_bar">
-    <div class="progress-bar"></div>
-  </div>
+  <div id="fouc">
+    <!-- Navigation -->
+    <!-- 네비게이션 바 -->
+    <div class="nav_bar">
+      <div class="progress-bar"></div>
+    </div>
 
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#page-top">영원한기억</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              목사 김홍도
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
-              <li>
-                <a class="dropdown-item" href="#pillar-of-fire">화보집</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#reply">약력</a>
-              </li>
-            </ul>
-          </li>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">영원한기억</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                목사 김홍도
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
+                <li>
+                  <a class="dropdown-item" href="#pillar-of-fire">화보집</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#reply">약력</a>
+                </li>
+              </ul>
+            </li>
 
-          <!-- Dropdown menu for 불기둥 설교자료 -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#achv" id="sermonDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              자료실
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
-              <li>
-                <a class="dropdown-item" href="#faith-stories">신앙 일화</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#ministry-philosophy">목회 철학</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#faith-stories">불기둥 설교집</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#pillar-of-fire">The Pillar of Fire</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#sermon-books">불기둥 칼럼</a>
-              </li>
-              <li><a class="dropdown-item" href="#columns">특별 자료실</a></li>
-              <li>
-                <a class="dropdown-item" href="#pillar-of-fire">환송예배</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#reply">방명록</a>
-              </li>
-            </ul>
-          </li>
-          <!-- 
+            <!-- Dropdown menu for 불기둥 설교자료 -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#achv-sup" id="sermonDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                자료실
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
+                <li>
+                  <a class="dropdown-item" href="#faith-stories">신앙 일화</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#ministry-philosophy">목회 철학</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#faith-stories">불기둥 설교집</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#pillar-of-fire">The Pillar of Fire</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#sermon-books">불기둥 칼럼</a>
+                </li>
+                <li><a class="dropdown-item" href="#columns">특별 자료실</a></li>
+                <li>
+                  <a class="dropdown-item" href="#pillar-of-fire">환송예배</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#reply">방명록</a>
+                </li>
+              </ul>
+            </li>
+            <!-- 
           <li class="nav-item">
             <a class="nav-link" href="#about">약력/프로필</a>
           </li> -->
 
-          <li class="nav-item">
-            <a class="nav-link" href="#fdtn">정암 장학재단</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#foundation">정암 장학재단</a>
+            </li>
 
-          <!-- <li class="nav-item">
+            <!-- <li class="nav-item">
             <a class="nav-link" href="#funeral-service">천국환송예배</a>
 
 
@@ -106,70 +111,76 @@
           </li> -->
 
 
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  <!-- Sections -->
-  <header class="masthead" id="page-top">
-    <!-- 비디오 배경 -->
-    <video autoplay loop muted playsinline class="background-video" id="backgroundVideo">
-      <source src="assets/01_main/flower_pink_02.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- 비디오 위에 올라올 영상 -->
-    <div class="video-wrapper2">
-      <video id="scrollVideo2" class="scroll-video2" muted playsinline>
-        <source src="assets/01_main/droplet_02.mp4" type="video/mp4">
+    </nav>
+    <!-- Sections -->
+    <header class="masthead" id="page-top">
+      <!-- 비디오 배경 -->
+      <video autoplay loop muted playsinline class="background-video" id="backgroundVideo">
+        <source src="assets/01_main/flower_pink_02.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </div>
 
-    <!-- main-text1`과 함께 등장하는 이미지 -->
-    <div class="main-image1"></div>
-    <div class="main-image2"></div>
-    <!-- <div class="main-image3"></div> -->
-    <p class="main-text4 right-bottom">정암 김홍도</p>
-    <p class="main-text4 subtx right-bottom">(1938 - 2020)</p>
-    <p class="main-text5 right-bottom">晶 岩</p>
-    <p class="main-text5 subtx right-bottom"> (맑을 정)ㅤ ㅤ (바위 암)</p>
+      <!-- 비디오 위에 올라올 영상 -->
+      <div class="video-wrapper2">
+        <video id="scrollVideo2" class="scroll-video2" muted playsinline>
+          <source src="assets/01_main/droplet_02.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-    <!--  텍스트 -->
-    <p class="main-text1 left-bottom">목사 김홍도 </p>
-    <!-- <p class="main-text2 left-bottom">김홍도 목사님을</p>
+      <!-- main-text1`과 함께 등장하는 이미지 -->
+      <div class="main-image1"></div>
+      <div class="main-image2"></div>
+      <!-- <div class="main-image3"></div> -->
+      <p class="main-text4 right-bottom">정암 김홍도</p>
+      <p class="main-text4 subtx right-bottom">(1938 - 2020)</p>
+      <p class="main-text5 right-bottom">晶 岩</p>
+      <p class="main-text5 subtx right-bottom"> (맑을 정)ㅤ ㅤ (바위 암)</p>
+
+      <!--  텍스트 -->
+      <p class="main-text1 left-bottom">목사 김홍도<br>영원한 기억 </p>
+      <!-- <p class="main-text2 left-bottom">김홍도 목사님을</p>
     <p class="main-text3 left-bottom">추억합니다.</p> -->
 
-  </header>
+    </header>
 
-  <br> <br>
-  <section id="about" class="projects-section bg-light">
-
-  </section>
-
-  <!-- 김홍도 감독 화보집 -->
-  <section id="photo-album" class="projects-section bg-light">
-    <h1 class="text-center mb-3">목사 김홍도 </h2>
-      <h2 class="text-center mb-5">화보집</h2>
-      <!-- 메인 이미지 표시 -->
-      <div class="main-image-container">
-        <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
-        <div class="zoom-message">🔍 확대하기</div>
+    <br> <br>
 
 
+    <div class="standalone-bar-container">
+      <div class="standalone-bar"></div>
+    </div>
+    <section id="about" class="projects-section bg-light">
 
-      </div>
+    </section>
+    <!-- 김홍도 감독 화보집 -->
+    <section id="photo-album" class="projects-section bg-light">
+      <h1 class="text-center mb-3">목사 김홍도 </h2>
+        <h2 class="text-center mb-5">화보집</h2>
+        <!-- 메인 이미지 표시 -->
+        <div class="main-image-container">
+          <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
+          <div class="zoom-message">🔍 확대하기</div>
 
-      <!-- 썸네일 이미지 갤러리 -->
-      <div class="thumbnail-gallery">
-        <img src="assets/02_img/prof_img_01.png" alt="Thumbnail 1" class="thumbnail active" onclick="setMainImage(0)" />
-        <img src="assets/02_img/prof_img_02.png" alt="Thumbnail 2" class="thumbnail" onclick="setMainImage(1)" />
-        <img src="assets/02_img/prof_img_03.png" alt="Thumbnail 3" class="thumbnail" onclick="setMainImage(2)" />
-        <img src="assets/02_img/prof_img_04.png" alt="Thumbnail 4" class="thumbnail" onclick="setMainImage(3)" />
-        <img src="assets/02_img/prof_img_05.png" alt="Thumbnail 5" class="thumbnail" onclick="setMainImage(4)" />
-        <img src="assets/02_img/prof_img_06.png" alt="Thumbnail 6" class="thumbnail" onclick="setMainImage(5)" />
-      </div>
-      </div>
+
+
+        </div>
+
+        <!-- 썸네일 이미지 갤러리 -->
+        <div class="thumbnail-gallery">
+          <img src="assets/02_img/prof_img_01.png" alt="Thumbnail 1" class="thumbnail active"
+            onclick="setMainImage(0)" />
+          <img src="assets/02_img/prof_img_02.png" alt="Thumbnail 2" class="thumbnail" onclick="setMainImage(1)" />
+          <img src="assets/02_img/prof_img_03.png" alt="Thumbnail 3" class="thumbnail" onclick="setMainImage(2)" />
+          <img src="assets/02_img/prof_img_04.png" alt="Thumbnail 4" class="thumbnail" onclick="setMainImage(3)" />
+          <img src="assets/02_img/prof_img_05.png" alt="Thumbnail 5" class="thumbnail" onclick="setMainImage(4)" />
+          <img src="assets/02_img/prof_img_06.png" alt="Thumbnail 6" class="thumbnail" onclick="setMainImage(5)" />
+        </div>
+  </div>
+
 
   </section>
 
@@ -231,171 +242,129 @@
     </div>
 
 
+    <div class="standalone-bar-container">
+      <div class="standalone-bar"></div>
+    </div>
 
     <br> <br>
     <!-- 자료실  -->
+    <div id="achv-sup" class="text-center mb-3 projects-section bg-light">
+      <h2>자료실</h2>
+      <p>텍스트</p>
+    </div>
     <div id="achv" class="achv-table">
+
       <table>
         <tr>
-          <td>
+          <td data-category="1" class="clickable-td">
             <img src="assets/03_achv/qmenu7.png" alt="신앙 일화" class="achv" />
             <p class="achv-text1">신앙 일화</p>
-            <a href="#stories" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="2" class="clickable-td">
             <img src="assets/03_achv/qmenu8.png" alt="목회 철학" class="achv" />
             <p class="achv-text1">목회 철학</p>
-            <a href="#phpy" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="3" class="clickable-td">
             <img src="assets/03_achv/qmenu3.png" alt="불기둥 설교집" class="achv" />
             <p class="achv-text1">불기둥 설교집</p>
-            <a href="#sermon" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="4" class="clickable-td">
             <img src="assets/03_achv/qmenu2.png" alt="The Pillar of Fire" class="achv" />
             <p class="achv-text1">The Pillar of Fire</p>
-            <a href="#pof" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
         </tr>
         <tr>
-          <td>
+          <td data-category="5" class="clickable-td">
             <img src="assets/03_achv/qmenu5.png" alt="불기둥 칼럼" class="achv" />
             <p class="achv-text1">불기둥 칼럼</p>
-            <a href="#column" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="6" class="clickable-td">
             <img src="assets/03_achv/qmenu6.png" alt="특별 자료실" class="achv" />
             <p class="achv-text1">특별 자료실</p>
-            <a href="#special" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="7" class="clickable-td">
             <img src="assets/03_achv/qmenu1.png" alt="환송 예배" class="achv" />
             <p class="achv-text1">환송 예배</p>
-            <a href="#fnr" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
-          <td>
+          <td data-category="8" class="clickable-td">
             <img src="assets/03_achv/qmenu4.png" alt="추모게시판" class="achv" />
             <p class="achv-text1">방명록</p>
-            <a href="#reply" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
           </td>
         </tr>
       </table>
+
     </div>
-    </section>
+    <br><br>
+    <!-- 게시판 목록 -->
+    <div id="boardSection" class="hidden-content">
+      <h3 id="boardTitle"></h3>
+      <div id="boardList"></div>
+      <div id="pagination"></div>
+      <button id="closeBoard">닫기</button>  
+
+    </div>
+
+    <!-- 게시글 내용 -->
+    <div id="postContent" class="hidden-content">
+      <button id="closePost">닫기</button>
+      <div id="postBody"></div>
+    </div>
+
     <br>
     <br>
 
-    <section id="funeral-service" class="funeral-service-section">
+    <div class="standalone-bar-container">
+      <div class="standalone-bar"></div>
+    </div>
+
+    <section id="foundation" class="foundation-section">
+      <div class="container">
+        <h2>장학재단</h2>
+        <p>텍스트</p>
+      </div>
+    </section>
+    <!-- <section id="funeral-service" class="funeral-service-section">
       <div class="container">
         <h2>천국환송예배</h2>
         <p>텍스트</p>
 
         <div class="video-table">
-          <div class="video-row">
-            <!-- Local video -->
-            <!-- <div class="video-cell">
+          <div class="video-row"> -->
+    <!-- Local video -->
+    <!-- <div class="video-cell">
             <video width="100%" height="auto" controls preload="metadata">
               <source src="assets/03_mv/5_aniv.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div> -->
 
-            <!-- YouTube video -->
-            <!-- <div class="video-cell">
+    <!-- YouTube video -->
+    <!-- <div class="video-cell">
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/QSqHfCe-l34?rel=0&showinfo=0"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div> -->
-          </div>
+    <!-- </div>
         </div>
-      </div>
-    </section>
+      </div> -->
+    <!-- </section> -->
     <br>
     <br>
 
 
-    <section id="guestbook" class="guestbook-section section-background text-white mb-5">
-      <div class="container">
-        <h2 class="mb-4">추모게시판(방명록)</h2>
-        <p class="mb-5">텍스트</p>
-        <!-- 방명록 입력 및 테이블 영역 -->
-        <div class="guestbook-input mb-4">
-          <!-- 방명록 테이블 -->
-          <div class="guestbook-table mt-4">
-            <table class="table text-white mb-5">
-              <thead>
-                <tr>
-                  <th>작성일시</th>
-                  <th>작성자</th>
-                  <th>내용</th>
-                  <th>IP 주소</th>
-                </tr>
-              </thead>
-              <tbody id="guestbookEntries">
-                <!-- 동적으로 추가되는 방명록 -->
-              </tbody>
-            </table>
 
-            <!-- 페이지네이션 -->
-            <div class="pagination-container text-center mt-4">
-              <div class="pagination">
-                <a href="#" id="prevPage" class="pagination-link">&lt; 이전 페이지</a>
-                <span id="currentPage" class="pagination-text">1</span>
-                <a href="#" id="nextPage" class="pagination-link">다음 페이지 &gt;</a>
-              </div>
-            </div>
-
-            <!-- 방명록 입력 -->
-            <div class="guestbook-input">
-              <table class="input-table">
-                <tr>
-                  <!-- 작성자 -->
-                  <td>
-                    <input type="text" class="form-control" placeholder="작성자" id="guestbook-author" />
-                  </td>
-                  <!-- 비밀번호 -->
-                  <td>
-                    <input type="password" class="form-control" placeholder="비밀번호" id="guestbook-password" />
-                  </td>
-                  <!-- 버튼 -->
-                  <td rowspan="2" class="button-cell">
-                    <button class="btn btn-primary full-height-button">등록</button>
-                  </td>
-                </tr>
-                <tr>
-                  <!-- 내용 -->
-                  <td colspan="2">
-                    <textarea class="form-control" rows="3" placeholder="메시지를 입력하세요" id="guestbook-message"></textarea>
-                  </td>
-                </tr>
-              </table>
-              <p class="mt-2 ">
-                방명록 작성 시 작성자의 IP 주소가 저장됩니다.
-              </p>
-            </div>
-          </div>
-    </section>
-
-    <!-- 테스트  -->
-
-    <section id="comments" class="comment-section">
-      <h2>댓글</h2>
-
-      <!-- 댓글 입력 폼 -->
-      <form id="commentForm" class="comment-form">
-        <input type="text" id="author" name="author" placeholder="작성자" required>
-        <input type="password" id="password" name="password" placeholder="비밀번호" required>
-        <textarea id="content" name="content" placeholder="댓글을 입력하세요..." required></textarea>
-        <button type="submit">댓글 작성</button>
-      </form>
-
-      <!-- 댓글 목록 -->
-      <div id="commentList" class="comment-list"></div>
-    </section>
-
-
+    <div class="standalone-bar-container">
+      <div class="standalone-bar"></div>
+    </div>
 
 
     <!-- Footer -->
@@ -419,7 +388,8 @@
 
 
 
-
+  </div>
+  <!-- FUOC -->
 </body>
 
 </html>
