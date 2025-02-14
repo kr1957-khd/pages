@@ -1,3 +1,4 @@
+
 // 네비게이션 바 드롭다운 활성화
 document.addEventListener("DOMContentLoaded", () => {
   const dropdownToggle = document.querySelector("#sermonDropdown");
@@ -15,11 +16,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// 진행바 
+document.addEventListener("DOMContentLoaded", () => {
+  const progressBar = document.querySelector(".progress-bar");
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY; // 현재 스크롤 위치
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + "%";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mainNav = document.getElementById("mainNav");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 1) { //  스크롤 이후 나타남
+      mainNav.classList.add("show");
+    } else {
+      mainNav.classList.remove("show");
+    }
+  });
+});
+
 // 스크롤에 따라 텍스트 숨기기
 function adjustBlendedTextOpacity1() {
   const blendedTextElements = document.querySelectorAll('.main-text4');
   const fadeStart = 0; // 스크롤 시작 지점
-  const fadeEnd = 400; // 스크롤 끝 지점 (글씨가 완전히 사라지는 지점)
+  const fadeEnd = 500; // 스크롤 끝 지점 (글씨가 완전히 사라지는 지점)
   const fadeRange = fadeEnd - fadeStart;
 
   blendedTextElements.forEach((element) => {
@@ -32,16 +58,16 @@ function adjustBlendedTextOpacity1() {
     element.style.opacity = opacity;
   });
 }
-window.addEventListener("scroll", adjustBlendedTextOpacity1);
 
+window.addEventListener("scroll", adjustBlendedTextOpacity1);
 
 // 스크롤에 따라 텍스트 나오기
 function adjustBlendedTextOpacity2() {
   const textElements = [
-    { selector: ".main-image2", fadeStart: 1100, fadeEnd: 1600 },
-    { selector: ".main-text1", fadeStart: 700, fadeEnd: 1200 },
-    { selector: ".main-text2", fadeStart: 1400, fadeEnd: 1900 },
-    { selector: ".main-text3", fadeStart: 2000, fadeEnd: 2500 }
+    { selector: ".main-image2", fadeStart: 1800, fadeEnd: 2300 },
+    { selector: ".main-text1", fadeStart: 1300, fadeEnd: 1800 },
+    { selector: ".main-text2", fadeStart: 1000, fadeEnd: 2500 },
+    { selector: ".main-text3", fadeStart: 3700, fadeEnd: 4200 }
   ];
   const imageElement = document.querySelector(".main-image1"); // `.main-text1`과 함께 동기화
   const imageElement2 = document.querySelector(".main-image2"); // `.main-text1`과 함께 동기화
@@ -67,6 +93,120 @@ function adjustBlendedTextOpacity2() {
 // 스크롤 이벤트 연결 그림 변환 시 사용
 window.addEventListener('scroll', adjustBlendedTextOpacity2);
 
+function adjustBlendedTextOpacity3() {
+  const blendedTextElements = document.querySelectorAll('.main-text5');
+  const fadeStart = 800; // 스크롤 시작 지점 (점점 나타남)
+  const fadeEnd = 1200; // 스크롤 끝 지점 (점점 사라짐)
+  const fadeRange = fadeEnd - fadeStart;
+
+  blendedTextElements.forEach((element) => {
+    const scrollY = window.scrollY;
+    let opacity;
+
+    if (scrollY < fadeStart) {
+      // fadeStart 이전: 점점 나타나는 효과 (페이드 인)
+      opacity = Math.min((scrollY / fadeStart), 1);  
+    } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
+      // fadeStart ~ fadeEnd: 완전히 보임
+      opacity = 1;  
+    } else {
+      // fadeEnd 이후: 점점 사라지는 효과 (페이드 아웃)
+      opacity = Math.max(1 - ((scrollY - fadeEnd) / fadeRange), 0);
+    }
+
+    // opacity 값 적용
+    element.style.opacity = opacity.toString();
+  });
+}
+
+// 스크롤 이벤트 리스너 추가
+window.addEventListener("scroll", adjustBlendedTextOpacity3);
+
+// 비디오2 이벤트
+// document.addEventListener("DOMContentLoaded", () => {
+//   const videoContainer = document.createElement("div");
+//   videoContainer.classList.add("video-wrapper2");
+//   videoContainer.innerHTML = `
+//     <video id="scrollVideo2" class="scroll-video2" muted playsinline>
+//       <source src="assets/01_main/droplet_02.mp4" type="video/mp4">
+//       Your browser does not support the video tag.
+//     </video>
+//   `;
+//   document.body.appendChild(videoContainer);
+
+//   const video = document.getElementById("scrollVideo2");
+//   let isPlaying = false; // 현재 영상이 재생 중인지 여부
+
+//   // 페이지 로드 후 자동 실행
+//   function playVideo() {
+//     if (!isPlaying) {
+//       videoContainer.style.opacity = "1";
+//       video.play();
+//       isPlaying = true;
+//     }
+//   }
+
+//   // 스크롤 이벤트 핸들러
+//   function handleScroll() {
+//     const scrollY = window.scrollY;
+
+//     if (scrollY >= 1150) {
+//       videoContainer.style.opacity = "0"; // 페이드아웃
+//     }
+
+//     if (scrollY === 0 && !isPlaying) {
+//       playVideo(); // 다시 실행 가능
+//     }
+//   }
+
+//   // 영상이 끝나면 다시 실행 가능하도록 초기화
+//   video.addEventListener("ended", () => {
+//     isPlaying = false;
+//   });
+
+//   // 페이지 로드 시 자동 재생
+//   playVideo();
+
+//   // 스크롤 이벤트 추가
+//   window.addEventListener("scroll", handleScroll);
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const videoContainer = document.querySelector(".video-wrapper2");
+  const video = document.getElementById("scrollVideo2");
+  let isPlaying = false;
+
+  function playVideo() {
+    if (!isPlaying) {
+      videoContainer.style.opacity = "1";
+      video.play();
+      isPlaying = true;
+    }
+  }
+
+  function handleScroll() {
+    const scrollY = window.scrollY;
+
+    if (scrollY >= 1150) {
+      videoContainer.style.opacity = "0"; // 페이드아웃
+    }
+
+    if (scrollY === 0 && !isPlaying) {
+      playVideo(); // 다시 실행 가능
+    }
+  }
+
+  video.addEventListener("ended", () => {
+    isPlaying = false;
+  });
+
+  playVideo();
+  window.addEventListener("scroll", handleScroll);
+});
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTrigger: {
       trigger: ".main-image2",
       start: "top top",
-      end: "bottom+=2800 top",
+      end: "bottom+=3000 top",
       scrub: 1,
     }
   });
@@ -105,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pin: true, //  500px 동안 `.masthead` 고정
         pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
         start: "top top",
-        end: "+=3100", //   스크롤 후 효과 종료
+        end: "+=4000", //   스크롤 후 효과 종료
         anticipatePin: 1,
         // markers: true //  디버깅용 (완성 후 제거 가능)
       }
@@ -149,23 +289,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         this.style.transform = "scaleX(1)"; // 두 번째 반전 (원래 이미지로 복귀)
       }, 400); // 초 후 다시 원래대로
-      // console.log("마우스 올림: 360회전 시작"); // 디버깅용
-      // this.classList.add("rotate");
 
-      // const text = this.nextElementSibling; // 바로 아래 텍스트 찾기
-      // if (text && text.classList.contains("achv-text1")) {
-      //   text.style.color = "#35373e"; // 강조 색상 변경
-      // }
     });
-
     img.addEventListener("mouseleave", function() {
       console.log("마우스 벗어남: 회전 종료"); // 디버깅용
       this.classList.remove("rotate");
-
-      // const text = this.nextElementSibling; // 텍스트 원래 상태로 복구
-      // if (text && text.classList.contains("achv-text1")) {
-      //   text.style.color = "#35373e"; // 원래 색상
-      // }
     });
   });
 });
@@ -245,74 +373,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 사진 갤러리 슬라이드
-// const images = [
-//   "assets/02_img/prof_img_01.png",
-//   "assets/02_img/prof_img_02.png",
-//   "assets/02_img/prof_img_03.png",
-//   "assets/02_img/prof_img_04.png",
-//   "assets/02_img/prof_img_05.png",
-//   "assets/02_img/prof_img_06.png",
-// ];
-
-// const mainImage = document.getElementById("mainImage");
-// const thumbnails = document.querySelectorAll(".thumbnail");
-// const modal = document.getElementById("imageModal");
-// const modalImage = document.getElementById("modalImage");
-
-// // 메인 이미지 변경 함수
-// function setMainImage(index) {
-//   mainImage.style.opacity = 0;
-//   setTimeout(() => {
-//     mainImage.src = images[index];
-//     mainImage.style.opacity = 1;
-//   }, 300);
-
-//   // 활성화 썸네일 업데이트
-//   thumbnails.forEach((thumbnail, i) => {
-//     thumbnail.classList.toggle("active", i === index);
-//   });
-// }
-
-// // 팝업 열기 함수
-// function openModal() {
-//   modal.style.display = "flex"; // 팝업 표시
-//   modalImage.src = mainImage.src; // 현재 메인 이미지를 팝업에 표시
-// }
-
-// // 팝업 닫기 함수 (팝업된 이미지를 클릭하면 닫힘)
-// function closeModal() {
-//   modal.style.display = "none"; // 팝업 숨기기
-// }
-
-// // 초기화
-// setMainImage(0);
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const mainImage = document.getElementById("mainImage");
-//   const modal = document.getElementById("imageModal");
-//   const modalImage = document.getElementById("modalImage");
-
-//   // 모달 요소가 존재하는지 확인
-//   if (!mainImage || !modal || !modalImage) {
-//     console.error("❌ `mainImage`, `imageModal`, 또는 `modalImage` 요소를 찾을 수 없습니다!");
-//     return;
-//   }
-
-//   // 메인 이미지를 클릭하면 팝업 열기
-//   mainImage.addEventListener("click", function () {
-//     console.log("✅ 메인 이미지 클릭됨"); // 디버깅용
-//     modal.style.display = "flex";
-//     modalImage.src = mainImage.src;
-//   });
-
-//   // 팝업된 이미지를 클릭하면 닫기
-//   modal.addEventListener("click", function () {
-//     console.log("✅ 팝업 닫힘"); // 디버깅용
-//     modal.style.display = "none";
-//   });
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const images = [
@@ -381,28 +441,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-// 진행바 
-document.addEventListener("DOMContentLoaded", () => {
-  const progressBar = document.querySelector(".progress-bar");
-
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY; // 현재 스크롤 위치
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-
-    progressBar.style.width = scrollPercent + "%";
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const mainNav = document.getElementById("mainNav");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 1) { //  스크롤 100px 이후 나타남
-      mainNav.classList.add("show");
-    } else {
-      mainNav.classList.remove("show");
-    }
-  });
-});
