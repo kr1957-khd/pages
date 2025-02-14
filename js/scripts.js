@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+  }, 500); // 0.5초 후에 페이지를 표시
+});
 
 // 네비게이션 바 드롭다운 활성화
 document.addEventListener("DOMContentLoaded", () => {
@@ -33,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById("mainNav");
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 1) { //  스크롤 이후 나타남
+    if (window.scrollY > 1200) { //  스크롤 이후 나타남
       mainNav.classList.add("show");
     } else {
       mainNav.classList.remove("show");
@@ -105,10 +110,10 @@ function adjustBlendedTextOpacity3() {
 
     if (scrollY < fadeStart) {
       // fadeStart 이전: 점점 나타나는 효과 (페이드 인)
-      opacity = Math.min((scrollY / fadeStart), 1);  
+      opacity = Math.min((scrollY / fadeStart), 1);
     } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
       // fadeStart ~ fadeEnd: 완전히 보임
-      opacity = 1;  
+      opacity = 1;
     } else {
       // fadeEnd 이후: 점점 사라지는 효과 (페이드 아웃)
       opacity = Math.max(1 - ((scrollY - fadeEnd) / fadeRange), 0);
@@ -123,54 +128,6 @@ function adjustBlendedTextOpacity3() {
 window.addEventListener("scroll", adjustBlendedTextOpacity3);
 
 // 비디오2 이벤트
-// document.addEventListener("DOMContentLoaded", () => {
-//   const videoContainer = document.createElement("div");
-//   videoContainer.classList.add("video-wrapper2");
-//   videoContainer.innerHTML = `
-//     <video id="scrollVideo2" class="scroll-video2" muted playsinline>
-//       <source src="assets/01_main/droplet_02.mp4" type="video/mp4">
-//       Your browser does not support the video tag.
-//     </video>
-//   `;
-//   document.body.appendChild(videoContainer);
-
-//   const video = document.getElementById("scrollVideo2");
-//   let isPlaying = false; // 현재 영상이 재생 중인지 여부
-
-//   // 페이지 로드 후 자동 실행
-//   function playVideo() {
-//     if (!isPlaying) {
-//       videoContainer.style.opacity = "1";
-//       video.play();
-//       isPlaying = true;
-//     }
-//   }
-
-//   // 스크롤 이벤트 핸들러
-//   function handleScroll() {
-//     const scrollY = window.scrollY;
-
-//     if (scrollY >= 1150) {
-//       videoContainer.style.opacity = "0"; // 페이드아웃
-//     }
-
-//     if (scrollY === 0 && !isPlaying) {
-//       playVideo(); // 다시 실행 가능
-//     }
-//   }
-
-//   // 영상이 끝나면 다시 실행 가능하도록 초기화
-//   video.addEventListener("ended", () => {
-//     isPlaying = false;
-//   });
-
-//   // 페이지 로드 시 자동 재생
-//   playVideo();
-
-//   // 스크롤 이벤트 추가
-//   window.addEventListener("scroll", handleScroll);
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const videoContainer = document.querySelector(".video-wrapper2");
   const video = document.getElementById("scrollVideo2");
@@ -284,14 +241,14 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   // .achv 이미지에 hover 이벤트 추가
   document.querySelectorAll(".achv").forEach(img => {
-    img.addEventListener("mouseenter", function() {
-      this.style.transform = "scaleX(-1)" ; // 첫 번째 좌우 반전
+    img.addEventListener("mouseenter", function () {
+      this.style.transform = "scaleX(-1)"; // 첫 번째 좌우 반전
       setTimeout(() => {
         this.style.transform = "scaleX(1)"; // 두 번째 반전 (원래 이미지로 복귀)
       }, 400); // 초 후 다시 원래대로
 
     });
-    img.addEventListener("mouseleave", function() {
+    img.addEventListener("mouseleave", function () {
       console.log("마우스 벗어남: 회전 종료"); // 디버깅용
       this.classList.remove("rotate");
     });
@@ -299,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 약력 숨기기/드러내기 이벤트
-document.addEventListener("DOMContentLoaded", () => { 
+document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("toggleButton"); // 버튼 가져오기
   const toggleIcon = document.getElementById("toggleIcon");
   const aboutContent = document.getElementById("aboutContent");
@@ -438,6 +395,148 @@ document.addEventListener("DOMContentLoaded", () => {
   // 썸네일 클릭 이벤트 추가
   thumbnails.forEach((thumbnail, index) => {
     thumbnail.addEventListener("click", () => setMainImage(index));
+  });
+});
+
+// 게시판 스타일
+
+document.addEventListener("DOMContentLoaded", () => {
+  const boardSection = document.getElementById("boardSection");
+  const boardTitle = document.getElementById("boardTitle");
+  const boardList = document.getElementById("boardList");
+  const pagination = document.getElementById("pagination");
+  const postContent = document.getElementById("postContent");
+  const postBody = document.getElementById("postBody");
+  const closePost = document.getElementById("closePost");
+  const closeBoard = document.getElementById("closeBoard");
+
+  if (!boardSection || !boardTitle || !boardList || !pagination || !postContent || !postBody || !closePost) {
+    console.error("❌ 필수 HTML 요소가 없습니다! (게시판이 정상적으로 동작하지 않을 수 있음)");
+    return;
+  }
+
+  let posts = [];
+  let currentPage = 1;
+  const postsPerPage = 20;
+
+  const categories = {
+    1: "신앙 일화",
+    2: "목회 철학",
+    3: "불기둥 설교집",
+    4: "The Pillar of Fire",
+    5: "불기둥 칼럼",
+    6: "특별 자료실",
+    7: "환송 예배",
+    8: "추모게시판"
+  };
+
+  // 테이블에서 클릭 시 게시판 표시
+  document.querySelectorAll(".clickable-td").forEach(element => {
+    element.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = event.currentTarget.getAttribute("data-category");
+      if (!categoryId) return;
+
+      console.log(`📌 카테고리 ID: ${categoryId} 게시판 로드`);
+      await loadBoard(categoryId);
+
+      // 게시판 보이게 하기
+      boardSection.classList.add("show");
+
+      // 부드러운 스크롤 이동
+      boardSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  // 게시판 로드
+  async function loadBoard(categoryId) {
+    try {
+      console.log(`📂 assets/03_achv/${categoryId}/index.txt 불러오는 중...`);
+      const response = await fetch(`assets/03_achv/${categoryId}/index.txt`);
+      if (!response.ok) throw new Error("파일을 찾을 수 없음");
+
+      const text = await response.text();
+      posts = text.split("\n").filter(line => line.trim()).map(line => {
+        const [num, title] = line.split(". ");
+        return { num: num.trim(), title: title.trim() };
+      });
+
+      boardTitle.textContent = `< ${categories[categoryId]} >`;
+      currentPage = 1;
+      displayBoardList(categoryId);
+    } catch (error) {
+      console.error("❌ 게시판 로드 실패:", error);
+      boardList.innerHTML = "<p>게시판을 불러오는 데 실패했습니다.</p>";
+    }
+  }
+
+  // 게시판 목록 표시 (페이지네이션 포함)
+  function displayBoardList(categoryId) {
+    boardList.innerHTML = "";
+    const start = (currentPage - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const paginatedPosts = posts.slice(start, end);
+
+    paginatedPosts.forEach(({ num, title }) => {
+      const postItem = document.createElement("div");
+      postItem.classList.add("board-item");
+      postItem.textContent = title;
+      postItem.dataset.postNum = num;
+      postItem.dataset.categoryId = categoryId;
+      postItem.addEventListener("click", () => loadPost(num, categoryId));
+      boardList.appendChild(postItem);
+    });
+
+    displayPagination(categoryId);
+  }
+
+  // 페이지네이션 표시
+  function displayPagination(categoryId) {
+    pagination.innerHTML = "";
+    const pageCount = Math.ceil(posts.length / postsPerPage);
+    for (let i = 1; i <= pageCount; i++) {
+      const button = document.createElement("button");
+      button.textContent = i;
+      button.classList.add("page-button");
+      if (i === currentPage) button.classList.add("active");
+      button.addEventListener("click", () => {
+        currentPage = i;
+        displayBoardList(categoryId);
+      });
+      pagination.appendChild(button);
+    }
+  }
+
+  // 게시글 불러오기 (TXT, PDF 지원)
+  async function loadPost(postNum, categoryId) {
+    postBody.innerHTML = `<p>게시글 ${postNum} 로딩 중...</p>`;
+    postContent.style.display = "block";
+
+    const txtFile = `assets/03_achv/${categoryId}/${postNum}.txt`;
+    const pdfFile = `assets/03_achv/${categoryId}/${postNum}.pdf`;
+
+    try {
+      const response = await fetch(txtFile);
+      if (!response.ok) {
+        postBody.innerHTML = `<embed src="${pdfFile}" width="100%" height="600px" type="application/pdf" />`;
+      } else {
+        const text = await response.text();
+        postBody.innerHTML = `<pre>${text}</pre>`;
+      }
+    } catch (error) {
+      postBody.innerHTML = "<p>게시글을 불러오는 데 실패했습니다.</p>";
+    }
+  }
+
+  // 닫기 버튼 클릭 시, 게시판 숨기기
+  closeBoard.addEventListener("click", () => {
+    document.getElementById("boardSection").classList.remove("show");
+  
+    // #achv 영역으로 부드럽게 스크롤 이동
+    document.getElementById("achv").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 });
 
