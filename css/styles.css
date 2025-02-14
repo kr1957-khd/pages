@@ -13320,22 +13320,22 @@ body.scrolled .main-image1::after {
 /* photo-album */
 
 .projects-section {
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 .projects-section .featured-text {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 @media (min-width: 992px) {
   .projects-section .featured-text {
-    padding: 0 0 0 2rem;
+    padding: 0 0 0 1rem;
     border-left: 0.5rem solid #64a19d;
   }
 }
 
 .projects-section .project-text {
-  padding: 3rem;
+  padding: 1rem;
   font-size: 90%;
 }
 
@@ -13455,130 +13455,104 @@ body.scrolled .main-image1::after {
   opacity: 1;
 }
 
-
-
-/* funeral-service */
-.video-table {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.video-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.video-cell {
-  flex: 1;
-  max-width: 500px;
-  background: #000;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.video-cell video,
-.video-cell iframe {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: none;
-  /* 영상 테두리 제거 */
-}
-
-/* sermon-resources */
-
-.sermon-grid-container {
-  padding: 20px;
-  background: #f8f9fa;
-}
-
-.lat-wrap {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.lat {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* 게시판 스타일 */
+.hidden-content {
+  visibility: hidden;  /* display: none; 대신 visibility 사용 */
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s;
+  opacity: 0;
 }
 
-.lat_title {
-  margin: 0;
+.hidden-content.show {
+  visibility: visible;
+  max-height: 1000px;  /* 충분히 큰 값으로 설정 */
+  opacity: 1;
 }
 
-.lat_title img {
-  width: 100%;
-  height: auto;
-  display: block;
+#boardSection {
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 80%;
+  margin: auto;
+  overflow-y: auto;
+  max-height: none; /* 높이 자동 조정 */
 }
 
-.lat ul {
-  list-style: none;
-  padding: 15px;
-  margin: 0;
+#boardList {
+  padding: 10px;
 }
 
-.lat ul li {
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+.board-item {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-.lat ul li:last-child {
-  border-bottom: none;
+.board-item:hover {
+  background: #eee;
 }
 
-.lat ul li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-  font-size: 14px;
+#pagination {
+  margin-top: 10px;
 }
 
-.lat ul li a:hover {
-  color: #007bff;
+.page-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 2px;
+  border: 1px solid #A24D67;
+  background: #fff;
+  color: #A24D67;
 }
 
-.lt_more {
-  display: block;
-  text-align: right;
+.page-button.active {
+  background: #A24D67;
+  color: white;
+}
+
+#postContent {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  width: 80%;
+  margin: auto;
+  display: none;
+}
+
+#closePost {
+  background: #A24D67;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#closePost:hover {
+  background: #822d50;
+}
+
+#closeBoard {
+  background: #A24D67;
+  color: white;
+  border: none;
   padding: 10px 15px;
-  text-decoration: none;
-  color: #666;
-  font-size: 13px;
-  border-top: 1px solid #eee;
-  background: #f8f9fa;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.lt_more i {
-  margin-left: 5px;
+#closeBoard:hover {
+  background: #822d50;
 }
 
-.lt_more:hover {
-  background: #f0f0f0;
-}
 
-/* 반응형 디자인 */
-@media (max-width: 992px) {
-  .lat-wrap {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .lat-wrap {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 /* 링크 스타일 */
@@ -14021,9 +13995,43 @@ body.scrolled .main-image1::after {
   transform: translateY(0); /*  원래 위치로 이동 */
 }
 
+/* 섹션사이 바 */
+.standalone-bar-container {
+  width: 100%;           /* 컨테이너의 너비 */
+  height: 2px;           /* 컨테이너의 높이 */
+  background-color: #eee; /* 배경색 */
+  position: relative;
+  margin: 20px 0;       /* 위아래 여백 */
+}
+
+.standalone-bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;          /* 바의 너비 (0-100%) */
+  background-color: var(--bs-gray-dark);
+  /* #A24D67; 바의 색상 */
+  /* animation: progress 2s ease-in-out infinite;  */
+  /* 애니메이션 적용 */
+}
+
+@keyframes progress {
+  0% {
+      width: 0%;
+  }
+  100% {
+      width: 100%;
+  }
+}
 
 /* 깜빡임 제거 로딩 후 페이지 보이게 */
 
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
 
+body.loaded {
+  opacity: 1;
+}
 
 /* /////////////////////////////////////////////////// */
