@@ -13129,6 +13129,27 @@ body {
   z-index: -99;
 }
 
+.main-image3 {
+  position: absolute;
+  top: 50%;  /* 원하는 위치 조정 */
+  left: 50%;
+  /* width: 100%;
+  height: auto; */
+  transform: translate(50%, -50%); /* 정중앙 정렬 */
+  
+  width: 400px;  /* 원하는 크기로 조정 */
+  height: 75%;  /* 높이는 부모 요소에 맞게 */
+  
+  background: url("../assets/01_main/face1.png") center/cover no-repeat;
+  
+  z-index: 4; /* 다른 요소 위에 배치 */
+  opacity: 0.9; /* 기본적으로 보이도록 설정 */
+  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+  filter: blur(1px); /* 흐림 제거 */
+
+}
+
+
 /* 스크롤을 내리면 새로운 배경이 보이도록 */
 body.scrolled .main-image1::after {
   opacity: 1;
@@ -13138,6 +13159,24 @@ body.scrolled .main-image1::after {
   from {    opacity: 0;  }
   to {    opacity: 1;  }
 }
+
+/* 폰트 적용 정묵바위체 */
+@font-face {
+  font-family: 'RockFont';
+  src: url('../assets/fonts/rock.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Han';
+  src: url('../assets/fonts/han2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .main-text1, .main-text2, .main-text3{
   position: absolute;
   /* color: #A24D67; */
@@ -13159,29 +13198,77 @@ body.scrolled .main-image1::after {
 .main-text2 {  bottom: 400px;  left: 1200px;}
 .main-text3 {  bottom: 300px;  left: 1400px;}
 
-.main-text4{
+.main-text4 {
   position: absolute;
   text-align: center; /* 텍스트 중앙 정렬 */
   width: 100%; /* 부모 요소 너비를 따라가도록 설정 */
   max-width: 800px; /* 너무 길어지지 않도록 제한 */
-  top: 400px; /* 상단에서 100px 아래 */
+  top: 400px; /* 상단에서  아래 */
   left: 50%; /* 부모 요소 기준 가로 중앙 */
   transform: translateX(-50%); /* 가운데 정렬 */
-
   /* color: var(--bs-gray-dark); */
-  color: #000;
-  font-size: 4rem;
+  color: rgba(230, 230, 230, 1);
+  font-size: 6rem;
   font-weight: bold;
-  z-index: 1;
+  z-index: 5;
   opacity: 1;  /* 처음에는 보이도록 설정 */
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  font-family: 'RockFont', sans-serif; /* rock.ttf 폰트 적용 */
+
 }
 
-/* `.subtx`가 추가된 경우 글자 크기 변경 */
-.main-text4.subtx {
-  font-size: 1.5rem; /* `4rem → 2rem`으로 변경 */
-  top: 500px; /* 상단에서 100px 아래 */
+.main-text5 {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(210, 210, 210, 1);
+  font-size: 7rem;
+  font-weight: bold;
+  z-index: 5;
+  opacity: 0; /* 기본적으로 안 보이도록 설정 */
+  transition: opacity 0.5s ease-in-out;
+  font-family: 'Han', sans-serif; /* han.ttf 폰트 적용 */
 }
+
+
+/* `.subtx`가 추가된 경우 글자 크기 변경 */
+.main-text4.subtx, .main-text5.subtx, .main-text6.subtx {
+  font-size: 2rem; /* `4rem → 2rem`으로 변경 */
+  top: 550px; /* 상단에서 100px 아래 */
+  font-family: 'RockFont', sans-serif; /* rock.ttf 폰트 적용 */
+
+}
+
+
+/* 비디오-2 */
+.video-wrapper2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 뷰포트 전체 너비 */
+  height: 100vh; /* 뷰포트 전체 높이 */
+  background: white; /* 배경을 흰색으로 설정 */
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* 부드러운 페이드 효과 */
+  z-index: 3; /* 다른 요소 위에 올라가지 않도록 조정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-video2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 화면에 맞게 영상 조절 */
+  border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
+}
+
+
+
 
 /*table/profile >>>*/
 .about-section {
@@ -13537,6 +13624,68 @@ body.scrolled .main-image1::after {
   /* 툴팁 보이기 */
 }
 
+
+/* achiv 스타일 */
+
+/* 마우스를 올리면 아이콘이 360도 회전 */
+/* 마우스를 올리면 360도 회전 */
+/* .rotate {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+} */
+
+/* .achv 이미지 스타일 */
+.achv {
+  display: block;
+  max-width: 100px; /* 크기 조정 */
+  height: auto;
+  margin: 10px auto; /* 중앙 정렬 */
+  /* max-width: 34px;
+        max-height: 36px; */
+  transition: transform 0.5s ease-in-out; /* 부드러운 애니메이션 */
+  transform-origin: center;
+}
+
+/* 기존 `.qMenu a` 스타일을 적용 */
+.achv-container {
+  display: block;
+  text-align: center;
+}
+
+/* 기존 `.qMenu a p` 스타일 적용 */
+.achv-text1 {
+  display: inline-block;
+  font-size: 15px;
+  font-family: NotoSansM, sans-serif;
+  /* color: #35373e;  */
+  color: #A24D67;
+  position: relative;
+  word-break: keep-all;
+  vertical-align: top;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 기존 `.qMenu a p::after` 스타일 적용 */
+.achv-text1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 60%;
+  border-radius: 10px;
+  background-color: #A24D67;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+/* 마우스를 올리면 텍스트 강조 효과 */
+.achv:hover + .achv-text1::after {
+  width: 100%; /* 배경 강조 효과 */
+}
+
 /* 테이블  */
 .achv-table {
   width: 100%;
@@ -13729,66 +13878,6 @@ body.scrolled .main-image1::after {
 }
 
 
-/* achiv 스타일 */
-
-/* 마우스를 올리면 아이콘이 360도 회전 */
-/* 마우스를 올리면 360도 회전 */
-/* .rotate {
-  transform: rotate(360deg);
-  transition: transform 0.5s ease-in-out;
-} */
-
-/* .achv 이미지 스타일 */
-.achv {
-  display: block;
-  max-width: 100px; /* 크기 조정 */
-  height: auto;
-  margin: 10px auto; /* 중앙 정렬 */
-  /* max-width: 34px;
-        max-height: 36px; */
-  transition: transform 0.5s ease-in-out; /* 부드러운 애니메이션 */
-  transform-origin: center;
-}
-
-/* 기존 `.qMenu a` 스타일을 적용 */
-.achv-container {
-  display: block;
-  text-align: center;
-}
-
-/* 기존 `.qMenu a p` 스타일 적용 */
-.achv-text1 {
-  display: inline-block;
-  font-size: 15px;
-  font-family: NotoSansM, sans-serif;
-  /* color: #35373e;  */
-  color: #A24D67;
-  position: relative;
-  word-break: keep-all;
-  vertical-align: top;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-/* 기존 `.qMenu a p::after` 스타일 적용 */
-.achv-text1::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 60%;
-  border-radius: 10px;
-  background-color: #A24D67;
-  opacity: 0.5;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transition: all 0.5s;
-  z-index: -1;
-}
-
-/* 마우스를 올리면 텍스트 강조 효과 */
-.achv:hover + .achv-text1::after {
-  width: 100%; /* 배경 강조 효과 */
-}
 
 /* 약력 숨기기 */
 /* 기본적으로 내용을 숨김 */
@@ -13931,4 +14020,10 @@ body.scrolled .main-image1::after {
   opacity: 1; /*  서서히 나타남 */
   transform: translateY(0); /*  원래 위치로 이동 */
 }
+
+
+/* 깜빡임 제거 로딩 후 페이지 보이게 */
+
+
+
 /* /////////////////////////////////////////////////// */
