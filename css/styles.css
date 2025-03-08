@@ -83,9 +83,12 @@ css yyu. 230730
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #a24d67;
+  --bs-link-color: #212529;
   /* --bs-link-color: #ddc7ce; */
-  --bs-link-hover-color: #a24d67;
+
+  --bs-link-hover-color: #212529;
+
+  /* --bs-link-hover-color: #a24d67; */
   /* 링크 색 */
   --bs-code-color: #d63384;
   --bs-highlight-bg: #faf4e0;
@@ -13053,15 +13056,17 @@ body {
   /* 약간의 그림자 */
 }
 
+/* 드랍다운 메뉴 색 */
 .nav-item .dropdown-menu .dropdown-item {
-  color: #a24d67;
+  color: #212529;
+  /* #a24d67 팥색 */
   /* 흰색 텍스트 */
 }
 
 .nav-item .dropdown-menu .dropdown-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   /* 마우스 오버 시 배경 */
-  color: #f8f9fa;
+  color: #a24d67;
   /* 더 밝은 흰색 */
 }
 
@@ -13359,6 +13364,45 @@ body.scrolled .main-image1::after {
   object-fit: cover; /* 화면에 맞게 영상 조절 */
   border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
 }
+
+/* main화면 관련 코드  */
+/* 텍스트 스타일 */
+.text-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 80px; /* 기존보다 아래로 내림 */
+} 
+
+.animated-text {
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0;  /* 처음에 안 보이게 */
+  transform: translateY(20px); /* 아래에서 위로 올라오는 효과 */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 이미지 스타일 */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 95vw; /* 페이지 너비에 맞춤 */
+  height: auto; /* 높이 자동 조정 */
+  margin: 0 auto; /* 🔥 가로 중앙 정렬 */
+}
+
+.animated-image {
+  width: 100%;
+  opacity: 0;
+  transform: scale(0.5); /* 처음엔 작게 */
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+.image-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 
 /*table/profile >>>*/
 .about-section {
@@ -14061,7 +14105,7 @@ body.scrolled .main-image1::after {
   top: 4px; /*  진행 바 아래에 위치 */
   width: 100%;
   z-index: 99; /*  진행 바보다 낮게 설정 */
-  opacity: 0; /*  처음에는 안 보이도록 설정 */
+  opacity: 1; /*  처음에는 안 보이도록 설정 */
   transform: translateY(-100%); /*  위로 숨김 */
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
