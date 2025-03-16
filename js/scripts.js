@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 // 진행바 
 document.addEventListener("DOMContentLoaded", () => {
   const progressBar = document.querySelector(".progress-bar");
@@ -69,7 +68,7 @@ window.addEventListener("scroll", adjustBlendedTextOpacity1);
 // 스크롤에 따라 텍스트 나오기
 function adjustBlendedTextOpacity2() {
   const textElements = [
-    { selector: ".main-image2", fadeStart: 700, fadeEnd: 2300 },
+    { selector: ".main-image2", fadeStart: 500, fadeEnd: 1500 },
     { selector: ".main-text1", fadeStart: 1300, fadeEnd: 1800 },
     { selector: ".main-text2", fadeStart: 1000, fadeEnd: 2500 },
     { selector: ".main-text3", fadeStart: 3700, fadeEnd: 4200 }
@@ -100,8 +99,8 @@ window.addEventListener('scroll', adjustBlendedTextOpacity2);
 
 function adjustBlendedTextOpacity3() {
   const blendedTextElements = document.querySelectorAll('.main-text5');
-  const fadeStart = 800; // 스크롤 시작 지점 (점점 나타남)
-  const fadeEnd = 1200; // 스크롤 끝 지점 (점점 사라짐)
+  const fadeStart = 500; // 스크롤 시작 지점 (점점 나타남)
+  const fadeEnd = 600; // 스크롤 끝 지점 (점점 사라짐)
   const fadeRange = fadeEnd - fadeStart;
 
   blendedTextElements.forEach((element) => {
@@ -143,16 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleScroll() {
     const scrollY = window.scrollY;
-
-    if (scrollY >= 1150) {
+    if (scrollY >= 300) {
       videoContainer.style.opacity = "0"; // 페이드아웃
     }
-
     if (scrollY === 0 && !isPlaying) {
       playVideo(); // 다시 실행 가능
     }
   }
-
   video.addEventListener("ended", () => {
     isPlaying = false;
   });
@@ -160,9 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
   playVideo();
   window.addEventListener("scroll", handleScroll);
 });
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -173,12 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTrigger: {
       trigger: ".main-image2",
       start: "top top",
-      end: "bottom+=3000 top",
+      end: "bottom+=1800 top",
       scrub: 1,
     }
   });
 });
-
 
 document.addEventListener("scroll", function () {
   if (window.scrollY > 3000) {
@@ -202,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pin: true, //  500px 동안 `.masthead` 고정
         pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
         start: "top top",
-        end: "+=4000", //   스크롤 후 효과 종료
+        end: "+=2200", //   스크롤 후 효과 종료
         anticipatePin: 1,
         // markers: true //  디버깅용 (완성 후 제거 가능)
       }
@@ -329,6 +321,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // 1배 2배 2.0 3배 3.0 으로 설정
   }
 });
+
+// PDF 리더
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
