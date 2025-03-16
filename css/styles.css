@@ -13301,7 +13301,7 @@ body.scrolled .main-image1::after {
   text-align: center; /* 텍스트 중앙 정렬 */
   width: 100%; /* 부모 요소 너비를 따라가도록 설정 */
   max-width: 800px; /* 너무 길어지지 않도록 제한 */
-  top: 400px; /* 상단에서  아래 */
+  top: 300px; /* 상단에서  아래 */
   left: 50%; /* 부모 요소 기준 가로 중앙 */
   transform: translateX(-50%); /* 가운데 정렬 */
   /* color: var(--bs-gray-dark); */
@@ -13336,9 +13336,52 @@ body.scrolled .main-image1::after {
 .main-text5.subtx,
 .main-text6.subtx {
   font-size: 2rem; /* `4rem → 2rem`으로 변경 */
-  top: 550px; /* 상단에서 100px 아래 */
+  top: 450px; /* 상단에서 100px 아래 */
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
 }
+
+
+.scroll-icon {
+  top: 750px; /* 상단에서 100px 아래 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5em;
+  width: 0.9em;
+  font-size: 22px;
+  color: rgba(#fff, .5);
+  border-radius: 2em;
+  border: solid 2px;
+  transition: .4s;
+}
+
+.scroll-icon:hover {
+  background-color: rgba(#fff, .05);
+  color: #fff;
+}
+
+.scroll-icon::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 40%;
+  animation: scroll-icon 2.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.main-text4.icon{
+  font-size: 12px; /* `4rem → 2rem`으로 변경 */
+  top: 790px; /* 상단에서 100px 아래 */
+}
+
+
+@keyframes scroll-icon {
+    0% { transform: translateY(-10px); opacity: 0; }
+   30%, 70% { opacity: 1; }
+  100% { transform: translateY(4px); opacity: 0; }
+}
+
+
 
 /* 비디오-2 */
 .video-wrapper2 {
