@@ -158,34 +158,26 @@
       <!-- <p class="main-text1 left-bottom">목사 김홍도<br>영원한 기억 </p> -->
       <!-- <p class="main-text2 left-bottom">김홍도 목사님을</p>
     <p class="main-text3 left-bottom">추억합니다.</p> -->
-    <!-- 텍스트 4개 -->
-    <!-- <div class="main-text11">
-
-      <p > 넓고 깊은 바다의 포용</p>
-      <p > 견고한 바위의 의지로</p>
-      <p > 이어가는 나눔의 길</p>
-      <p > 해암문화재단</p>
-      <img class="text11-img" src="assets/01_main/main_250308.png" alt="메인 이미지" 
-      />
-      
-    </div> -->
-     
+<!-- 텍스트 4개 -->
 
 
     </header>
-    <br> <br>
 
-  </section>
+    <br> <br>
 
 
     <div class="standalone-bar-container">
       <div class="standalone-bar"></div>
     </div>
 
+ 
+
+
 
     <!-- 김홍도 감독 화보집 -->
 <section id="about" class="projects-section bg-light">
   <h1 class="text-center mb-3">목사 김홍도 </h2>
+    <h2 class="text-center mb-5"></h2>
     <!-- 메인 이미지 표시 -->
 
     <div class="main-image-container">
@@ -379,6 +371,24 @@
         <h2>방명록</h2>
         <p>텍스트</p>
       </div>
+
+
+ 
+      <!-- 방명록 리스트 (5행 2열) -->
+      <div id="guestbook-list" class="grid-container"></div>
+    
+      <!-- 페이지네이션 버튼 -->
+      <div id="g-pagination"></div>
+
+      <form id="guestbook-form">
+        <input type="text" id="name" placeholder="이름" required>
+        <input type="password" id="password" placeholder="비밀번호" required>
+        <textarea id="content" placeholder="방명록을 남겨주세요..." required></textarea>
+        <!-- <label><input type="checkbox" id="private"> 🔒 비밀글</label> -->
+        <button type="submit">등록</button>
+      </form>
+    
+
     </section>
     <br>
     <br>
