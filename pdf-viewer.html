@@ -1,95 +1,45 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>플립북 PDF 뷰어</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Viewer</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        #flipbook {
-            width: 800px;
-            height: 600px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-        #flipbook .page {
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: #333;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #pdf-viewer {
+        width: 100%;
+        height: 100vh;
+        border: none;
+      }
     </style>
-</head>
-<body>
-    <div id="flipbook">
-        <!-- PDF 페이지가 여기에 동적으로 로드됩니다 -->
-    </div>
+  </head>
+  <body>
+    <iframe id="pdf-viewer" src=""></iframe>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // 플립북 초기화
-            $("#flipbook").turn({
-                width: 800,
-                height: 600,
-                autoCenter: true,
-                duration: 1000,
-            });
+      // 현재 페이지의 전체 URL 경로 가져오기
+      const currentUrl = window.location.href;
 
-            // PDF 파일 로드
-            const pdfPath = "assets/02_img/khd_pbook.pdf"; // PDF 파일 경로
-            let pdfDoc = null;
-            let totalPages = 0;
+      // 기본 URL(마지막 슬래시까지) 추출
+      const baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf("/") + 1);
 
-            pdfjsLib.getDocument(pdfPath).promise.then((pdfDoc_) => {
-                pdfDoc = pdfDoc_;
-                totalPages = pdfDoc.numPages;
+      // PDF 파일 경로 (상대 경로)
+      const pdfPath = "assets/02_img/khd_pbook.pdf";
 
-                // 각 페이지를 플립북에 추가
-                for (let i = 1; i <= totalPages; i++) {
-                    const pageDiv = document.createElement("div");
-                    pageDiv.className = "page";
-                    pageDiv.id = `page-${i}`;
-                    $("#flipbook").append(pageDiv);
+      // PDF 파일의 절대 URL 생성
+      const absolutePdfUrl = new URL(pdfPath, baseUrl).href;
 
-                    // PDF 페이지 렌더링
-                    renderPage(i, pageDiv);
-                }
-            });
+      // PDF.js 뷰어에 파일 경로 전달
+      const viewer = document.getElementById("pdf-viewer");
+      viewer.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(
+        absolutePdfUrl
+      )}`;
 
-            // PDF 페이지 렌더링 함수
-            function renderPage(pageNum, pageDiv) {
-                pdfDoc.getPage(pageNum).then((page) => {
-                    const viewport = page.getViewport({ scale: 1.5 });
-                    const canvas = document.createElement("canvas");
-                    const context = canvas.getContext("2d");
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-
-                    const renderContext = {
-                        canvasContext: context,
-                        viewport: viewport,
-                    };
-
-                    page.render(renderContext).promise.then(() => {
-                        pageDiv.appendChild(canvas);
-                    });
-                });
-            }
-        });
+      console.log("PDF URL:", absolutePdfUrl); // 디버깅용
     </script>
-</body>
+  </body>
 </html>
