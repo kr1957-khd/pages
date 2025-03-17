@@ -20,13 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 진행바 
+// 진행바
 document.addEventListener("DOMContentLoaded", () => {
   const progressBar = document.querySelector(".progress-bar");
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY; // 현재 스크롤 위치
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
 
     progressBar.style.width = scrollPercent + "%";
@@ -37,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById("mainNav");
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) { //  스크롤 이후 나타남
+    if (window.scrollY > 200) {
+      //  스크롤 이후 나타남
       mainNav.classList.add("show");
     } else {
       mainNav.classList.remove("show");
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 스크롤에 따라 텍스트 숨기기
 function adjustBlendedTextOpacity1() {
-  const blendedTextElements = document.querySelectorAll('.main-text4');
+  const blendedTextElements = document.querySelectorAll(".main-text4");
   const fadeStart = 0; // 스크롤 시작 지점
   const fadeEnd = 200; // 스크롤 끝 지점 (글씨가 완전히 사라지는 지점)
   const fadeRange = fadeEnd - fadeStart;
@@ -56,7 +58,8 @@ function adjustBlendedTextOpacity1() {
     const scrollY = window.scrollY;
 
     // opacity를 계산 (0에서 1 사이 값)
-    let opacity = 1 - Math.min(Math.max((scrollY - fadeStart) / fadeRange, 0), 1);
+    let opacity =
+      1 - Math.min(Math.max((scrollY - fadeStart) / fadeRange, 0), 1);
 
     // opacity를 설정하여 서서히 사라지게 함
     element.style.opacity = opacity;
@@ -71,7 +74,7 @@ function adjustBlendedTextOpacity2() {
     { selector: ".main-image2", fadeStart: 500, fadeEnd: 1500 },
     { selector: ".main-text1", fadeStart: 1300, fadeEnd: 1800 },
     { selector: ".main-text2", fadeStart: 1000, fadeEnd: 2500 },
-    { selector: ".main-text3", fadeStart: 3700, fadeEnd: 4200 }
+    { selector: ".main-text3", fadeStart: 3700, fadeEnd: 4200 },
   ];
   const imageElement = document.querySelector(".main-image1"); // `.main-text1`과 함께 동기화
   const imageElement2 = document.querySelector(".main-image2"); // `.main-text1`과 함께 동기화
@@ -95,10 +98,10 @@ function adjustBlendedTextOpacity2() {
   });
 }
 // 스크롤 이벤트 연결 그림 변환 시 사용
-window.addEventListener('scroll', adjustBlendedTextOpacity2);
+window.addEventListener("scroll", adjustBlendedTextOpacity2);
 
 function adjustBlendedTextOpacity3() {
-  const blendedTextElements = document.querySelectorAll('.main-text5');
+  const blendedTextElements = document.querySelectorAll(".main-text5");
   const fadeStart = 500; // 스크롤 시작 지점 (점점 나타남)
   const fadeEnd = 600; // 스크롤 끝 지점 (점점 사라짐)
   const fadeRange = fadeEnd - fadeStart;
@@ -109,13 +112,13 @@ function adjustBlendedTextOpacity3() {
 
     if (scrollY < fadeStart) {
       // fadeStart 이전: 점점 나타나는 효과 (페이드 인)
-      opacity = Math.min((scrollY / fadeStart), 1);
+      opacity = Math.min(scrollY / fadeStart, 1);
     } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
       // fadeStart ~ fadeEnd: 완전히 보임
       opacity = 1;
     } else {
       // fadeEnd 이후: 점점 사라지는 효과 (페이드 아웃)
-      opacity = Math.max(1 - ((scrollY - fadeEnd) / fadeRange), 0);
+      opacity = Math.max(1 - (scrollY - fadeEnd) / fadeRange, 0);
     }
 
     // opacity 값 적용
@@ -144,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollY = window.scrollY;
     if (scrollY >= 300) {
       videoContainer.style.opacity = "0"; // 페이드아웃
+      isPlaying = false;
     }
     if (scrollY === 0 && !isPlaying) {
       playVideo(); // 다시 실행 가능
@@ -157,20 +161,22 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", handleScroll);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+// main text 해암 스타일
 
-  gsap.to(".main-image2", {
-    backgroundSize: "110%", // 배경을 110% 크기로 확대
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".main-image2",
-      start: "top top",
-      end: "bottom+=1800 top",
-      scrub: 1,
-    }
-  });
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   gsap.to(".main-image2", {
+//     backgroundSize: "110%", // 배경을 110% 크기로 확대
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: ".main-image2",
+//       start: "top top",
+//       end: "bottom+=1800 top",
+//       scrub: 1,
+//     },
+//   });
+// });
 
 document.addEventListener("scroll", function () {
   if (window.scrollY > 3000) {
@@ -186,19 +192,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function homeAnimation1() {
     // `.masthead`가 500px 동안 고정 후 서서히 사라짐
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: ".masthead",
-        scroller: window,
-        scrub: true,
-        pin: true, //  500px 동안 `.masthead` 고정
-        pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
-        start: "top top",
-        end: "+=2200", //   스크롤 후 효과 종료
-        anticipatePin: 1,
-        // markers: true //  디버깅용 (완성 후 제거 가능)
-      }
-    }).to(".masthead", { opacity: 0 });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".masthead",
+          scroller: window,
+          scrub: true,
+          pin: true, //  500px 동안 `.masthead` 고정
+          pinSpacing: true, //  `#about`이 자연스럽게 올라오도록 설정 (false 제거)
+          start: "top top",
+          end: "+=1000", //   스크롤 후 효과 종료
+          anticipatePin: 1,
+          // markers: true //  디버깅용 (완성 후 제거 가능)
+        },
+      })
+      .to(".masthead", { opacity: 0 });
 
     //  `#about` 애니메이션 제거 (masthead의 영향을 받지 않도록 설정)
     gsap.set("#about", { clearProps: "all" }); //  불필요한 애니메이션 효과 제거
@@ -228,17 +236,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // // 초기 상태 설정 애니메이션 알수없는 코드
 // document.addEventListener('DOMContentLoaded', adjustBlendedTextOpacity);
 
+// PDF
+document.getElementById("openPdfBtn").addEventListener("click", function (e) {
+  e.preventDefault();
+  // 새 창 열기(주소창 없이)
+  window.open(
+    "pdf-viewer.html",
+    "_blank",
+    "width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
+  );
+});
 
 // achive 관련 이벤트
 document.addEventListener("DOMContentLoaded", () => {
   // .achv 이미지에 hover 이벤트 추가
-  document.querySelectorAll(".achv").forEach(img => {
+  document.querySelectorAll(".achv").forEach((img) => {
     img.addEventListener("mouseenter", function () {
       this.style.transform = "scaleX(-1)"; // 첫 번째 좌우 반전
       setTimeout(() => {
         this.style.transform = "scaleX(1)"; // 두 번째 반전 (원래 이미지로 복귀)
       }, 400); // 초 후 다시 원래대로
-
     });
     img.addEventListener("mouseleave", function () {
       console.log("마우스 벗어남: 회전 종료"); // 디버깅용
@@ -272,7 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 
 // 네비게이션 바 축소 효과 및 스크롤 스파이
 window.addEventListener("DOMContentLoaded", () => {
@@ -322,10 +338,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// PDF 리더
-
-
-
+// PDF 리더 pdf-viewer.html 이 파일안에 전체 작성
 
 document.addEventListener("DOMContentLoaded", () => {
   const images = [
@@ -341,15 +354,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const thumbnails = document.querySelectorAll(".thumbnail");
   const modal = document.getElementById("imageModal");
   const modalImage = document.getElementById("modalImage");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
+
+  let currentIndex = 0;
+  let intervalId;
 
   // 초기 로딩 시 모달을 숨김
   modal.style.display = "none";
 
-  // 요소가 정상적으로 로드되었는지 확인
-  if (!mainImage || !modal || !modalImage) {
-    console.error("`mainImage`, `imageModal`, 또는 `modalImage` 요소를 찾을 수 없습니다!");
+  if (!mainImage || !modal || !modalImage || !prevButton || !nextButton) {
+    console.error("필요한 요소를 찾을 수 없습니다!");
     return;
   }
+
+  const mainImageContainer = document.querySelector(".main-image-container");
+  let isSliding = false;
 
   // 메인 이미지 변경 함수
   function setMainImage(index) {
@@ -363,24 +383,53 @@ document.addEventListener("DOMContentLoaded", () => {
     thumbnails.forEach((thumbnail, i) => {
       thumbnail.classList.toggle("active", i === index);
     });
+
+    currentIndex = index;
+  }
+
+  // 자동 슬라이드 기능
+  function startAutoSlide() {
+    intervalId = setInterval(() => {
+      let nextIndex = (currentIndex + 1) % images.length;
+      setMainImage(nextIndex);
+    }, 5000); // 2초마다 변경
   }
 
   // 팝업 열기 함수
   function openModal() {
-    console.log("메인 이미지 클릭됨"); // 디버깅용
+    clearInterval(intervalId); // 슬라이드 멈추기
     modal.style.display = "flex";
     modalImage.src = mainImage.src;
   }
 
   // 팝업 닫기 함수
   function closeModal() {
-    console.log(" 팝업 닫힘"); // 디버깅용
     modal.style.display = "none";
+    startAutoSlide(); // 다시 슬라이드 시작
   }
 
-  // 초기 메인 이미지 설정 (초기 상태에서 opacity 문제 해결)
-  mainImage.style.opacity = "1";
+  // 팝업 내부 이미지 변경 (좌우 버튼)
+  function changeModalImage(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    modalImage.src = images[currentIndex];
+  }
+
+  // 키보드 이벤트 추가 (←, → 방향키로 이동)
+  function handleKeyPress(event) {
+    if (modal.style.display === "flex") {
+      if (event.key === "ArrowLeft") {
+        changeModalImage(-1);
+      } else if (event.key === "ArrowRight") {
+        changeModalImage(1);
+      } else if (event.key === "Escape") {
+        closeModal();
+      }
+    }
+  }
+
+  // 초기 메인 이미지 설정
   setMainImage(0);
+  startAutoSlide(); // 자동 슬라이드 시작
 
   // 메인 이미지 클릭 시 팝업 열기
   mainImage.addEventListener("click", openModal);
@@ -390,12 +439,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 썸네일 클릭 이벤트 추가
   thumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener("click", () => setMainImage(index));
+    thumbnail.addEventListener("click", () => {
+      setMainImage(index);
+      clearInterval(intervalId); // 슬라이드 멈추고
+      startAutoSlide(); // 다시 시작
+    });
   });
+
+  // 좌우 버튼 클릭 이벤트 추가
+  prevButton.addEventListener("click", (event) => {
+    event.stopPropagation(); // 팝업 닫히는 것 방지
+    changeModalImage(-1);
+  });
+
+  nextButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    changeModalImage(1);
+  });
+
+  // 키보드 이벤트 리스너 추가
+  document.addEventListener("keydown", handleKeyPress);
 });
 
 // 게시판 스타일
-
 document.addEventListener("DOMContentLoaded", () => {
   const boardSection = document.getElementById("boardSection");
   const boardTitle = document.getElementById("boardTitle");
@@ -406,8 +472,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const closePost = document.getElementById("closePost");
   const closeBoard = document.getElementById("closeBoard");
 
-  if (!boardSection || !boardTitle || !boardList || !pagination || !postContent || !postBody || !closePost) {
-    console.error("❌ 필수 HTML 요소가 없습니다! (게시판이 정상적으로 동작하지 않을 수 있음)");
+  if (
+    !boardSection ||
+    !boardTitle ||
+    !boardList ||
+    !pagination ||
+    !postContent ||
+    !postBody ||
+    !closePost
+  ) {
+    console.error(
+      "❌ 필수 HTML 요소가 없습니다! (게시판이 정상적으로 동작하지 않을 수 있음)"
+    );
     return;
   }
 
@@ -423,11 +499,11 @@ document.addEventListener("DOMContentLoaded", () => {
     5: "불기둥 칼럼",
     6: "특별 자료실",
     7: "환송 예배",
-    8: "추모게시판"
+    8: "추모게시판",
   };
 
   // 테이블에서 클릭 시 게시판 표시
-  document.querySelectorAll(".clickable-td").forEach(element => {
+  document.querySelectorAll(".clickable-td").forEach((element) => {
     element.addEventListener("click", async (event) => {
       event.preventDefault();
       const categoryId = event.currentTarget.getAttribute("data-category");
@@ -452,10 +528,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("파일을 찾을 수 없음");
 
       const text = await response.text();
-      posts = text.split("\n").filter(line => line.trim()).map(line => {
-        const [num, title] = line.split(". ");
-        return { num: num.trim(), title: title.trim() };
-      });
+      posts = text
+        .split("\n")
+        .filter((line) => line.trim())
+        .map((line) => {
+          const [num, title] = line.split(". ");
+          return { num: num.trim(), title: title.trim() };
+        });
 
       boardTitle.textContent = `< ${categories[categoryId]} >`;
       currentPage = 1;
@@ -527,12 +606,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // 닫기 버튼 클릭 시, 게시판 숨기기
   closeBoard.addEventListener("click", () => {
     document.getElementById("boardSection").classList.remove("show");
-  
+
     // #achv 영역으로 부드럽게 스크롤 이동
     document.getElementById("achv").scrollIntoView({
       behavior: "smooth",
-      block: "start"
+      block: "start",
     });
   });
 });
-
