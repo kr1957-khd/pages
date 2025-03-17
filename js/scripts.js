@@ -614,3 +614,114 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// 방명록
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("guestbook-form");
+  const list = document.getElementById("guestbook-list");
+  const pagination = document.getElementById("g-pagination");
+  let comments = JSON.parse(localStorage.getItem("guestbook")) || [];
+  let currentPage = 1;
+  const commentsPerPage = 10;
+
+  // ✅ IP 주소 생성 (실제 서버에서는 API로 가져와야 함)
+  function getFakeIP() {
+    return `192.168.0.${Math.floor(Math.random() * 255)}`;
+  }
+
+  //  방명록 추가
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const content = document.getElementById("content").value.trim();
+    const isPrivate = document.getElementById("private").checked;
+    const ip = getFakeIP();
+
+    if (!name || !password || !content) {
+      alert("모든 필드를 입력하세요!");
+      return;
+    }
+
+    const newComment = {
+      id: Date.now(),
+      name,
+      password,
+      content: isPrivate ? "🔒 비밀글입니다." : content,
+      ip,
+      timestamp: new Date().toLocaleString(),
+    };
+
+    comments.unshift(newComment);
+    localStorage.setItem("guestbook", JSON.stringify(comments));
+    form.reset();
+    displayComments();
+  });
+
+  //  방명록 출력 (페이지네이션 적용)
+  function displayComments() {
+    list.innerHTML = "";
+    pagination.innerHTML = "";
+
+    const start = (currentPage - 1) * commentsPerPage;
+    const end = start + commentsPerPage;
+    const paginatedComments = comments.slice(start, end);
+
+    paginatedComments.forEach((comment) => {
+      const entry = document.createElement("div");
+      entry.className = "guest-entry";
+      entry.innerHTML = `
+        <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
+        | <small> IP: ${comment.ip}</small>
+        | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
+        </small>
+        </p> 
+        <p>${comment.content}</p>
+
+        
+      `;
+      list.appendChild(entry);
+    });
+
+    setupDeleteButtons();
+    displayPagination();
+  }
+
+  //  삭제 버튼 이벤트 추가
+  function setupDeleteButtons() {
+    document.querySelectorAll(".delete-btn").forEach((button) => {
+      button.addEventListener("click", function () {
+        const id = this.getAttribute("data-id");
+        const password = prompt("비밀번호를 입력하세요:");
+        const index = comments.findIndex((comment) => comment.id == id);
+
+        if (index !== -1 && comments[index].password === password) {
+          comments.splice(index, 1);
+          localStorage.setItem("guestbook", JSON.stringify(comments));
+          displayComments();
+        } else {
+          alert("비밀번호가 일치하지 않습니다.");
+        }
+      });
+    });
+  }
+
+  //  페이지네이션 설정
+  function displayPagination() {
+    const totalPages = Math.ceil(comments.length / commentsPerPage);
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement("button");
+      pageBtn.className = `page-btn ${i === currentPage ? "active" : ""}`;
+      pageBtn.innerText = i;
+      pageBtn.addEventListener("click", () => {
+        currentPage = i;
+        displayComments();
+      });
+      pagination.appendChild(pageBtn);
+    }
+  }
+
+  displayComments();
+});
