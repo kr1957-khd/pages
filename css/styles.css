@@ -13340,9 +13340,8 @@ body.scrolled .main-image1::after {
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
 }
 
-
 .scroll-icon {
-  top: 750px; /* 상단에서 100px 아래 */
+  top: 650px; /* 상단에서 100px 아래 */
 
   display: flex;
   justify-content: center;
@@ -13350,38 +13349,47 @@ body.scrolled .main-image1::after {
   height: 1.5em;
   width: 0.9em;
   font-size: 22px;
-  color: rgba(#fff, .5);
+  color: rgba(#fff, 0.5);
   border-radius: 2em;
   border: solid 2px;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .scroll-icon:hover {
-  background-color: rgba(#fff, .05);
+  background-color: rgba(#fff, 0.05);
   color: #fff;
 }
 
 .scroll-icon::after {
-  content: '';
+  content: "";
   width: 4px;
   height: 4px;
   background-color: #fff;
   border-radius: 40%;
   animation: scroll-icon 2.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
 }
-.main-text4.icon{
+.main-text4.icon {
   font-size: 12px; /* `4rem → 2rem`으로 변경 */
-  top: 790px; /* 상단에서 100px 아래 */
+  top: 690px; /* 상단에서 100px 아래 */
 }
+
+/* main text output 250317 */
 
 
 @keyframes scroll-icon {
-    0% { transform: translateY(-10px); opacity: 0; }
-   30%, 70% { opacity: 1; }
-  100% { transform: translateY(4px); opacity: 0; }
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  30%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(4px);
+    opacity: 0;
+  }
 }
-
-
 
 /* 비디오-2 */
 .video-wrapper2 {
@@ -13405,11 +13413,6 @@ body.scrolled .main-image1::after {
   object-fit: cover; /* 화면에 맞게 영상 조절 */
   border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
 }
-
-/* pdf 리더 */
-
-
-
 
 /*table/profile >>>*/
 .about-section {
@@ -13488,18 +13491,20 @@ body.scrolled .main-image1::after {
   text-align: center;
   margin-bottom: 2rem;
   cursor: pointer;
+  overflow: hidden;
 }
 .main-image {
   max-width: 20%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.5s ease-in-out;
+  transition: transform 0.6s ease-in-out;
 }
+
 /* 확대하기 메시지 */
 .zoom-message {
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.6);
@@ -13517,7 +13522,7 @@ body.scrolled .main-image1::after {
 
 /* 메인 이미지 스타일 */
 .main-image {
-  max-width: 15%;
+  max-width: 30%;
   height: auto;
   border-radius: 8px;
   transition: opacity 0.5s ease-in-out, transform 0.3s;
@@ -13550,6 +13555,32 @@ body.scrolled .main-image1::after {
   object-fit: contain; /* 원본 비율 유지하면서 전체 화면에 맞춤 */
   width: auto; /* 가로 자동 조절 */
   height: auto; /* 세로 자동 조절 */
+}
+
+/* 좌우 네비게이션 버튼 스타일 */
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-nav:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* 좌우 버튼 위치 */
+.prev {
+  left: 20%;
+}
+
+.next {
+  right: 20%;
 }
 
 /* 모달 애니메이션 */
@@ -13588,6 +13619,33 @@ body.scrolled .main-image1::after {
 .thumbnail.active {
   border-color: #007bff;
   opacity: 1;
+}
+
+/* pdf 리더 */
+.pdfcontainer {
+  text-align: center;
+  background-color: white;
+}
+/* .pdf-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.pdf-link:hover {
+  background-color: #3367d6;
+} */
+
+.year-icon {
+  width: 200px; /* 원하는 크기로 조정 */
+  height: auto;
+  vertical-align: middle; /* 텍스트와 수직 중앙 정렬 */
+  margin-left: 10px; /* 글씨와 간격 조정 */
+  border-radius: 20px; /* 모서리를 둥글게 (값 조절 가능) */
 }
 
 /* 게시판 스타일 */
@@ -14135,7 +14193,7 @@ body.scrolled .main-image1::after {
 .standalone-bar {
   position: absolute;
   height: 100%;
-  width: 100%; /* 바의 너비 (0-100%) */
+  width: 950%; /* 바의 너비 (0-100%) */
   background-color: var(--bs-gray-dark);
   /* #A24D67; 바의 색상 */
   /* animation: progress 2s ease-in-out infinite;  */
