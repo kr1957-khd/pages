@@ -616,29 +616,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 방명록
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("guestbook-form");
   const list = document.getElementById("guestbook-list");
   const pagination = document.getElementById("g-pagination");
-  let comments = JSON.parse(localStorage.getItem("guestbook")) || [];
-  let currentPage = 1;
-  const commentsPerPage = 10;
 
-  // ✅ IP 주소 생성 (실제 서버에서는 API로 가져와야 함)
-  function getFakeIP() {
-    return `192.168.0.${Math.floor(Math.random() * 255)}`;
+  // ✅ 쿠키 설정 함수
+  function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
   }
 
-  //  방명록 추가
+  // ✅ 쿠키 가져오기 함수
+  function getCookie(name) {
+    const cookies = document.cookie.split("; ");
+    for (let cookie of cookies) {
+      let [key, value] = cookie.split("=");
+      if (key === name) return value;
+    }
+    return null;
+  }
+
+  // ✅ 사용자 고유 ID 설정 (없으면 생성)
+  if (!getCookie("guestUserID")) {
+    setCookie("guestUserID", Math.random().toString(36).substring(2, 15), 30);
+  }
+  const userID = getCookie("guestUserID");
+
+  // ✅ 방명록 데이터 (쿠키에서 관리)
+  let comments = JSON.parse(getCookie("guestbook") || "[]");
+  let currentPage = 1;
+  const commentsPerPage = 10; // 한 페이지당 5행 2열 (총 10개)
+
+  // ✅ 방명록 등록
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const name = document.getElementById("name").value.trim();
     const password = document.getElementById("password").value.trim();
     const content = document.getElementById("content").value.trim();
-    const isPrivate = document.getElementById("private").checked;
-    const ip = getFakeIP();
 
     if (!name || !password || !content) {
       alert("모든 필드를 입력하세요!");
@@ -647,20 +664,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const newComment = {
       id: Date.now(),
+      userID,
       name,
       password,
-      content: isPrivate ? "🔒 비밀글입니다." : content,
-      ip,
+      content,
       timestamp: new Date().toLocaleString(),
     };
 
     comments.unshift(newComment);
-    localStorage.setItem("guestbook", JSON.stringify(comments));
+    setCookie("guestbook", JSON.stringify(comments), 30); // 쿠키에 저장
     form.reset();
     displayComments();
   });
 
-  //  방명록 출력 (페이지네이션 적용)
+  // ✅ 방명록 출력 (페이지네이션 적용)
   function displayComments() {
     list.innerHTML = "";
     pagination.innerHTML = "";
@@ -673,14 +690,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const entry = document.createElement("div");
       entry.className = "guest-entry";
       entry.innerHTML = `
-        <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
-        | <small> IP: ${comment.ip}</small>
-        | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
-        </small>
-        </p> 
-        <p>${comment.content}</p>
+      <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
+      | <small> IP: ${comment.ip}</small>
+      | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
+      </small>
+      </p>
+      <p>${comment.content}</p>
 
-        
+
       `;
       list.appendChild(entry);
     });
@@ -689,28 +706,32 @@ document.addEventListener("DOMContentLoaded", function () {
     displayPagination();
   }
 
-  //  삭제 버튼 이벤트 추가
+  // ✅ 삭제 버튼 이벤트 추가
   function setupDeleteButtons() {
     document.querySelectorAll(".delete-btn").forEach((button) => {
       button.addEventListener("click", function () {
         const id = this.getAttribute("data-id");
-        const password = prompt("비밀번호를 입력하세요:");
         const index = comments.findIndex((comment) => comment.id == id);
 
-        if (index !== -1 && comments[index].password === password) {
-          comments.splice(index, 1);
-          localStorage.setItem("guestbook", JSON.stringify(comments));
-          displayComments();
-        } else {
-          alert("비밀번호가 일치하지 않습니다.");
+        if (index !== -1) {
+          const inputPassword = prompt("비밀번호를 입력하세요:");
+          if (inputPassword === comments[index].password) {
+            comments.splice(index, 1);
+            setCookie("guestbook", JSON.stringify(comments), 30);
+            displayComments();
+          } else {
+            alert("비밀번호가 일치하지 않습니다.");
+          }
         }
       });
     });
   }
 
-  //  페이지네이션 설정
+  // ✅ 페이지네이션 설정
   function displayPagination() {
     const totalPages = Math.ceil(comments.length / commentsPerPage);
+    if (totalPages <= 1) return; // 페이지가 하나라면 페이지네이션 숨김
+
     for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement("button");
       pageBtn.className = `page-btn ${i === currentPage ? "active" : ""}`;
@@ -725,3 +746,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   displayComments();
 });
+
+// <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
+// | <small> IP: ${comment.ip}</small>
+// | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
+// </small>
+// </p>
+// <p>${comment.content}</p>
