@@ -753,3 +753,24 @@ document.addEventListener("DOMContentLoaded", function () {
 // </small>
 // </p>
 // <p>${comment.content}</p>
+
+// BG 이미지 이벤트
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll(".parallax-section").forEach((section) => {
+    gsap.to(section, {
+      y: "-10%", // 배경이 천천히 위로 이동
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1, // 부드러운 스크롤 효과
+      },
+    });
+  });
+});
+
+//
