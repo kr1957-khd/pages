@@ -64,7 +64,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#phy" id="sermonDropdown" role="button"
+              <a class="nav-link dropdown-toggle" href="#pastoral" id="sermonDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 목회철학
               </a>
@@ -166,26 +166,25 @@
     <br> <br>
 
 
-    <div class="standalone-bar-container">
-      <div class="standalone-bar"></div>
-    </div>
-
+    <div class="line-break"> </div>
  
 
 
 
     <!-- 김홍도 감독 화보집 -->
 <section id="about" class="projects-section bg-light">
-  <h1 class="text-center mb-3">목사 김홍도 </h2>
-    <h2 class="text-center mb-5"></h2>
+  <div class="parallax-1">
+    <div class="bg-light">
+      <h1 class="text-center mb-3">목사 김홍도 </h2>
+      <h2 class="text-center mb-5"></h2>
+    </div> 
     <!-- 메인 이미지 표시 -->
 
     <div class="main-image-container">
       <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
-      <div class="zoom-message">🔍 확대하기
-
-      </div>
+      <div class="zoom-message">🔍 확대하기</div>
     </div>
+    <br>
 
     <!-- 썸네일 이미지 갤러리 -->
     <div class="thumbnail-gallery">
@@ -198,211 +197,210 @@
       <img src="assets/02_img/prof_img_06.png" alt="Thumbnail 6" class="thumbnail" onclick="setMainImage(5)" />
     </div>
 
-<!-- pdf 리더, 금란교회 창립 60주년 기념 정암 김홍도 감독 화보집 -->
-<!-- src="assets/02_img/khd_pbook.pdf" -->
-<!-- PDF 섹션 -->
+    <!-- pdf 리더, 금란교회 창립 60주년 기념 정암 김홍도 감독 화보집 -->
+    <!-- src="assets/02_img/khd_pbook.pdf" -->
+    <!-- PDF 섹션 -->
 
-<div class="pdfcontainer">
-  <p></p>
-  <p>아래 사진을 누르면 더 많은 사진을 확인해 보실 수 있습니다.(PDF 열기)</p>
-  <a href="#" class="pdf-link" id="openPdfBtn"> 
-    <img src="assets/02_img/60year.png" alt="60주년 기념 로고" class="year-icon">
-  </a>
-  <p><금란교회 창립 60주년 기념 정암 김홍도 감독 화보집></p>
-
-      
+    <div class="pdfcontainer">
+      <p></p>
+      <p>아래 사진을 누르면 더 많은 사진을 확인해 보실 수 있습니다.(PDF 열기)</p>
+      <a href="#" class="pdf-link" id="openPdfBtn"> 
+        <img src="assets/02_img/60year.png" alt="60주년 기념 로고" class="year-icon">
+      </a>
+      <p><금란교회 창립 60주년 기념 정암 김홍도 감독 화보집></p>
     </div>
 
- <!-- 팝업 모달 -->
- <div id="imageModal" class="modal" onclick="closeModal()">
-  <button id="prevButton" class="modal-nav prev">&lt;</button>
-  <img id="modalImage" class="modal-image" />
-  <button id="nextButton" class="modal-nav next">&gt;</button>
-</div>
+     <!-- 팝업 모달 -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <button id="prevButton" class="modal-nav prev">&lt;</button>
+      <img id="modalImage" class="modal-image" />
+      <button id="nextButton" class="modal-nav next">&gt;</button>
+    </div>
 
-<!-- "더 보기" 아이콘 버튼 -->
-<div class="text-center mb-5 projects-section bg-light">
-  <h2>약력/프로필</h2>
-  <p>텍스트</p>
-  <button id="toggleButton" class="toggle-btn">
-    <img src="assets/03_achv/qmenu8.png" alt="더 보기" id="toggleIcon">
-    <p>내용 더 보기</p>
-  </button>
-  <br><br><br>
-  <!-- 확장될 내용 -->
-  <div id="aboutContent" class="hidden-content">
-    <!-- 학력 -->
-    <h3 style="color: black">학력</h3>
-    <table class="custom-table ">
-      <thead>
-        <tr>
-          <th>연도</th>
-          <th>월</th>
-          <th>학력</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1963</td>
-          <td>2</td>
-          <td>서울 감리교 신학대학 졸업(BA)</td>
-        </tr>
-        <tr>
-          <td>1980</td>
-          <td>2</td>
-          <td>아세아 연합 신학대학원 졸업(MA)</td>
-        </tr>
-        <tr>
-          <td>1987</td>
-          <td>12</td>
-          <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
-        </tr>
-        <tr>
-          <td>1994</td>
-          <td>4</td>
-          <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
-        </tr>
-        <tr>
-          <td>2007</td>
-          <td>2.15</td>
-          <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- 목회 경력 -->
+    <!-- "더 보기" 아이콘 버튼 -->
+    <div class="text-center mb-5 projects-section ">
+      <h2>약력/프로필</h2>
+      <p>텍스트</p>
+      <button id="toggleButton" class="toggle-btn">
+        <img src="assets/03_achv/qmenu8.png" alt="더 보기" id="toggleIcon">
+        <p>내용 더 보기</p>
+      </button>
+      <br><br><br>
+      <!-- 확장될 내용 -->
+      <div id="aboutContent" class="hidden-content">
+        <!-- 학력 -->
+        <h3 style="color: black">학력</h3>
+        <table class="custom-table ">
+          <thead>
+            <tr>
+              <th>연도</th>
+              <th>월</th>
+              <th>학력</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1963</td>
+              <td>2</td>
+              <td>서울 감리교 신학대학 졸업(BA)</td>
+            </tr>
+            <tr>
+              <td>1980</td>
+              <td>2</td>
+              <td>아세아 연합 신학대학원 졸업(MA)</td>
+            </tr>
+            <tr>
+              <td>1987</td>
+              <td>12</td>
+              <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
+            </tr>
+            <tr>
+              <td>1994</td>
+              <td>4</td>
+              <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
+            </tr>
+            <tr>
+              <td>2007</td>
+              <td>2.15</td>
+              <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 목회 경력 -->
+    </div>
   </div>
+  <!-- parallax -->
 </section>
 
-  <div class="standalone-bar-container">
-    <div class="standalone-bar"></div>
-  </div>
+<div class="line-break"> </div>
   <br> <br>
 
+<!--  -->
+
+
+
+
+<!--  -->
 
 
 <!-- 목회 철학 -->
 <section id="pastoral" class="text-center mb-3 projects-section bg-light">
-  <h2>목회 철학</h2>
-  <p>텍스트</p>
-
+  <div class="parallax-2">
+    <h2>목회 철학</h2>
+    <p>텍스트</p>
+  </div>
 </section>
 
 
-    <div class="standalone-bar-container">
-      <div class="standalone-bar"></div>
-    </div>
+<div class="line-break"> </div>
+ <br> <br>
 
-    <br> <br>
-    <!-- 자료실  -->
-    <div id="achv-sup" class="text-center mb-3 projects-section bg-light">
-      <h2>자료실</h2>
+<!-- 자료실  -->
+<div class="parallax-3">
+  <div id="achv-sup" class="text-center mb-3 projects-section ">
+    <h2>자료실</h2>
+    <p>텍스트</p>
+  </div>
+
+  <div id="achv" class="achv-table">
+    <table>
+      <tr>
+        <td data-category="1" class="clickable-td">
+          <img src="assets/03_achv/qmenu7.png" alt="신앙 일화" class="achv" />
+          <p class="achv-text1">신앙 일화</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+
+        <td data-category="2" class="clickable-td">
+          <img src="assets/03_achv/qmenu6.png" alt="특별 자료실" class="achv" />
+          <p class="achv-text1">특별 자료실</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+
+        <td data-category="3" class="clickable-td">
+          <img src="assets/03_achv/qmenu1.png" alt="환송 예배" class="achv" />
+          <p class="achv-text1">환송 예배</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+
+      <tr>
+        <td data-category="4" class="clickable-td">
+          <img src="assets/03_achv/qmenu3.png" alt="불기둥 설교집" class="achv" />
+          <p class="achv-text1">불기둥 설교집</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+
+        <td data-category="5" class="clickable-td">
+          <img src="assets/03_achv/qmenu2.png" alt="The Pillar of Fire" class="achv" />
+          <p class="achv-text1">The Pillar of Fire</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+
+        <td data-category="6" class="clickable-td">
+          <img src="assets/03_achv/qmenu5.png" alt="불기둥 칼럼" class="achv" />
+          <p class="achv-text1">불기둥 칼럼</p>
+          <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br><br>
+
+<!-- 게시판 목록 -->
+<div id="boardSection" class="hidden-content">
+  <h3 id="boardTitle"></h3>
+  <div id="boardList"></div>
+  <div id="pagination"></div>
+  <button id="closeBoard">닫기</button>  
+</div>
+
+<!-- 게시글 내용 -->
+<div id="postContent" class="hidden-content">
+  <button id="closePost">닫기</button>
+  <div id="postBody"></div>
+</div>
+<br><br>
+
+<div class="line-break"> </div>
+
+<section id="reply" class="text-center mb-3 projects-section bg-light">
+  <div class="parallax-4">
+
+
+    <div class="container">
+      <h2>방명록</h2>
       <p>텍스트</p>
     </div>
-    <div id="achv" class="achv-table">
 
-      <table>
-        <tr>
-          <td data-category="1" class="clickable-td">
-            <img src="assets/03_achv/qmenu7.png" alt="신앙 일화" class="achv" />
-            <p class="achv-text1">신앙 일화</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
+    <!-- 방명록 리스트 (5행 2열) -->
+    <div id="guestbook-list" class="grid-container"></div>
 
-          <td data-category="2" class="clickable-td">
-            <img src="assets/03_achv/qmenu6.png" alt="특별 자료실" class="achv" />
-            <p class="achv-text1">특별 자료실</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
+    <!-- 페이지네이션 버튼 -->
+    <div id="g-pagination"></div>
 
-          <td data-category="3" class="clickable-td">
-            <img src="assets/03_achv/qmenu1.png" alt="환송 예배" class="achv" />
-            <p class="achv-text1">환송 예배</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
-        </tr>
+    <form id="guestbook-form">
+      <input type="text" id="name" placeholder="이름" required>
+      <input type="password" id="password" placeholder="비밀번호" required>
+      <textarea id="content" placeholder="방명록을 남겨주세요..." required></textarea>
+      <!-- <label><input type="checkbox" id="private"> 🔒 비밀글</label> -->
+      <button type="submit">등록</button>
+    </form>
 
-        <tr>
-          <td data-category="4" class="clickable-td">
-            <img src="assets/03_achv/qmenu3.png" alt="불기둥 설교집" class="achv" />
-            <p class="achv-text1">불기둥 설교집</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
-
-          <td data-category="5" class="clickable-td">
-            <img src="assets/03_achv/qmenu2.png" alt="The Pillar of Fire" class="achv" />
-            <p class="achv-text1">The Pillar of Fire</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
-
-          <td data-category="6" class="clickable-td">
-            <img src="assets/03_achv/qmenu5.png" alt="불기둥 칼럼" class="achv" />
-            <p class="achv-text1">불기둥 칼럼</p>
-            <a href="#boardSection" class="lt_more">더보기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-      </table>
-
-    </div>
-    <br><br>
-    <!-- 게시판 목록 -->
-    <div id="boardSection" class="hidden-content">
-      <h3 id="boardTitle"></h3>
-      <div id="boardList"></div>
-      <div id="pagination"></div>
-      <button id="closeBoard">닫기</button>  
-
-    </div>
-
-    <!-- 게시글 내용 -->
-    <div id="postContent" class="hidden-content">
-      <button id="closePost">닫기</button>
-      <div id="postBody"></div>
-    </div>
-
+  </div>
+</section>
     <br>
     <br>
 
-    <div class="standalone-bar-container">
-      <div class="standalone-bar"></div>
-    </div>
+<div class="line-break"></div>
 
-    <section id="reply" class="text-center mb-3 projects-section bg-light">
-      <div class="container">
-        <h2>방명록</h2>
-        <p>텍스트</p>
-      </div>
-
-
- 
-      <!-- 방명록 리스트 (5행 2열) -->
-      <div id="guestbook-list" class="grid-container"></div>
-    
-      <!-- 페이지네이션 버튼 -->
-      <div id="g-pagination"></div>
-
-      <form id="guestbook-form">
-        <input type="text" id="name" placeholder="이름" required>
-        <input type="password" id="password" placeholder="비밀번호" required>
-        <textarea id="content" placeholder="방명록을 남겨주세요..." required></textarea>
-        <!-- <label><input type="checkbox" id="private"> 🔒 비밀글</label> -->
-        <button type="submit">등록</button>
-      </form>
-    
-
-    </section>
-    <br>
-    <br>
-
-    <div class="standalone-bar-container">
-      <div class="standalone-bar"></div>
-    </div>
-
-    <section id="foundation" class="text-center mb-3 projects-section bg-light">
-      <div class="container">
-        <h2>장학재단</h2>
-        <p>간단한 설명</p>
-      </div>
-    </section>
+<section id="foundation" class="text-center mb-3 projects-section bg-light">
+  <div class="container">
+    <h2>장학재단</h2>
+    <p>간단한 설명</p>
+  </div>
+</section>
     <!-- <section id="funeral-service" class="funeral-service-section">
       <div class="container">
         <h2>천국환송예배</h2>
@@ -429,39 +427,89 @@
         </div>
       </div> -->
     <!-- </section> -->
-    <br>
-    <br>
+<br>
+<br>
 
-
-
-    <div class="standalone-bar-container">
-      <div class="standalone-bar"></div>
-    </div>
+<div class="line-break"></div>
 
 
     <!-- Footer -->
-    <footer class="footer bg-white text-black-50">
-      <div class="container text-center">
-        <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
-
-          <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
-          <img src="assets/foot/klabs.png" alt="labs" class="footer-logo achv" style="width: auto; height: 50px;" />
-
-        </a>
-      </div>
-      <div class="container text-center">
-        02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
-      </div>
-      <div class="container text-center">
-        Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
-      </div>
-    </footer>
-    <br>
 
 
+<footer class="footer bg-white text-black-50">
+  <div class="container text-center">
+    <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
 
+      <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
+      <img src="assets/foot/klabs.png" alt="labs" class="footer-logo achv" style="width: auto; height: 50px;" />
+
+    </a>
   </div>
+  <div class="container text-center">
+    02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
+  </div>
+  <div class="container text-center">
+    Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
+  </div>
+</footer>
+<br>
+
+
+
   <!-- FUOC -->
+  <!-- test -->
+  <div id="parallax-world-of-ugg">
+  
+    <section>
+      <div class="title">
+        <h3>Let's do some</h3>
+        <h1>PARALLAX</h1>
+      </div>
+    </section>
+    
+    <section>
+        <div class="parallax-one">
+          <h2>SOUTHERN CALIFORNIA</h2>
+        </div>
+    </section>
+    
+    <section>
+      <div class="block">
+        <p><span class="first-character sc">I</span>n 1978, Brian Smith landed in Southern California with a bag of sheepskin boots and hope. He fell in love with the sheepskin experience and was convinced the world would one day share this love. The beaches of Southern California had long been an epicenter of a relaxed, casual lifestyle, a lifestyle that Brian felt was a perfect fit for his brand. So he founded the UGG brand, began selling his sheepskin boots and they were an immediate sensation. By the mid 1980's, the UGG brand became a symbol of relaxed southern California culture, gaining momentum through surf shops and other shops up and down the coast of California, from San Diego to Santa Cruz. UGG boots reached beyond the beach, popping up in big cities and small towns all over, and in every level of society. Girls wore their surfer boyfriend's pair of UGG boots like a letterman jacket. When winter came along, UGG boots were in ski shops and were seen in lodges from Mammoth to Aspen.</p>
+        <p class="line-break margin-top-10"></p>
+        <p class="margin-top-10">The UGG brand began to symbolize those who embraced sport and a relaxed, active lifestyle. More than that, an emotional connection and a true feeling of love began to grow for UGG boots, just as Brian had envisioned. People didn't just like wearing UGG boots, they fell in love with them and literally could not take them off. By the end of the 90's, celebrities and those in the fashion world took notice of the UGG brand. A cultural shift occurred as well - people were embracing, and feeling empowered, by living a more casual lifestyle and UGG became one of the symbols of this lifestyle. By 2000, a love that began on the beaches had become an icon of casual style. It was at this time that the love for UGG grew in the east, over the Rockies and in Chicago. In 2000, UGG Sheepskin boots were first featured on Oprah's Favorite Things® and Oprah emphatically declared that she "LOOOOOVES her UGG boots." From that point on, the world began to notice.</p>
+      </div>
+    </section>
+    
+    <section>
+      <div class="parallax-two">
+        <h2>NEW YORK</h2>
+      </div>
+    </section>
+    
+    <section>
+      <div class="block">
+        <p><span class="first-character ny">B</span>reaking into the New York fashion world is no easy task. But by the early 2000's, UGG Australia began to take it by storm. The evolution of UGG from a brand that made sheepskin boots, slippers, clogs and sandals for an active, outdoor lifestyle to a brand that was now being touted as a symbol of a stylish, casual and luxurious lifestyle was swift. Much of this was due to a brand repositioning effort that transformed UGG into a high-end luxury footwear maker. As a fashion brand, UGG advertisements now graced the pages of Vogue Magazine as well as other fashion books. In the mid 2000's, the desire for premium casual fashion was popping up all over the world and UGG was now perfectly aligned with this movement.</p>
+        <p class="line-break margin-top-10"></p>
+        <p class="margin-top-10">Fueled by celebrities from coast to coast wearing UGG boots and slippers on their downtime, an entirely new era of fashion was carved out. As a result, the desire and love for UGG increased as people wanted to go deeper into this relaxed UGG experience. UGG began offering numerous color and style variations on their sheepskin boots and slippers. Cold weather boots for women and men and leather casuals were added with great success. What started as a niche item, UGG sheepskin boots were now a must-have staple in everyone's wardrobe. More UGG collections followed, showcasing everything from knit boots to sneakers to wedges, all the while maintaining that luxurious feel UGG is known for all over the world. UGG products were now seen on runways and in fashion shoots from coast to coast. Before long, the love spread even further.</p>
+      </div>
+    </section>
+    
+    <section>
+      <div class="parallax-three">
+        <h2>ENCHANTED FOREST</h2>
+      </div>
+    </section>
+    
+    <section>
+      <div class="block">
+        <p><span class="first-character atw">W</span>hen the New York fashion community notices your brand, the world soon follows. The widespread love for UGG extended to Europe in the mid-2000's along with the stylish casual movement and demand for premium casual fashion. UGG boots and shoes were now seen walking the streets of London, Paris and Amsterdam with regularity. To meet the rising demand from new fans, UGG opened flagship stores in the UK and an additional location in Moscow. As the love spread farther East, concept stores were opened in Beijing, Shanghai and Tokyo. UGG Australia is now an international brand that is loved by all. This love is a result of a magical combination of the amazing functional benefits of sheepskin and the heightened emotional feeling you get when you slip them on your feet. In short, you just feel better all over when you wear UGG boots, slippers, and shoes.</p>
+        <p class="line-break margin-top-10"></p>
+        <p class="margin-top-10">In 2011, UGG will go back to its roots and focus on bringing the active men that brought the brand to life back with new styles allowing them to love the brand again as well. Partnering with Super Bowl champion and NFL MVP Tom Brady, UGG will invite even more men to feel the love the rest of the world knows so well. UGG will also step into the world of high fashion with UGG Collection. The UGG Collection fuses the timeless craft of Italian shoemaking with the reliable magic of sheepskin, bringing the luxurious feel of UGG to high end fashion. As the love for UGG continues to spread across the world, we have continued to offer new and unexpected ways to experience the brand. The UGG journey continues on and the love for UGG continues to spread.</p>
+      </div>
+    </section>
+
+  
 </body>
 
 </html>
