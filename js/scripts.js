@@ -754,8 +754,119 @@ document.addEventListener("DOMContentLoaded", function () {
 // </p>
 // <p>${comment.content}</p>
 
-// BG 이미지 이벤트
+// 헌화
+// https://script.google.com/macros/s/AKfycby07SAJgFfuA8Mz1yCaHAyUy2_KlehIfEvnXYoUOuBGUqQcPAdSInNh0m1pLcki06IGAQ/exec
 
+const scriptUrl =
+  "https://script.google.com/macros/s/AKfycby07SAJgFfuA8Mz1yCaHAyUy2_KlehIfEvnXYoUOuBGUqQcPAdSInNh0m1pLcki06IGAQ/exec";
+const typeMap = {
+  love: 1,
+  respect: 2,
+  miss: 3,
+  thanks: 4,
+};
+
+let flowerDataLoaded = false;
+
+// ⏱ flower 섹션 보일 때 로딩
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !flowerDataLoaded) {
+        flowerDataLoaded = true;
+        console.log("🌸 flower 섹션 감지 → 데이터 로딩");
+        loadFlowerData();
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+observer.observe(document.getElementById("flower"));
+
+async function loadFlowerData() {
+  try {
+    const res = await fetch(scriptUrl);
+    const { flowers, counts } = await res.json();
+
+    // 추천 수 표시
+    for (let key in typeMap) {
+      const num = typeMap[key];
+      const el = document.getElementById(`count-${key}`);
+      if (el) el.textContent = counts[num] ?? 0;
+    }
+
+    // 꽃 렌더링
+    flowers.forEach((f) => createFlower(f.type, f.x, f.y, f.rotation));
+  } catch (err) {
+    console.error("❌ 데이터 로딩 실패", err);
+  }
+}
+
+// 모든 버튼을 3초간 비활성화하는 함수
+function temporarilyDisableButtons(duration = 3000) {
+  const buttons = document.querySelectorAll("#flower-buttons button");
+  buttons.forEach((btn) => (btn.disabled = true));
+
+  setTimeout(() => {
+    buttons.forEach((btn) => (btn.disabled = false));
+  }, duration);
+}
+
+document.querySelectorAll("#flower-buttons button").forEach((button) => {
+  const key = button.dataset.type;
+  const type = typeMap[key];
+
+  button.addEventListener("click", async () => {
+    const x = Math.random() * 90;
+    const y = Math.random() * 90;
+    const rotation = Math.random() * 360;
+    temporarilyDisableButtons(5000);
+    // 🌸 로딩 메시지 표시
+    document.getElementById("flower-loader").style.display = "block";
+
+    // 🌸 시각적 피드백
+    createFlower(type, x, y, rotation);
+
+    // 🌐 서버 전송 (no-cors)
+    try {
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors", // ✅ 핵심!
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ type, x, y, rotation }),
+      });
+
+      //  카운트 증가 (로컬 UI 반영만)
+      const el = document.getElementById(`count-${key}`);
+      if (el) el.textContent = parseInt(el.textContent) + 1;
+
+      //  안내 메시지 (옵션)
+      console.log("🌼 요청 보냄 (no-cors) — 응답은 확인할 수 없음");
+    } catch (err) {
+      alert("❌ 저장 실패: " + err.message);
+    }
+    // 3초 후 로딩 숨기기
+    setTimeout(() => {
+      document.getElementById("flower-loader").style.display = "none";
+    }, 100);
+  });
+});
+
+function createFlower(type, x, y, rotation) {
+  const flower = document.createElement("img");
+  flower.src = `assets/flower/${type}.png`;
+  flower.className = "flower";
+  flower.style.position = "absolute";
+  flower.style.left = `${x}%`;
+  flower.style.top = `${y}%`;
+  flower.style.transform = `rotate(${rotation}deg)`;
+  flower.style.width = "40px";
+  document.getElementById("flower-field").appendChild(flower);
+}
+
+// BG 이미지 이벤트
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
