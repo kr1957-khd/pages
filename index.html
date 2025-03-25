@@ -41,29 +41,30 @@
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#page-top">영원한기억</a>
+        <a class="navbar-brand" href="#page-top">
+          <img src="assets/01_main/title.png" alt="영원한 기억 로고" style="height: 80px;">  
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">        
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">목사 김홍도</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pastoral">목회 철학</a>
+            </li>
+
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 목사 김홍도
               </a>
-              <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
-                <li>
-                  <a class="dropdown-item" href="#pillar-of-fire">화보집</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#reply">약력</a>
-                </li>
-              </ul>
-            </li>
+            </li> -->
 
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#pastoral" id="sermonDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 목회철학
@@ -74,7 +75,7 @@
                 </li>
 
               </ul>
-            </li>
+            </li> -->
 
              <!-- Dropdown menu for 불기둥 설교자료 -->
             <li class="nav-item dropdown">
@@ -108,7 +109,7 @@
           </li> -->
 
             <li class="nav-item">
-              <a class="nav-link" href="#reply">방명록</a>
+              <a class="nav-link" href="#reply">헌화</a>
             </li>
 
             <!-- <li class="nav-item">
@@ -118,7 +119,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#guestbook">방명록</a>
           </li> -->
-
+          <li class="nav-item">
+            <a class="nav-link" href="#foundation">장학재단</a>
+          </li>
 
           </ul>
         </div>
@@ -364,6 +367,65 @@
 <br><br>
 
 <div class="line-break"> </div>
+<br> <br>
+
+<불기둥 자료집>
+<p>I wonder what it takes to write a filetree where you could also move the files between folders</p>
+<div class="arch-container">
+  <input id="open" type="checkbox"/>
+  <div class="sidebar">
+    <label class="close" for="open">
+      <div class="icon">+</div>
+    </label>
+    <div class="view">
+      <div class="folder">
+        <input id="folder_frontend" type="checkbox"/>
+        <label class="label" for="folder_frontend"> <i class="material-icons hide">folder</i><i class="material-icons show">folder_open</i>
+          <div class="text">Front End</div>
+        </label>
+        <div class="file"> 
+          <div class="text">File 1</div>
+        </div>
+        <div class="file"> 
+          <div class="text">File 2</div>
+        </div>
+        <div class="file"> 
+          <div class="text">File 3</div>
+        </div>
+      </div>
+      <div class="folder">
+        <input id="folder_backend" type="checkbox"/>
+        <label class="label" for="folder_backend"> <i class="material-icons hide">folder</i><i class="material-icons show">folder_open</i>
+          <div class="text">Back End</div>
+        </label>
+        <div class="file">File 1</div>
+        <div class="folder">
+          <input id="folder_inner" type="checkbox"/>
+          <label class="label" for="folder_inner"> <i class="material-icons hide">folder</i><i class="material-icons show">folder_open</i>
+            <div class="text">Inside Folder</div>
+          </label>
+          <div class="file">File 1</div>
+          <div class="file">File 1</div>
+        </div>
+      </div>
+      <div class="folder">
+        <input id="folder_build" type="checkbox"/>
+        <label class="label" for="folder_build"><i class="material-icons hide">folder</i><i class="material-icons show">folder_open</i>
+          <div class="text">Build</div>
+        </label>
+        <div class="file">File 1</div>
+        <div class="file">File 2</div>
+        <div class="file">File 3</div>
+      </div>
+    </div>
+  </div>
+  <div class="content"></div>
+</div>
+
+<br> <br>
+<div class="line-break"> </div>
+
+
 
 <section id="reply" class="text-center mb-3 projects-section bg-light">
   <div class="parallax-4">
@@ -393,7 +455,55 @@
     <br>
     <br>
 
+
+    
 <div class="line-break"></div>
+
+
+<section id="flower" class="text-center mb-3 projects-section bg-light">
+  <div class="parallax-4">
+
+    <h2>헌화</h2>
+    <p>마음을 담아 꽃을 헌화해보세요.</p>
+  
+    
+  
+    <div id="flower-field"></div>
+    <div id="flower-loader">
+      <p>🌸 천국에 꽃 배달 중...</p>
+    </div>
+    <div id="flower-buttons">
+      <button data-type="love">
+        사랑합니다
+        <div class="count" id="count-love">0</div>
+      </button>
+      <button data-type="respect">
+        존경합니다
+        <div class="count" id="count-respect">0</div>
+      </button>
+      <button data-type="miss">
+        그립습니다
+        <div class="count" id="count-miss">0</div>
+      </button>
+      <!-- <button data-type="pray">
+        기도합니다
+        <div class="count" id="count-pray">0</div> -->
+      </button>
+      <button data-type="thanks">
+        감사합니다
+        <div class="count" id="count-thanks">0</div>
+      </button>
+    </div>
+
+
+
+  </div>
+</section>
+    <br>
+    <br>
+    
+<div class="line-break"></div>
+
 
 <section id="foundation" class="text-center mb-3 projects-section bg-light">
   <div class="container">
@@ -432,6 +542,11 @@
 
 <div class="line-break"></div>
 
+
+
+
+
+<div class="line-break"></div>
 
     <!-- Footer -->
 
