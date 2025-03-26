@@ -41,8 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.scrollY > 200) {
       //  스크롤 이후 나타남
       mainNav.classList.add("show");
+      navbar.classList.add("navbar-scrolled");
     } else {
       mainNav.classList.remove("show");
+      navbar.classList.remove("navbar-scrolled");
     }
   });
 });
@@ -655,10 +657,17 @@ function renderFolders(nodes) {
       label.className = "label";
       label.setAttribute("for", folderId);
       label.innerHTML = `
-        <i class="material-icons hide">folder</i>
-        <i class="material-icons show">folder_open</i>
+        <img src="assets/03_achv/fc.png" class="icon-folder" data-type="folder-icon" />
         <div class="text">${node.name}</div>
       `;
+
+      // 🔄 아이콘 전환: 닫힘 ↔ 열림
+      input.addEventListener("change", () => {
+        const icon = label.querySelector("img[data-type='folder-icon']");
+        icon.src = input.checked
+          ? "assets/03_achv/fo.png"
+          : "assets/03_achv/fc.png";
+      });
 
       folderDiv.appendChild(input);
       folderDiv.appendChild(label);
@@ -672,11 +681,10 @@ function renderFolders(nodes) {
     } else if (node.type === "file") {
       const fileDiv = document.createElement("div");
       fileDiv.className = "file";
-
-      const textDiv = document.createElement("div");
-      textDiv.className = "text";
-      textDiv.textContent = node.name;
-      fileDiv.appendChild(textDiv);
+      fileDiv.innerHTML = `
+        <img src="assets/03_achv/file.png" class="icon-file" />
+        <div class="text">${node.name}</div>
+      `;
 
       fileDiv.addEventListener("click", () => {
         const openCheckbox = document.getElementById("open");
@@ -692,9 +700,20 @@ function renderFolders(nodes) {
             })
             .then((txt) => {
               contentEl.innerHTML = `
-              <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
-                <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;">
-                ${txt}
+                <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
+                <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;">${txt}
+                <button onclick="location.href='#arch-container'" style="
+                display: block;
+                margin: 0 auto 20px auto;
+                background-color: #a24d67;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.9rem;
+              "> 처음(목록)으로 돌아가기</button>
+                </pre>
               `;
             })
             .catch((err) => {
