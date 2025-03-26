@@ -50,12 +50,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">        
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#about">목사 김홍도</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#pastoral">목회 철학</a>
+            </li> -->
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                목사 김홍도
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sermonDropdown">
+                <li>
+                  <a class="dropdown-item" href="#about">프로필</a>
+                </li>
+                <li><a class="dropdown-item" href="#about">약력</a></li>
+                <li>
+                  <a class="dropdown-item" href="#about">화보집</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#about">목회철학</a>
+                </li>
+              </ul>
             </li>
+
 
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#about" id="sermonDropdown" role="button"
@@ -177,17 +197,25 @@
     <!-- 김홍도 감독 화보집 -->
 <section id="about" class="projects-section bg-light">
   <div class="parallax-1">
-    <div class="bg-light">
+    <div id="parallax-world-of-ugg">
+      <div class="block">
+        <div class="tt">
+          목사 김홍도  
+        </div>
+      </div>
+    </div>
+  <br><br><br>
+    <!-- <div class="bg-light">
       <h1 class="text-center mb-3">목사 김홍도 </h2>
       <h2 class="text-center mb-5"></h2>
-    </div> 
+    </div>  -->
     <!-- 메인 이미지 표시 -->
 
-    <div class="main-image-container">
-      <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
-      <div class="zoom-message">🔍 확대하기</div>
-    </div>
-    <br>
+  <div class="main-image-container">
+    <img id="mainImage" src="assets/02_img/prof_img_01.png" alt="Main Image" class="main-image" />
+    <div class="zoom-message">🔍 확대하기</div>
+  </div>
+  <br>
 
     <!-- 썸네일 이미지 갤러리 -->
     <div class="thumbnail-gallery">
@@ -199,41 +227,52 @@
       <img src="assets/02_img/prof_img_05.png" alt="Thumbnail 5" class="thumbnail" onclick="setMainImage(4)" />
       <img src="assets/02_img/prof_img_06.png" alt="Thumbnail 6" class="thumbnail" onclick="setMainImage(5)" />
     </div>
-
-    <!-- pdf 리더, 금란교회 창립 60주년 기념 정암 김홍도 감독 화보집 -->
-    <!-- src="assets/02_img/khd_pbook.pdf" -->
-    <!-- PDF 섹션 -->
-
-    <div class="pdfcontainer">
-      <p></p>
-      <p>아래 사진을 누르면 더 많은 사진을 확인해 보실 수 있습니다.(PDF 열기)</p>
-      <a href="#" class="pdf-link" id="openPdfBtn"> 
-        <img src="assets/02_img/60year.png" alt="60주년 기념 로고" class="year-icon">
-      </a>
-      <p><금란교회 창립 60주년 기념 정암 김홍도 감독 화보집></p>
-    </div>
-
-     <!-- 팝업 모달 -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-      <button id="prevButton" class="modal-nav prev">&lt;</button>
-      <img id="modalImage" class="modal-image" />
-      <button id="nextButton" class="modal-nav next">&gt;</button>
-    </div>
-
+    <br>
+    <div id="parallax-world-of-ugg">
+      <section>
+        <div class="block">
+          <p><span class="first-character ja">목</span>&nbsp;&nbsp;&nbsp;&nbsp;사 김홍도 (金 弘燾, Kim Hong-do)</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;1937.02.06 ~ 2020.09.02 (향년 83세)<br>&nbsp;&nbsp;&nbsp;&nbsp;기독교대한감리회 / 금란교회 원로목사 / 호: 정암(晶 岩,맑을 정, 바위 암)</p>
+          <p class="line-break margin-top-10 "></p><br>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;김홍도 목사는 1937년 평안남도 양덕군에서 태어나, 한국전쟁 전후의 혼란기 속에서 기독교 신앙을 지키며 성장하였습니다. 해방 직후 소비에트 군정 하에서 박해를 경험한 그는 서울로 남하한 뒤, 가난 속에서도 학업과 신앙을 이어갔습니다. 삯바느질을 하시던 어머니와 신문팔이를 하던 형제들의 생계를 도우며 어려운 청소년기를 보낸 김홍도는, 감리교신학대학교에서 신학을 전공하고, 이후 아세아연합신학대학교 석사와 풀러신학대학교 목회학 박사 과정을 거치며 학문과 목회를 병행했습니다.</p>
+          <p class="line-break margin-top-10 "></p><br>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;김홍도 목사의 목회 여정은 1963년, 경기도 가평의 작은 시골 교회인 상천교회에서 시작되었습니다.
+            당시 그는 담임 전도사로 부임하여 복음의 씨앗을 뿌리며 지역 사회 속에서 헌신적인 사역을 이어갔습니다.
+            
+            1967년에는 광희문교회로 자리를 옮기며 더 넓은 도시 교회 사역에 참여하였고,
+            이듬해인 1968년에는 정식으로 목사 안수를 받으며 목회자로서의 공식적인 길에 들어섰습니다.
+            
+            이후 1970년대에는 서울의 금란교회 담임목사로 부임하면서
+            한국 대형교회의 성장 흐름 속에서 핵심적인 위치에 서게 됩니다.
+            그는 수십 년에 걸쳐 금란교회를 한국 개신교를 대표하는 교회 중 하나로 성장시키는 데 큰 역할을 했습니다.
+            
+            2008년에는 목회 일선에서 물러나 금란교회 원로목사로 추대되었고,
+            그의 평생 사역을 마무리한 후 2020년 9월 2일, 83세를 일기로 하나님의 부르심을 받았습니다.
+            
+            김홍도 목사는 한국 보수 개신교계를 대표하는 인물로 평가되며,
+            그의 삶은 열정적인 설교, 강한 리더십, 그리고 사회와 시대를 향한 직접적인 메시지로
+            수많은 이들에게 영향력을 끼치는 인물이었습니다.</p>
+          <p></p>
+          <p></p>
+          <p class="line-break margin-top-10"></p><br>
+          <div id="imageModal" class="modal" onclick="closeModal()">
+            <button id="prevButton" class="modal-nav prev">&lt;</button>
+            <img id="modalImage" class="modal-image" />
+            <button id="nextButton" class="modal-nav next">&gt;</button>
+          </div>
     <!-- "더 보기" 아이콘 버튼 -->
-    <div class="text-center mb-5 projects-section ">
-      <h2>약력/프로필</h2>
-      <p>텍스트</p>
+    <div class="text-center ">
+      <!-- <p><span class="first-title ja">약력</span></p>
+      <p class="line-break margin-top-10 "></p><br> -->
       <button id="toggleButton" class="toggle-btn">
-        <img src="assets/03_achv/qmenu8.png" alt="더 보기" id="toggleIcon">
-        <p>내용 더 보기</p>
+        김홍도 목사 약력 더 보기 (클릭)
       </button>
-      <br><br><br>
+      <br><br>
       <!-- 확장될 내용 -->
       <div id="aboutContent" class="hidden-content">
-        <!-- 학력 -->
-        <h3 style="color: black">학력</h3>
-        <table class="custom-table ">
+        <br><br>
+        <br><h1 style="color: black">학력</h1>
+        <table class="custom-table">
           <thead>
             <tr>
               <th>연도</th>
@@ -242,64 +281,185 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1963</td>
-              <td>2</td>
-              <td>서울 감리교 신학대학 졸업(BA)</td>
-            </tr>
-            <tr>
-              <td>1980</td>
-              <td>2</td>
-              <td>아세아 연합 신학대학원 졸업(MA)</td>
-            </tr>
-            <tr>
-              <td>1987</td>
-              <td>12</td>
-              <td>Fuller Theological Seminary 목회학 박사(D.Min)</td>
-            </tr>
-            <tr>
-              <td>1994</td>
-              <td>4</td>
-              <td>Indiana Wesleyan University 명예신학 박사(D.D)</td>
-            </tr>
-            <tr>
-              <td>2007</td>
-              <td>2.15</td>
-              <td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td>
-            </tr>
+            <tr><td>1963</td><td>2</td><td>서울 감리교 신학대학 졸업 (BA)</td></tr>
+            <tr><td>1980</td><td>2</td><td>아세아 연합 신학대학원 졸업 (MA)</td></tr>
+            <tr><td>1987</td><td>12</td><td>Fuller Theological Seminary 목회학 박사 (D.Min)</td></tr>
+            <tr><td>1994</td><td>4</td><td>Indiana Wesleyan University 명예신학 박사 (D.D)</td></tr>
+            <tr><td>2007</td><td>2.15</td><td>서울 기독교 대학교 명예철학 박사 (Ph.D)</td></tr>
           </tbody>
         </table>
-        <!-- 목회 경력 -->
+        <br><h1 style="color: black">목회 경력</h1>
+        <table class="custom-table">
+          <thead>
+            <tr><th>연도</th><th>월</th><th>내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1963</td><td>3</td><td>가평군 상천교회 담임</td></tr>
+            <tr><td>1967</td><td>3</td><td>광희문교회 부담임</td></tr>
+            <tr><td>1971</td><td>3</td><td>금란교회 담임목사</td></tr>
+            <tr><td>2008</td><td>4</td><td>금란교회 동사목사 취임</td></tr>
+            <tr><td>2013</td><td>-</td><td>성역 50년</td></tr>
+          </tbody>
+        </table>
+  
+        <br><h1 style="color: black">교단 경력</h1>
+        <table class="custom-table">
+          <thead>
+            <tr><th>연도</th><th>월</th><th>내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1989</td><td>3</td><td>중랑지방 감리사 역임</td></tr>
+            <tr><td>1996</td><td>10</td><td>기독교대한감리회 서울연회 감독 역임</td></tr>
+            <tr><td>1996</td><td>10</td><td>기독교대한감리회 감독회장 역임</td></tr>
+            <tr><td>1996</td><td>11</td><td>한국기독교 교회협의회(KNCC) 대표회장 역임</td></tr>
+            <tr><td>2000</td><td>5</td><td>세계기독교 파워목회 대표회장 역임</td></tr>
+            <tr><td>2003</td><td>4.12</td><td>한.미 기독교 목회자협의회 대표회장 역임</td></tr>
+            <tr><td>2006</td><td>4.17</td><td>서울기독교 총연합회(HCCCSA) 대표회장 역임</td></tr>
+          </tbody>
+        </table>
+
+        <br><h1 style="color: black">사회 봉사 경력</h1>
+        <table class="custom-table">
+          <thead>
+            <tr><th>연도</th><th>월</th><th>내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1991</td><td>5</td><td>제1대 법무부 갱생보호 전국기독교 협의회 회장 역임</td></tr>
+            <tr><td>1996</td><td>4</td><td>(사)세계교화, 갱보협회 이사장 (현직)</td></tr>
+            <tr><td>1997</td><td>1</td><td>아세아연합신학대학교 이사장 역임</td></tr>
+            <tr><td>2002</td><td>7</td><td>한.정.협 대표회장 역임</td></tr>
+            <tr><td>2007</td><td>7</td><td>한국미래포럼 총재 역임</td></tr>
+            <tr><td>2012</td><td>8</td><td>자유민주국민연합 총재 취임</td></tr>
+          </tbody>
+        </table>
+
+        <br><h1 style="color: black">상훈</h1>
+        <table class="custom-table">
+          <thead>
+            <tr><th>연도</th><th>월</th><th>내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2007</td><td>6.24</td><td>전 필리핀 대통령 라모스와 함께 세계평화상 수상</td></tr>
+            <tr><td>2008</td><td>1</td><td>대한민국 종교그랑프리 수상 (한국일보 제정)</td></tr>
+          </tbody>
+        </table>
+
+        <br><h1 style="color: black; text-align: center;">저서</h1>
+        <table class="custom-table center-table">
+          <thead>
+            <tr>
+              <th>제목</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>불기둥 설교집 (1집~40집)</td></tr>
+            <tr><td>신동아 칼럼집 불기둥</td></tr>
+            <tr><td>왜 예수를 믿어야 하나</td></tr>
+            <tr><td>오십이주 생명양식</td></tr>
+            <tr><td>신은 존재하는가?</td></tr>
+            <tr><td>만약 적화통일이 된다면</td></tr>
+          </tbody>
+        </table>
+        <br><button id="toggleButton-close" class="toggle-btn">
+          닫기
+        </button>
+
+        
+
+      </div>
+        
+          <p class="line-break margin-top-10"></p><br>
+          <p class="margin-top-10">&nbsp;&nbsp;&nbsp;&nbsp;아래 웹페이지를 통해 김홍도 감독님의 더 많은 자료를 확인하실 수 있습니다.</p>
+          <!-- <p class="line-break margin-top-10"></p><br> -->
+        
+        </div>
+      </section>
     </div>
+
+<br>
+
+    <!-- pdf 리더, 금란교회 창립 60주년 기념 정암 김홍도 감독 화보집 -->
+    <!-- src="assets/02_img/khd_pbook.pdf" -->
+    <!-- PDF 섹션 -->
+<div id="parallax-world-of-ugg">
+  <section>
+    <div class="block">
+      <div class="pdfcontainer">
+        <p><span class="first-title ja">화보집</span></p>
+        <p class="line-break margin-top-10 "></p><br>
+        <p>아래 사진을 누르면 더 많은 사진을 확인해 보실 수 있습니다.(PDF 열기)</p>
+        <a href="#" class="pdf-link" id="openPdfBtn"> 
+          <img src="assets/02_img/60year.png" alt="60주년 기념 로고" class="year-icon">
+        </a>
+        <p><금란교회 창립 60주년 기념 정암 김홍도 감독 화보집></p>
+      </div>
+    </div>
+  </section>
+</div>
+<br>
+
+  <div id="parallax-world-of-ugg">
+    <section>
+      <div class="block">
+        <div class="pdfcontainer">
+          <p><span class="first-title ja">목회철학</span></p>
+        </div>
+        <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+          <p class="line-break margin-top-10 "></p><br>
+          <p></p>
+          <img src="assets/02_img/ph.png" alt="목회철학" class="ph-img">
+
+          <p><span class="first-character2 ja">뜨거운 구령열</span>
+            은 우리 교회의 변치 않는 제일의 목회 비전입니다.<br>
+            죄 속에서 죽어가는 영혼을 한 명이라도 더 구원키 위하여 교회는 항상 총력을 기울이고 있습니다.</p>
+          
+          <p><span class="first-character2 ja">예수를 믿는 궁극적인 이유</span>
+            는 나 자신이 구원을 받고,
+            그 후에 이 구원의 기쁜 소식을 타인에게 전력을 다해 전파하는 일입니다. 
+            <br>
+            <br>&nbsp;&nbsp;교회는 특별한 소명을 위해서 하나님으로부터 부르심을 받은 무리들인 바
+            <br>그 특별한 소명은 마태복음 4장 19절에 명시되어 있는 대로 ‘사람 낚는 어부’의 역할입니다.
+            <br>즉 교회란 부르심을 받은 사람들이 그 소명을 다하여 낚아 올린 인간들을 수용하는 영적인 배이며,
+            그 배에 속한 어부들로 하여금 한 명의 인간이라도 더 낚아 올리도록
+            교육, 훈련 및 사명감을 불러일으키는 예수의 지체입니다.
+            <br>
+            <br>&nbsp;&nbsp;제일 훌륭한 어부는 어떤 어부입니까?
+            <br>한 마리의 고기라도 더 낚아 올리는 어부입니다.</p>
+          
+          <p><span class="first-character2 ja">훌륭한 기독자란 누구인가?</span></p>
+          <br>&nbsp;&nbsp;한 영혼이라도 더 예수님 앞으로 인도해 오는 자입니다. 구령열에 불타지 않는 교회는 참 교회가 아니며, 예수의 명령에 복종치 않는 비그리스도적 교회입니다.   
+          </p>
+          <p><span class="first-character2 ja">동시에 뜨거운 기도</span>는 이 구령열을 유지시키며 계속된 구령의 각성을 교회가 잊지 않도록 자극케 하는 교인 스스로의 훈련법입니다.
+          <br>&nbsp;&nbsp;구령의 열기는 기도라는 영적인 노력을 통해서 계속적으로 가능케 됩니다.
+          </p> 
+          <p><span class="first-character2 ja">헌신의 열기</span>
+            는 뜨거운 기도의 계속성과 전력을 다한 구령사업의 참여로 충족됩니다.
+          <br>&nbsp;&nbsp;구령사업을 위한 자신의 인간적 욕심으로부터의 탈피와 희생은 
+          교인들이 목회 전 분야에서 행하고 있는 신앙의 윤리적 과제입니다.
+          온전한 헌신 속에 교회의 구령사업은 확산, 현실화 되어 갈 것입니다.</p>
+         
+      </div>
+    </section>
   </div>
-  <!-- parallax -->
+
 </section>
 
-<div class="line-break"> </div>
-  <br> <br>
-
-<!--  -->
-
-
-
-
-<!--  -->
 
 
 <!-- 목회 철학 -->
-<section id="pastoral" class="text-center mb-3 projects-section bg-light">
+<!-- <section id="pastoral" class="text-center mb-3 projects-section bg-light">
   <div class="parallax-2">
     <h2>목회 철학</h2>
     <p>텍스트</p>
   </div>
-</section>
+</section> -->
 
 
 <div class="line-break"> </div>
  <br> <br>
 
 <!-- 자료실  -->
-<div class="parallax-3">
+<div class="parallax-2">
   <div id="achv-sup" class="text-center mb-3 projects-section ">
     <h2>자료실</h2>
     <p>텍스트</p>
@@ -369,6 +529,29 @@
 <div class="line-break"> </div>
 <br> <br>
 
+
+<div class="parallax-3">
+  <div id="achv-sup" class="text-center mb-3 projects-section ">
+    <h2>자료실</h2>
+    <p>텍스트</p>
+  </div>
+  <h2>📚 자료실</h2>
+  <p>I wonder what it takes to write a filetree where you could also move the files between folders</p>
+  <br> <br>
+  <div class="arch-container">
+    <input id="open" type="checkbox"/>
+    <div class="sidebar">
+      <label class="close" for="open">
+        <div class="icon">+</div>
+      </label>
+      <div class="view" id="dynamic-tree"></div>
+    </div>
+    <div class="arch-content"></div>
+  </div>
+</div>
+<br> <br>
+
+<!-- 
 <불기둥 자료집>
 <p>I wonder what it takes to write a filetree where you could also move the files between folders</p>
 <div class="arch-container">
@@ -419,41 +602,41 @@
       </div>
     </div>
   </div>
-  <div class="content"></div>
-</div>
+  <div class="arch-content"></div>
+</div> -->
 
 <br> <br>
 <div class="line-break"> </div>
 
 
 
-<section id="reply" class="text-center mb-3 projects-section bg-light">
+<!-- <section id="reply" class="text-center mb-3 projects-section bg-light">
   <div class="parallax-4">
 
 
     <div class="container">
       <h2>방명록</h2>
       <p>텍스트</p>
-    </div>
+    </div> -->
 
     <!-- 방명록 리스트 (5행 2열) -->
-    <div id="guestbook-list" class="grid-container"></div>
+    <!-- <div id="guestbook-list" class="grid-container"></div> -->
 
     <!-- 페이지네이션 버튼 -->
-    <div id="g-pagination"></div>
+    <!-- <div id="g-pagination"></div>
 
     <form id="guestbook-form">
       <input type="text" id="name" placeholder="이름" required>
       <input type="password" id="password" placeholder="비밀번호" required>
       <textarea id="content" placeholder="방명록을 남겨주세요..." required></textarea>
-      <!-- <label><input type="checkbox" id="private"> 🔒 비밀글</label> -->
-      <button type="submit">등록</button>
+       <label><input type="checkbox" id="private"> 🔒 비밀글</label> -->
+      <!-- <button type="submit">등록</button>
     </form>
 
   </div>
 </section>
     <br>
-    <br>
+    <br> --> 
 
 
     
@@ -470,7 +653,9 @@
   
     <div id="flower-field"></div>
     <div id="flower-loader">
-      <p>🌸 천국에 꽃 배달 중...</p>
+      <p id="loader-message">
+        🌸 천국에 꽃 전달 중<span id="loading-dots">.</span>
+      </p>
     </div>
     <div id="flower-buttons">
       <button data-type="love">
@@ -564,7 +749,10 @@
     02060 서울특별시 중랑구 망우로 455 금란교회 Tel: 02-490-7000 &copy; 2024
   </div>
   <div class="container text-center">
-    Copyright Kumnan Methodist Church. All rights reserved. Designed by Kumnan Labs. &copy; 2024
+    Copyright Kumnan Methodist Church. All rights reserved.
+    Designed by 
+    <a href="#" onclick="openLabsPage(event)">Kumnan Labs</a>.
+    &copy; 2024
   </div>
 </footer>
 <br>
@@ -573,7 +761,7 @@
 
   <!-- FUOC -->
   <!-- test -->
-  <div id="parallax-world-of-ugg">
+  <!-- <div id="parallax-world-of-ugg">
   
     <section>
       <div class="title">
@@ -623,7 +811,7 @@
         <p class="margin-top-10">In 2011, UGG will go back to its roots and focus on bringing the active men that brought the brand to life back with new styles allowing them to love the brand again as well. Partnering with Super Bowl champion and NFL MVP Tom Brady, UGG will invite even more men to feel the love the rest of the world knows so well. UGG will also step into the world of high fashion with UGG Collection. The UGG Collection fuses the timeless craft of Italian shoemaking with the reliable magic of sheepskin, bringing the luxurious feel of UGG to high end fashion. As the love for UGG continues to spread across the world, we have continued to offer new and unexpected ways to experience the brand. The UGG journey continues on and the love for UGG continues to spread.</p>
       </div>
     </section>
-
+  </div> -->
   
 </body>
 
