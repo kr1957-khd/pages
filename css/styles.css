@@ -114,6 +114,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden;
 }
 
 hr {
@@ -13437,7 +13438,7 @@ body.scrolled .main-image1::after {
 .custom-table th,
 .custom-table td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   color: var(--bs-gray-dark);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -13620,6 +13621,24 @@ body.scrolled .main-image1::after {
   opacity: 1;
 }
 
+/* 약력 버튼 */
+#toggleButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+  padding: 6px 10px; /* 위아래 6px, 좌우 16px */
+  line-height: 1.4; /* 줄 간격 적당히 조정 */
+
+  border-radius: 6px;
+}
+
+#toggleButton:hover {
+  background-color: rgba(162, 77, 103, 0.85); /* 팥색 a24d67 + 약간 투명 */
+  color: white;
+}
+
 /* pdf 리더 */
 .pdfcontainer {
   text-align: center;
@@ -13644,6 +13663,14 @@ body.scrolled .main-image1::after {
   vertical-align: middle; /* 텍스트와 수직 중앙 정렬 */
   margin-left: 10px; /* 글씨와 간격 조정 */
   border-radius: 20px; /* 모서리를 둥글게 (값 조절 가능) */
+}
+
+/* 목회철학  */
+.ph-img {
+  max-width: 100%; /*  부모 너비 초과 방지 */
+  height: auto; /*  비율 유지한 채 리사이징 */
+  display: block; /*  아래 여백 제거 (인라인 속성 제거) */
+  margin: 0 auto; /*  중앙 정렬 (선택 사항) */
 }
 
 /* 게시판 스타일 */
@@ -13924,8 +13951,21 @@ body.scrolled .main-image1::after {
   transform: rotateZ(0deg);
 }
 
+/* 오른쪽 내용 영역 */
+.arch-content pre {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #fff8f8;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+  color: #333;
+  padding-left: 20%; /* ✅ 왼쪽에서 20% 떨어지게 */
+  word-break: break-word; /* 긴 단어도 끊어줌 (선택) */
+}
+
 .sidebar {
-  width: 200px;
+  width: 350px;
   height: 100%;
   position: absolute;
   top: 0px;
@@ -14004,9 +14044,14 @@ body.scrolled .main-image1::after {
   display: none;
 }
 
+.sidebar .view input ~ .folder,
+.sidebar .view input ~ .file {
+  display: none; /* 🔒 기본: 닫힘 상태 */
+}
+
 .sidebar .view input:checked ~ .file,
 .sidebar .view input:checked ~ .folder {
-  animation: pull 0.25s, hide 1s infinite;
+  display: block; /* ✅ 열린 상태 */
   animation-delay: 0s, 0.25s;
 }
 
@@ -14021,7 +14066,7 @@ body.scrolled .main-image1::after {
 .sidebar .close {
   position: absolute;
   top: 0px;
-  left: 200px;
+  left: 350px;
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -14543,8 +14588,19 @@ body.loaded {
 .first-character {
   font-weight: 400;
   float: left;
-  font-size: 84px;
+  font-size: 60px;
   line-height: 64px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.first-character2 {
+  font-weight: 550;
+  float: left;
+  font-size: 18px;
+  line-height: 20px;
   padding-top: 4px;
   padding-right: 8px;
   padding-left: 3px;
@@ -14560,6 +14616,20 @@ body.loaded {
 .atw {
   color: #c48660;
 }
+/* ja 정암 팥색 */
+.ja {
+  color: #a24d67;
+}
+
+.first-title {
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+}
 
 /* Section - Title */
 /**************************/
@@ -14569,6 +14639,20 @@ body.loaded {
   margin: 0 auto;
   text-align: center;
 }
+
+#parallax-world-of-ugg .tt {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--bs-black);
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.9;
+  text-align: center;
+}
+
 #parallax-world-of-ugg .title h1 {
   font-size: 35px;
   letter-spacing: 8px;
