@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("toggleButton"); // 버튼 가져오기
   const toggleIcon = document.getElementById("toggleIcon");
   const aboutContent = document.getElementById("aboutContent");
+  const toggleButton2 = document.getElementById("toggleButton-close"); // 버튼 가져오기
 
   toggleButton.addEventListener("click", function () {
     if (aboutContent.classList.contains("show")) {
@@ -277,15 +278,27 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         aboutContent.classList.remove("show");
       }, 500); // 애니메이션 시간과 동일하게 설정 (0.5s)
-      toggleIcon.src = "assets/03_achv/qmenu8.png"; // "더 보기" 아이콘으로 변경
+      // toggleIcon.src = "assets/03_achv/qmenu8.png"; // "더 보기" 아이콘으로 변경
     } else {
       aboutContent.classList.add("show");
       aboutContent.style.display = "block"; // 표시되도록 변경
       setTimeout(() => {
-        aboutContent.style.maxHeight = "300px"; // 충분한 높이 설정
+        aboutContent.style.maxHeight = "800px"; // 충분한 높이 설정
         aboutContent.style.opacity = "1"; // 완전히 보이도록 설정
       }, 10); // display 속성이 적용된 후 max-height 변경 (애니메이션 적용)
-      toggleIcon.src = "assets/03_achv/qmenu8.png"; // "접기" 아이콘으로 변경
+      // toggleIcon.src = "assets/03_achv/qmenu8.png"; // "접기" 아이콘으로 변경
+    }
+  });
+
+  // 닫기 버튼 클릭
+  toggleButton2.addEventListener("click", () => {
+    if (aboutContent.classList.contains("show")) {
+      aboutContent.style.maxHeight = "0px";
+      aboutContent.style.opacity = "0";
+      setTimeout(() => {
+        aboutContent.classList.remove("show");
+        aboutContent.style.display = "none"; // ✅ 완전 숨김
+      }, 500);
     }
   });
 });
@@ -615,137 +628,226 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 방명록
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("guestbook-form");
-  const list = document.getElementById("guestbook-list");
-  const pagination = document.getElementById("g-pagination");
+// 자료실 achv04
 
-  // ✅ 쿠키 설정 함수
-  function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
-  }
-
-  // ✅ 쿠키 가져오기 함수
-  function getCookie(name) {
-    const cookies = document.cookie.split("; ");
-    for (let cookie of cookies) {
-      let [key, value] = cookie.split("=");
-      if (key === name) return value;
-    }
-    return null;
-  }
-
-  // ✅ 사용자 고유 ID 설정 (없으면 생성)
-  if (!getCookie("guestUserID")) {
-    setCookie("guestUserID", Math.random().toString(36).substring(2, 15), 30);
-  }
-  const userID = getCookie("guestUserID");
-
-  // ✅ 방명록 데이터 (쿠키에서 관리)
-  let comments = JSON.parse(getCookie("guestbook") || "[]");
-  let currentPage = 1;
-  const commentsPerPage = 10; // 한 페이지당 5행 2열 (총 10개)
-
-  // ✅ 방명록 등록
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const content = document.getElementById("content").value.trim();
-
-    if (!name || !password || !content) {
-      alert("모든 필드를 입력하세요!");
-      return;
-    }
-
-    const newComment = {
-      id: Date.now(),
-      userID,
-      name,
-      password,
-      content,
-      timestamp: new Date().toLocaleString(),
-    };
-
-    comments.unshift(newComment);
-    setCookie("guestbook", JSON.stringify(comments), 30); // 쿠키에 저장
-    form.reset();
-    displayComments();
+fetch("assets/04_achv2/filetree_web.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const container = document.getElementById("dynamic-tree");
+    container.appendChild(renderFolders(data));
   });
 
-  // ✅ 방명록 출력 (페이지네이션 적용)
-  function displayComments() {
-    list.innerHTML = "";
-    pagination.innerHTML = "";
+function renderFolders(nodes) {
+  const fragment = document.createDocumentFragment();
 
-    const start = (currentPage - 1) * commentsPerPage;
-    const end = start + commentsPerPage;
-    const paginatedComments = comments.slice(start, end);
+  nodes.forEach((node, i) => {
+    const folderId = `folder_${node.name}_${i}`.replace(/\s+/g, "_");
 
-    paginatedComments.forEach((comment) => {
-      const entry = document.createElement("div");
-      entry.className = "guest-entry";
-      entry.innerHTML = `
-      <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
-      | <small> IP: ${comment.ip}</small>
-      | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
-      </small>
-      </p>
-      <p>${comment.content}</p>
+    if (node.type === "folder") {
+      const folderDiv = document.createElement("div");
+      folderDiv.className = "folder";
 
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.id = folderId;
 
+      const label = document.createElement("label");
+      label.className = "label";
+      label.setAttribute("for", folderId);
+      label.innerHTML = `
+        <i class="material-icons hide">folder</i>
+        <i class="material-icons show">folder_open</i>
+        <div class="text">${node.name}</div>
       `;
-      list.appendChild(entry);
-    });
 
-    setupDeleteButtons();
-    displayPagination();
-  }
+      folderDiv.appendChild(input);
+      folderDiv.appendChild(label);
 
-  // ✅ 삭제 버튼 이벤트 추가
-  function setupDeleteButtons() {
-    document.querySelectorAll(".delete-btn").forEach((button) => {
-      button.addEventListener("click", function () {
-        const id = this.getAttribute("data-id");
-        const index = comments.findIndex((comment) => comment.id == id);
+      if (node.children) {
+        const children = renderFolders(node.children);
+        folderDiv.appendChild(children);
+      }
 
-        if (index !== -1) {
-          const inputPassword = prompt("비밀번호를 입력하세요:");
-          if (inputPassword === comments[index].password) {
-            comments.splice(index, 1);
-            setCookie("guestbook", JSON.stringify(comments), 30);
-            displayComments();
-          } else {
-            alert("비밀번호가 일치하지 않습니다.");
-          }
+      fragment.appendChild(folderDiv);
+    } else if (node.type === "file") {
+      const fileDiv = document.createElement("div");
+      fileDiv.className = "file";
+
+      const textDiv = document.createElement("div");
+      textDiv.className = "text";
+      textDiv.textContent = node.name;
+      fileDiv.appendChild(textDiv);
+
+      fileDiv.addEventListener("click", () => {
+        const openCheckbox = document.getElementById("open");
+        if (openCheckbox) openCheckbox.checked = true;
+
+        const contentEl = document.querySelector(".arch-content");
+
+        if (node.name.toLowerCase().endsWith(".txt")) {
+          fetch(node.path)
+            .then((res) => {
+              if (!res.ok) throw new Error("파일 로드 실패");
+              return res.text();
+            })
+            .then((txt) => {
+              contentEl.innerHTML = `
+              <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
+                <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;">
+                ${txt}
+              `;
+            })
+            .catch((err) => {
+              contentEl.innerHTML = `<p>❌ 파일을 불러올 수 없습니다: ${err.message}</p>`;
+            });
+        } else {
+          contentEl.innerHTML = `
+            <h3>📄 ${node.name}</h3>
+            <p>경로: <code>${node.path}</code></p>
+            <p>텍스트 파일이 아니므로 미리보기가 제공되지 않습니다.</p>
+          `;
         }
       });
-    });
-  }
 
-  // ✅ 페이지네이션 설정
-  function displayPagination() {
-    const totalPages = Math.ceil(comments.length / commentsPerPage);
-    if (totalPages <= 1) return; // 페이지가 하나라면 페이지네이션 숨김
-
-    for (let i = 1; i <= totalPages; i++) {
-      const pageBtn = document.createElement("button");
-      pageBtn.className = `page-btn ${i === currentPage ? "active" : ""}`;
-      pageBtn.innerText = i;
-      pageBtn.addEventListener("click", () => {
-        currentPage = i;
-        displayComments();
-      });
-      pagination.appendChild(pageBtn);
+      fragment.appendChild(fileDiv);
     }
-  }
+  });
 
-  displayComments();
-});
+  return fragment;
+}
+
+// 파일 불러오기
+
+// 방명록
+// document.addEventListener("DOMContentLoaded", function () {
+//   const form = document.getElementById("guestbook-form");
+//   const list = document.getElementById("guestbook-list");
+//   const pagination = document.getElementById("g-pagination");
+
+//   // ✅ 쿠키 설정 함수
+//   function setCookie(name, value, days) {
+//     const expires = new Date();
+//     expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+//     document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+//   }
+
+//   // ✅ 쿠키 가져오기 함수
+//   function getCookie(name) {
+//     const cookies = document.cookie.split("; ");
+//     for (let cookie of cookies) {
+//       let [key, value] = cookie.split("=");
+//       if (key === name) return value;
+//     }
+//     return null;
+//   }
+
+//   // ✅ 사용자 고유 ID 설정 (없으면 생성)
+//   if (!getCookie("guestUserID")) {
+//     setCookie("guestUserID", Math.random().toString(36).substring(2, 15), 30);
+//   }
+//   const userID = getCookie("guestUserID");
+
+//   // ✅ 방명록 데이터 (쿠키에서 관리)
+//   let comments = JSON.parse(getCookie("guestbook") || "[]");
+//   let currentPage = 1;
+//   const commentsPerPage = 10; // 한 페이지당 5행 2열 (총 10개)
+
+//   // ✅ 방명록 등록
+//   form.addEventListener("submit", function (event) {
+//     event.preventDefault();
+
+//     const name = document.getElementById("name").value.trim();
+//     const password = document.getElementById("password").value.trim();
+//     const content = document.getElementById("content").value.trim();
+
+//     if (!name || !password || !content) {
+//       alert("모든 필드를 입력하세요!");
+//       return;
+//     }
+
+//     const newComment = {
+//       id: Date.now(),
+//       userID,
+//       name,
+//       password,
+//       content,
+//       timestamp: new Date().toLocaleString(),
+//     };
+
+//     comments.unshift(newComment);
+//     setCookie("guestbook", JSON.stringify(comments), 30); // 쿠키에 저장
+//     form.reset();
+//     displayComments();
+//   });
+
+//   // ✅ 방명록 출력 (페이지네이션 적용)
+//   function displayComments() {
+//     list.innerHTML = "";
+//     pagination.innerHTML = "";
+
+//     const start = (currentPage - 1) * commentsPerPage;
+//     const end = start + commentsPerPage;
+//     const paginatedComments = comments.slice(start, end);
+
+//     paginatedComments.forEach((comment) => {
+//       const entry = document.createElement("div");
+//       entry.className = "guest-entry";
+//       entry.innerHTML = `
+//       <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
+//       | <small> IP: ${comment.ip}</small>
+//       | <button class="delete-btn" data-id="${comment.id}">🗑 삭제</button>
+//       </small>
+//       </p>
+//       <p>${comment.content}</p>
+
+//       `;
+//       list.appendChild(entry);
+//     });
+
+//     setupDeleteButtons();
+//     displayPagination();
+//   }
+
+//   // ✅ 삭제 버튼 이벤트 추가
+//   function setupDeleteButtons() {
+//     document.querySelectorAll(".delete-btn").forEach((button) => {
+//       button.addEventListener("click", function () {
+//         const id = this.getAttribute("data-id");
+//         const index = comments.findIndex((comment) => comment.id == id);
+
+//         if (index !== -1) {
+//           const inputPassword = prompt("비밀번호를 입력하세요:");
+//           if (inputPassword === comments[index].password) {
+//             comments.splice(index, 1);
+//             setCookie("guestbook", JSON.stringify(comments), 30);
+//             displayComments();
+//           } else {
+//             alert("비밀번호가 일치하지 않습니다.");
+//           }
+//         }
+//       });
+//     });
+//   }
+
+//   // ✅ 페이지네이션 설정
+//   function displayPagination() {
+//     const totalPages = Math.ceil(comments.length / commentsPerPage);
+//     if (totalPages <= 1) return; // 페이지가 하나라면 페이지네이션 숨김
+
+//     for (let i = 1; i <= totalPages; i++) {
+//       const pageBtn = document.createElement("button");
+//       pageBtn.className = `page-btn ${i === currentPage ? "active" : ""}`;
+//       pageBtn.innerText = i;
+//       pageBtn.addEventListener("click", () => {
+//         currentPage = i;
+//         displayComments();
+//       });
+//       pagination.appendChild(pageBtn);
+//     }
+//   }
+
+//   displayComments();
+// });
 
 // <p><strong>😊 ${comment.name}</strong> | ${comment.timestamp}
 // | <small> IP: ${comment.ip}</small>
@@ -821,11 +923,12 @@ document.querySelectorAll("#flower-buttons button").forEach((button) => {
     const y = Math.random() * 90;
     const rotation = Math.random() * 360;
     temporarilyDisableButtons(5000);
-    // 🌸 로딩 메시지 표시
-    document.getElementById("flower-loader").style.display = "block";
 
     // 🌸 시각적 피드백
     createFlower(type, x, y, rotation);
+    // 🌸 로딩 메시지 표시
+    // document.getElementById("flower-loader").style.display = "block";
+    showLoadingMessage(); // ← 로딩 메시지 동작
 
     // 🌐 서버 전송 (no-cors)
     try {
@@ -850,7 +953,7 @@ document.querySelectorAll("#flower-buttons button").forEach((button) => {
     // 3초 후 로딩 숨기기
     setTimeout(() => {
       document.getElementById("flower-loader").style.display = "none";
-    }, 100);
+    }, 1000);
   });
 });
 
@@ -864,6 +967,44 @@ function createFlower(type, x, y, rotation) {
   flower.style.transform = `rotate(${rotation}deg)`;
   flower.style.width = "40px";
   document.getElementById("flower-field").appendChild(flower);
+}
+
+// 꽃배달
+let loadingInterval = null;
+
+function startLoadingDots() {
+  const dotEl = document.getElementById("loading-dots");
+  let dotCount = 1;
+
+  loadingInterval = setInterval(() => {
+    dotCount = (dotCount % 3) + 1;
+    dotEl.textContent = ".".repeat(dotCount);
+  }, 500);
+}
+
+function stopLoadingDots() {
+  clearInterval(loadingInterval);
+  document.getElementById("loading-dots").textContent = ".";
+}
+
+function showLoadingMessage() {
+  const loader = document.getElementById("flower-loader");
+  const message = document.getElementById("loader-message");
+
+  loader.style.display = "block";
+  message.innerHTML = '🌸 천국에 꽃 배달 중<span id="loading-dots">.</span>';
+  startLoadingDots();
+
+  // 2.5초 후 점 멈추고 메시지 전환
+  setTimeout(() => {
+    stopLoadingDots();
+    message.textContent = " ✅ 배달 완료! 💌 ";
+  }, 2500);
+
+  // 3초 후 전체 로딩 숨김
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 3500);
 }
 
 // BG 이미지 이벤트
@@ -884,4 +1025,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//
+// labs
+function openLabsPage(event) {
+  event.preventDefault(); // ✅ 클릭 시 스크롤 리셋 방지
+
+  window.open(
+    "/labs.html",
+    "_blank",
+    "width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
+  );
+}
