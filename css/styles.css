@@ -12904,10 +12904,25 @@ body {
   letter-spacing: 0.0625em;
 }
 
-/* #mainNav {
-  min-height: 3.5rem;
-  background-color: #fff;
-} */
+/* 기본 PC 스타일 (스크롤 전 상태) */
+#mainNav {
+  background-color: white; /* 기본 흰색 */
+  transition: background-color 0.3s ease;
+}
+
+/* PC에서 스크롤하면 적용될 클래스 */
+#mainNav.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.85); /* ✅ 반투명 */
+  backdrop-filter: blur(8px); /* 선택사항: 블러 효과 */
+}
+
+/* 모바일에서는 항상 투명 배경 */
+@media (max-width: 768px) {
+  #mainNav {
+    background-color: rgba(255, 255, 255, 0.9); /* 항상 반투명 */
+    backdrop-filter: blur(6px); /* 선택사항 */
+  }
+}
 
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -13371,7 +13386,7 @@ body.scrolled .main-image1::after {
 }
 .main-text4.icon {
   font-size: 12px; /* `4rem → 2rem`으로 변경 */
-  top: 84%; /* 상단에서 100px 아래 */
+  top: 85%; /* 상단에서 100px 아래 */
 }
 
 /* main text output 250317 */
@@ -14087,6 +14102,14 @@ body.scrolled .main-image1::after {
   cursor: pointer;
 }
 
+.icon-folder,
+.icon-file {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
 @keyframes pull {
   from {
     opacity: 1;
@@ -14219,7 +14242,7 @@ button:hover {
 
 #flower-buttons button {
   margin: 10px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 1rem;
   background: rgba(68, 68, 68, 0.4); /* 🔸 반투명 회색 */
   color: white;
@@ -14607,6 +14630,78 @@ body.loaded {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.first-character3 {
+  font-weight: 550;
+  float: left;
+  font-size: 18px;
+  line-height: 20px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0 auto;
+}
+
+.first-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--bs-black);
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.first-title2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--bs-black);
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.95;
+
+  /* ✅ 추가 스타일 */
+  background-color: white; /* 흰 배경 */
+  width: 80%; /* 너비 전체 */
+  display: inline-block; /* 인라인 텍스트여도 배경 적용 위해 */
+  padding: 10px 0; /* 위아래 여백 (선택) */
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+.first-title3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--bs-black);
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.8;
+
+  /* ✅ 추가 스타일 */
+  background-color: white; /* 흰 배경 */
+  width: 80%; /* 너비 전체 */
+  display: inline-block; /* 인라인 텍스트여도 배경 적용 위해 */
+  padding: 10px 0; /* 위아래 여백 (선택) */
+  margin: 0 auto;
+  border-radius: 30px;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+.text-left {
+  margin: 0 auto;
+}
+
 .sc {
   color: #3b8595;
 }
@@ -14621,35 +14716,12 @@ body.loaded {
   color: #a24d67;
 }
 
-.first-title {
-  font-weight: 400;
-  font-size: 60px;
-  line-height: 64px;
-  padding-top: 4px;
-  padding-right: 8px;
-  padding-left: 3px;
-  font-family: "Source Sans Pro", sans-serif;
-}
-
 /* Section - Title */
 /**************************/
 #parallax-world-of-ugg .title {
   background: white;
   padding: 60px;
   margin: 0 auto;
-  text-align: center;
-}
-
-#parallax-world-of-ugg .tt {
-  font-family: "Oswald", sans-serif;
-  font-size: 70px;
-  letter-spacing: 10px;
-  text-align: center;
-  color: var(--bs-black);
-  font-weight: 400;
-  text-transform: uppercase;
-  z-index: 10;
-  opacity: 0.9;
   text-align: center;
 }
 
@@ -14664,6 +14736,13 @@ body.loaded {
   background: white;
   padding: 60px;
   width: 820px;
+  margin: 0 auto;
+  text-align: justify;
+}
+#parallax-world-of-ugg .block2 {
+  background: white;
+  padding: 60px;
+  width: 1000px;
   margin: 0 auto;
   text-align: justify;
 }
@@ -14755,6 +14834,7 @@ body.loaded {
   background-repeat: no-repeat;
   background-position: top center;
 }
+
 .parallax-3 {
   padding-top: 200px;
   padding-bottom: 200px;
