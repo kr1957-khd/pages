@@ -1049,7 +1049,7 @@ function openLabsPage(event) {
   event.preventDefault(); // ✅ 클릭 시 스크롤 리셋 방지
 
   window.open(
-    "/labs.html",
+    "labs.html",
     "_blank",
     "width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
   );
