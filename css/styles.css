@@ -15,9 +15,9 @@ css yyu. 230730
   --bs-orange: #fd7e14;
   --bs-gold: #ffa600;
   --bs-yellow: #e4c662;
-  --bs-green: #67c29c;
+  /* --bs-green: #67c29c;
   --bs-teal: #64a19d;
-  --bs-cyan: #1cabc4;
+  --bs-cyan: #1cabc4; */
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gray: #6c757d;
@@ -31,10 +31,10 @@ css yyu. 230730
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #64a19d;
+  /* --bs-primary: #64a19d; */
   --bs-secondary: #7464a1;
-  --bs-success: #67c29c;
-  --bs-info: #1cabc4;
+  /* --bs-success: #67c29c;
+  --bs-info: #1cabc4; */
   --bs-warning: #e4c662;
   --bs-danger: #a16468;
   --bs-light: #f8f9fa;
@@ -3327,7 +3327,7 @@ fieldset:disabled .btn {
   opacity: var(--bs-btn-disabled-opacity);
 }
 
-.btn-primary {
+/* .btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #64a19d;
   --bs-btn-border-color: #64a19d;
@@ -3681,7 +3681,7 @@ fieldset:disabled .btn {
   --bs-btn-box-shadow: none;
   --bs-btn-focus-shadow-rgb: 123, 175, 172;
   text-decoration: underline;
-}
+} */
 
 .btn-link:focus-visible {
   color: var(--bs-btn-color);
@@ -3797,7 +3797,7 @@ fieldset:disabled .btn {
   --bs-dropdown-link-hover-color: #1e2125;
   --bs-dropdown-link-hover-bg: #e9ecef;
   --bs-dropdown-link-active-color: #fff;
-  --bs-dropdown-link-active-bg: #64a19d;
+  /* --bs-dropdown-link-active-bg: #64a19d; */
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-item-padding-x: 1rem;
   --bs-dropdown-item-padding-y: 0.25rem;
@@ -13146,7 +13146,7 @@ body {
   background-clip: text;
   position: relative;
   /* 비디오 위에 표시 */
-  z-index: 4;
+  z-index: 0;
 }
 
 .masthead h2,
@@ -13214,40 +13214,7 @@ body {
   transition: opacity 1.5s ease-in-out;
   z-index: 2;
 }
-.main-image2 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 35rem;
 
-  aspect-ratio: 16 / 9; /* 가로:세로 비율 유지 */
-  background: url("../assets/01_main/main_1.png") center top/100% auto no-repeat;
-  /* transform: translateY(-20px); */
-  /* 처음에 왼쪽으로 20px 이동 */
-  opacity: 0;
-  /* 처음에는 안 보이도록 설정 */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  z-index: -99;
-}
-
-.main-image3 {
-  position: absolute;
-  top: 50%; /* 원하는 위치 조정 */
-  left: 50%;
-  /* width: 100%;
-  height: auto; */
-  transform: translate(50%, -50%); /* 정중앙 정렬 */
-
-  width: 400px; /* 원하는 크기로 조정 */
-  height: 75%; /* 높이는 부모 요소에 맞게 */
-
-  background: url("../assets/01_main/face1.png") center/cover no-repeat;
-
-  z-index: 4; /* 다른 요소 위에 배치 */
-  opacity: 0.9; /* 기본적으로 보이도록 설정 */
-  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
-  filter: blur(1px); /* 흐림 제거 */
-}
 
 /* 스크롤을 내리면 새로운 배경이 보이도록 */
 body.scrolled .main-image1::after {
@@ -13284,7 +13251,7 @@ body.scrolled .main-image1::after {
 .main-text2,
 .main-text3 {
   position: absolute;
-  /* color: #A24D67; */
+  /* color: 팥 #A24D67; */
   color: var(--bs-gray-dark);
   left: 10%; /* 왼쪽에서 10% 떨어진 위치 */
   text-align: left; /* 텍스트 왼쪽 정렬 */
@@ -13312,7 +13279,31 @@ body.scrolled .main-image1::after {
   left: 1400px;
 }
 
-.main-text4 {
+/* 비디오-2 droplet_02_crop */
+.video-wrapper2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 뷰포트 전체 너비 */
+  height: 100vh; /* 뷰포트 전체 높이 */
+  background: white; /* 배경을 흰색으로 설정 */
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* 부드러운 페이드 효과 */
+  z-index: 3; /* 다른 요소 위에 올라가지 않도록 조정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-video2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 화면에 맞게 영상 조절 */
+  border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
+}
+
+
+.main-text1 {
   position: absolute;
   text-align: center; /* 텍스트 중앙 정렬 */
   width: 100%; /* 부모 요소 너비를 따라가도록 설정 */
@@ -13330,27 +13321,9 @@ body.scrolled .main-image1::after {
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
 }
 
-.main-text5 {
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  max-width: 800px;
-  top: 400px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(210, 210, 210, 1);
-  font-size: 7rem;
-  font-weight: bold;
-  z-index: 5;
-  opacity: 0; /* 기본적으로 안 보이도록 설정 */
-  transition: opacity 0.5s ease-in-out;
-  font-family: "Han", sans-serif; /* han.ttf 폰트 적용 */
-}
 
 /* `.subtx`가 추가된 경우 글자 크기 변경 */
-.main-text4.subtx,
-.main-text5.subtx,
-.main-text6.subtx {
+.main-text1.subtx{
   font-size: 2rem; /* `4rem → 2rem`으로 변경 */
   top: 54%; /* 상단에서 100px 아래 */
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
@@ -13384,7 +13357,7 @@ body.scrolled .main-image1::after {
   border-radius: 40%;
   animation: scroll-icon 2.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
 }
-.main-text4.icon {
+.main-text1.icon {
   font-size: 12px; /* `4rem → 2rem`으로 변경 */
   top: 85%; /* 상단에서 100px 아래 */
 }
@@ -13406,28 +13379,138 @@ body.scrolled .main-image1::after {
   }
 }
 
-/* 비디오-2 */
-.video-wrapper2 {
+/* 팝업 글씨/컨테이너  */
+.reveal-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw; /* 뷰포트 전체 너비 */
-  height: 100vh; /* 뷰포트 전체 높이 */
-  background: white; /* 배경을 흰색으로 설정 */
-  opacity: 1;
-  transition: opacity 1s ease-in-out; /* 부드러운 페이드 효과 */
-  z-index: 3; /* 다른 요소 위에 올라가지 않도록 조정 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  word-break: keep-all;
+  line-height: 1.6;
+  transform: translate(-50%, -50%) translateY(100px); /* ✅ 추가된 부분 */
+  /* background: #e0f7fa; */
+  /* padding: 40px;
+  border-radius: 12px; */
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  z-index: 10;
 }
 
-.scroll-video2 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 화면에 맞게 영상 조절 */
-  border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
+.reveal-container.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0); /* ✅ 최종 위치로 복귀 */
 }
+
+
+.message {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tx1{
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bs-black);
+  opacity: 0.9;
+
+}
+.tx2{
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--bs-black);
+  opacity: 0.9;
+}
+.tx3{
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bs-black);
+  opacity: 0.9;
+}
+.tx4{
+  font-size: 24px;
+  top: 40%;
+  left: 50%;
+}
+
+.cont1 {
+  top: 15%;
+  left: 60%;
+}
+
+.cont2 {
+  top: 22%;
+  left: 65%;
+  /* background: #ffe0b2; */
+}
+
+.cont3 {
+  top: 39%;
+  left: 37%;
+}
+
+.cont4 {
+  top: 60%;
+  left: 60%;
+  background: #ffe0b2;
+}
+
+/* .first-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--bs-black);
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.9;
+  text-align: center;
+} */
+
+
+.image-wrapper {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* reveal-container 보다 아래 */
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reveal-image {
+  width: 70vw; /* ← 여기만 변경 */
+  height: auto;
+  opacity: 0;
+  transform: scale(0.8) translateY(80px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: transform, opacity;
+}
+
+.reveal-image.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+
+
 
 /*table/profile >>>*/
 .about-section {
@@ -13650,6 +13733,23 @@ body.scrolled .main-image1::after {
 }
 
 #toggleButton:hover {
+  background-color: rgba(162, 77, 103, 0.85); /* 팥색 a24d67 + 약간 투명 */
+  color: white;
+}
+
+#archCleanBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+  padding: 6px 10px; /* 위아래 6px, 좌우 16px */
+  line-height: 1.4; /* 줄 간격 적당히 조정 */
+
+  border-radius: 6px;
+}
+
+#archCleanBtn:hover {
   background-color: rgba(162, 77, 103, 0.85); /* 팥색 a24d67 + 약간 투명 */
   color: white;
 }
@@ -14263,15 +14363,37 @@ button:hover {
 }
 #flower-field {
   position: relative;
-  width: 80%;
-  height: 400px;
-  margin-top: 30px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  max-width: 900px;
+  min-height: 400px;
+  margin: auto;
+  background: white;
+  border: 2px solid #a24d67; /* 두께, 스타일, 색상 */
+  border-radius: 8px; /* 모서리 둥글게 (선택 사항) */
   overflow: hidden;
-  left: 10%;
+  box-sizing: border-box;
+
+  background-image: url("../assets/flower/fbg.avif");
+  background-size: cover;         /* 꽉 차게 */
+  background-position: center;    /* 중앙 정렬 */
+  background-repeat: no-repeat;   /* 반복 방지 */
+  
 }
+.arch-container2 {
+  position: relative;
+
+  max-width: 900px;
+  min-height: 600px;
+  margin: auto;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  border: 2px solid #a24d67; /* 두께, 스타일, 색상 */
+  border-radius: 8px; /* 모서리 둥글게 (선택 사항) */
+}
+
+
 .flower {
   position: absolute;
   width: 40px;
@@ -14702,6 +14824,10 @@ body.loaded {
   margin: 0 auto;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .sc {
   color: #3b8595;
 }
@@ -14812,7 +14938,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_1.jpg");
+  background-image: url("../assets/bg/bg_2.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -14826,7 +14952,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_6.avif");
+  background-image: url("../assets/bg/bg_7.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -14841,7 +14967,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_3.jpg");
+  background-image: url("../assets/bg/bg_5.avif");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -14855,7 +14981,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_5.avif");
+  background-image: url("../assets/bg/bg_1.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -14863,7 +14989,20 @@ body.loaded {
   background-repeat: no-repeat;
   background-position: top center;
 }
-
+.parallax-5 {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: url("../assets/bg/bg_6.avif");
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
 /* Extras */
 /**************************/
 #parallax-world-of-ugg .line-break {
@@ -14910,3 +15049,10 @@ body.loaded {
     width: 290px;
   }
 }
+
+.text20 {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: black !important;
+}
+
