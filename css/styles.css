@@ -13393,7 +13393,7 @@ body.scrolled .main-image1::after {
   /* padding: 40px;
   border-radius: 12px; */
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   z-index: 10;
 }
 
@@ -13406,7 +13406,7 @@ body.scrolled .main-image1::after {
 .message {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 .message.show {
@@ -13440,14 +13440,26 @@ body.scrolled .main-image1::after {
   opacity: 0.9;
 }
 .tx4{
-  font-size: 24px;
-  top: 40%;
-  left: 50%;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--bs-black);
+
+}
+
+.tx5{
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--bs-black);
+
 }
 
 .cont1 {
-  top: 15%;
-  left: 60%;
+  top: 18%;
+  left: 70%;
 }
 
 .cont2 {
@@ -13457,14 +13469,14 @@ body.scrolled .main-image1::after {
 }
 
 .cont3 {
-  top: 39%;
-  left: 37%;
+  top: 35%;
+  left: 38%;
 }
 
 .cont4 {
-  top: 60%;
-  left: 60%;
-  background: #ffe0b2;
+  top: 95%;
+  left: 65%;
+  /* background: #ffe0b2; */
 }
 
 /* .first-title {
