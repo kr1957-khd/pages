@@ -882,6 +882,12 @@ function renderFolders(nodes) {
         if (openCheckbox) openCheckbox.checked = true;
 
         const contentEl = document.querySelector(".arch-content");
+        const remoteControl = document.getElementById("archRemoteControl");
+        if (remoteControl) {
+          remoteControl.style.display = "flex";
+          setTimeout(() => remoteControl.style.opacity = "1", 10);
+        }
+
 
         if (node.name.toLowerCase().endsWith(".txt")) {
           fetch(node.path)
@@ -891,20 +897,15 @@ function renderFolders(nodes) {
             })
             .then((txt) => {
               contentEl.innerHTML = `
-                <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
-                
-                <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;">${txt}
-                <br><button onclick="location.href='#arch-container'" style="
-                display: block;
-                margin: 0 auto 20px auto;
-                background-color: #a24d67;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 20px;
-                cursor: pointer;
-                font-size: 0.9rem;
-                "> 처음(목록)으로 돌아가기</button>
+                <h3 style="margin-left: 33%; 
+                ">📄 ${node.name}</h3>
+                <br>
+                <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;
+                transform: scaleX(0.97);
+                display: inline-block; 
+                letter-spacing: -0.03em;
+                ">${txt}
+                <br>
                 </pre>
               `;
             })
@@ -915,13 +916,18 @@ function renderFolders(nodes) {
         // 음성파일 mp3
         else if (node.name.toLowerCase().endsWith(".mp3")) {
           contentEl.innerHTML = `
-            <h3 style="margin-left: 30%;">🎵 ${node.name}</h3>
-            <div style="padding-left: 35%; margin-bottom: 20px;">
+            <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
+            <div style="padding-left: 33%; margin-bottom: 20px;">
             <br><br><br>  
             <audio controls style="width: 400px;">
                 <source src="${node.path}" type="audio/mpeg">
                 브라우저에서 오디오를 지원하지 않습니다.
-              </audio>
+            </audio>
+            <p style"transform: scaleX(0.97);
+            display: inline-block; 
+            letter-spacing: -0.03em;">
+            모바일 기기에서 재생 후 화면이 꺼진상태에서도 음성 파일을 들으실 수 있습니다.
+            </p>
             </div>
           `;
         }
@@ -937,28 +943,22 @@ function renderFolders(nodes) {
             })
             .then(txt => {
               contentEl.innerHTML = `
-                <h3 style="margin-left: 30%;">🎬 ${node.name}</h3>
-                <div style="padding-left: 35%; margin-bottom: 20px;">
+                <h3 style="margin-left: 33%;">🎬 ${node.name}</h3>
+                <div style="padding-left: 32%; margin-bottom: 20px; transform: scaleX(0.97);
+                display: inline-block; letter-spacing: -0.03em;">
                   <br><br><br>
                   <video controls style="width: 450px;">
                     <source src="${node.path}" type="video/mp4">
                     브라우저에서 비디오를 지원하지 않습니다.
                   </video>
                 </div>
-                <div style="padding-left: 20%; margin-top: 30px;">
+                <div style="padding-left: 20%; margin-top: 30px; ">
                   <h5 style="padding-left: 20%; margin-top: 30px;">📄 영상 스크립트</h5>
-                  <pre style="white-space: pre-wrap; word-break: break-word;">${txt}</pre>
-                <br><button onclick="location.href='#arch-container'" style="
-                display: block;
-                margin: 0 auto 20px auto;
-                background-color: #a24d67;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 20px;
-                cursor: pointer;
-                font-size: 0.9rem;
-                "> 처음(목록)으로 돌아가기</button>
+                  <pre style="white-space: pre-wrap; word-break: break-word; 
+                  transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+                  ">${txt}</pre>
+                  <br>
+
                 </div>
               `;
             })
@@ -983,8 +983,10 @@ function renderFolders(nodes) {
           node.name.toLowerCase().endsWith(".png")
         ) {
           contentEl.innerHTML = `
-            <h3 style="margin-left: 30%;">🖼️ ${node.name}</h3>
-            <div style="margin-left: 20%; text-align: center; margin-top: 30px; margin-bottom: 30px;">
+            <h3 style="margin-left: 33%;">🖼️ ${node.name}</h3>
+            <div style="margin-left: 20%; text-align: center; margin-top: 30px; margin-bottom: 30px;
+            transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+            ">
               <p>이미지를 클릭(누르기)하면 원본으로 보실 수 있습니다.</p>
               <a href="${node.path}" target="_blank">
                 <img src="${node.path}" alt="${node.name}" 
@@ -996,10 +998,13 @@ function renderFolders(nodes) {
         
         else {
           contentEl.innerHTML = `
-            <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
-            <br><p style="margin-left: 20%;">경로: <code>${node.path}</code></p>
-            <p style="margin-left: 20%;">이 파일은미리보기가 제공되지 않습니다.</p>
-            <p style="margin-left: 20%;">자료 확인 또는 다운로드는 운영자(전산실)에게 문의 바랍니다.</p>
+            <h3 style="margin-left: 33%;">📄 ${node.name}</h3>
+            <br><p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+            ">경로: <code>${node.path}</code></p>
+            <p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+            ">이 파일은미리보기가 제공되지 않습니다.</p>
+            <p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+            ">자료 확인 또는 다운로드는 운영자(전산실)에게 문의 바랍니다.</p>
 
           `;
         }
@@ -1012,13 +1017,75 @@ function renderFolders(nodes) {
   return fragment;
 }
 
-// 컨테이너 초기화 버튼
-document.getElementById("archCleanBtn").addEventListener("click", () => {
-  const contentEl = document.querySelector(".arch-content");
-  contentEl.innerHTML = ""; // 내용 초기화
-  const openCheckbox = document.getElementById("open");
-  if (openCheckbox) openCheckbox.checked = false;
-});
+// // 기존 초기화 버튼 기능 (archCleanBtn)
+// const archCleanBtn = document.getElementById("archCleanBtn");
+// if (archCleanBtn) {  //  버튼이 있을 때만 이벤트 리스너를 추가
+//   archCleanBtn.addEventListener("click", () => {
+//     const contentEl = document.querySelector(".arch-content");
+//     contentEl.innerHTML = ""; // 내용 초기화
+//     const openCheckbox = document.getElementById("open");
+//     if (openCheckbox) openCheckbox.checked = false;
+//     console.log("archCleanBtn 버튼으로 초기화됨."); // 확인용 메시지
+//   });
+// }
+
+// 리모컨 버튼 기능 (arch-scrollTopBtn & arch-clearContentBtn)
+const scrollTopBtn = document.getElementById("arch-scrollTopBtn");
+const clearContentBtn = document.getElementById("arch-clearContentBtn");
+const remoteControl = document.getElementById("archRemoteControl");
+const targetContainer = document.getElementById("arch-container2"); // 리모컨을 표시할 기준 요소
+
+//  스크롤 이동 함수 (공통으로 사용)
+function scrollToTarget() {
+  const target = document.getElementById("arch-container");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth" });
+    console.log("arch-scrollTopBtn 버튼으로 이동됨.");
+  }
+}
+
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener("click", () => scrollToTarget());
+}
+
+if (clearContentBtn) {
+  clearContentBtn.addEventListener("click", () => {
+    const contentEl = document.querySelector(".arch-content");
+    contentEl.innerHTML = ""; // 내용 초기화
+    const openCheckbox = document.getElementById("open");
+    if (openCheckbox) openCheckbox.checked = false;
+
+    // 리모컨 숨기기
+    if (remoteControl) {
+      remoteControl.style.opacity = "0";
+      setTimeout(() => remoteControl.style.display = "none",300);
+    }
+
+    console.log("arch-clearContentBtn 버튼으로 초기화됨.");
+    scrollToTarget();
+  });
+}
+
+// // 🔥 Intersection Observer로 리모컨 표시 제어하기
+// if (targetContainer && remoteControl) {
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {  // ✅ 화면에 보일 때
+//         remoteControl.style.opacity = "1";
+//         remoteControl.style.display = "flex";
+//         console.log("#arch-container2 가 화면에 보임.");
+//       } else {  // ❌ 화면에서 벗어났을 때
+//         remoteControl.style.opacity = "0";
+//         setTimeout(() => remoteControl.style.display = "none", 10);
+//         console.log("#arch-container2 가 화면에서 벗어남.");
+//       }
+//     });
+//   }, { threshold: 0.1 }); // 요소의 10% 이상 보이면 활성화
+  
+//   observer.observe(targetContainer);
+// }
+
+
 
 // 파일 불러오기
 
@@ -1335,6 +1402,6 @@ document.getElementById("openLabsLink").addEventListener("click", function (e) {
   window.open(
     "assets/labs/labs.html",
     "_blank",
-    "width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
+    "width=800,height=900,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
   )
 })
