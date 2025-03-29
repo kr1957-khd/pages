@@ -122,7 +122,7 @@ function handleRevealSections() {
 
           const messages = container.querySelectorAll('.message')
           messages.forEach((msg, i) => {
-            msg.style.transitionDelay = `${i * 500}ms`
+            msg.style.transitionDelay = `${i * 650}ms`
             msg.classList.add('show')
           })
           if (bgImage) bgImage.classList.add('visible')
@@ -892,8 +892,9 @@ function renderFolders(nodes) {
             .then((txt) => {
               contentEl.innerHTML = `
                 <h3 style="margin-left: 30%;">📄 ${node.name}</h3>
+                
                 <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;">${txt}
-                <button onclick="location.href='#arch-container'" style="
+                <br><button onclick="location.href='#arch-container'" style="
                 display: block;
                 margin: 0 auto 20px auto;
                 background-color: #a24d67;
@@ -903,7 +904,7 @@ function renderFolders(nodes) {
                 border-radius: 20px;
                 cursor: pointer;
                 font-size: 0.9rem;
-              "> 처음(목록)으로 돌아가기</button>
+                "> 처음(목록)으로 돌아가기</button>
                 </pre>
               `;
             })
@@ -947,6 +948,17 @@ function renderFolders(nodes) {
                 <div style="padding-left: 20%; margin-top: 30px;">
                   <h5 style="padding-left: 20%; margin-top: 30px;">📄 영상 스크립트</h5>
                   <pre style="white-space: pre-wrap; word-break: break-word;">${txt}</pre>
+                <br><button onclick="location.href='#arch-container'" style="
+                display: block;
+                margin: 0 auto 20px auto;
+                background-color: #a24d67;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                "> 처음(목록)으로 돌아가기</button>
                 </div>
               `;
             })
