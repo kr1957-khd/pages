@@ -15,9 +15,9 @@ css yyu. 230730
   --bs-orange: #fd7e14;
   --bs-gold: #ffa600;
   --bs-yellow: #e4c662;
-  /* --bs-green: #67c29c;
+  --bs-green: #67c29c;
   --bs-teal: #64a19d;
-  --bs-cyan: #1cabc4; */
+  --bs-cyan: #1cabc4;
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gray: #6c757d;
@@ -31,10 +31,10 @@ css yyu. 230730
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  /* --bs-primary: #64a19d; */
+  --bs-primary: #64a19d;
   --bs-secondary: #7464a1;
-  /* --bs-success: #67c29c;
-  --bs-info: #1cabc4; */
+  --bs-success: #67c29c;
+  --bs-info: #1cabc4;
   --bs-warning: #e4c662;
   --bs-danger: #a16468;
   --bs-light: #f8f9fa;
@@ -3327,7 +3327,7 @@ fieldset:disabled .btn {
   opacity: var(--bs-btn-disabled-opacity);
 }
 
-/* .btn-primary {
+.btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #64a19d;
   --bs-btn-border-color: #64a19d;
@@ -3681,7 +3681,7 @@ fieldset:disabled .btn {
   --bs-btn-box-shadow: none;
   --bs-btn-focus-shadow-rgb: 123, 175, 172;
   text-decoration: underline;
-} */
+}
 
 .btn-link:focus-visible {
   color: var(--bs-btn-color);
@@ -12912,7 +12912,7 @@ body {
 
 /* PC에서 스크롤하면 적용될 클래스 */
 #mainNav.navbar-scrolled {
-  background-color: rgba(255, 255, 255, 0.85); /* ✅ 반투명 */
+  background-color: rgba(255, 255, 255, 0.85); /*  반투명 */
   backdrop-filter: blur(8px); /* 선택사항: 블러 효과 */
 }
 
@@ -12978,7 +12978,7 @@ body {
   }
 
   #mainNav .nav-link:active {
-    color: #fff;
+    color: #a24d67;
   }
 
   #mainNav.navbar-shrink {
@@ -13006,7 +13006,7 @@ body {
   #mainNav.navbar-shrink .nav-link.active {
     color: #a24d67;
     outline: none;
-    border-bottom: 0.25rem solid #a24d67;
+    /* border-bottom: 0.25rem solid #a24d67; */
   }
 }
 
@@ -13083,6 +13083,9 @@ body {
   color: #a24d67;
   /* 더 밝은 흰색 */
 }
+
+
+
 
 /*main >>>*/
 /* masthead 스타일 */
@@ -13388,7 +13391,7 @@ body.scrolled .main-image1::after {
   text-align: justify;
   word-break: keep-all;
   line-height: 1.6;
-  transform: translate(-50%, -50%) translateY(100px); /* ✅ 추가된 부분 */
+  transform: translate(-50%, -50%) translateY(100px); /*  추가된 부분 */
   /* background: #e0f7fa; */
   /* padding: 40px;
   border-radius: 12px; */
@@ -13399,7 +13402,7 @@ body.scrolled .main-image1::after {
 
 .reveal-container.visible {
   opacity: 1;
-  transform: translate(-50%, -50%) translateY(0); /* ✅ 최종 위치로 복귀 */
+  transform: translate(-50%, -50%) translateY(0); /*  최종 위치로 복귀 */
 }
 
 
@@ -13458,8 +13461,8 @@ body.scrolled .main-image1::after {
 }
 
 .cont1 {
-  top: 18%;
-  left: 70%;
+  top: 15%;
+  left: 72%;
 }
 
 .cont2 {
@@ -13470,7 +13473,7 @@ body.scrolled .main-image1::after {
 
 .cont3 {
   top: 35%;
-  left: 38%;
+  left: 35%;
 }
 
 .cont4 {
@@ -13508,7 +13511,7 @@ body.scrolled .main-image1::after {
 }
 
 .reveal-image {
-  width: 70vw; /* ← 여기만 변경 */
+  width: 65vw; /* ← 여기만 변경 */
   height: auto;
   opacity: 0;
   transform: scale(0.8) translateY(80px);
@@ -14087,7 +14090,7 @@ body.scrolled .main-image1::after {
   font-family: "Courier New", monospace;
   white-space: pre-wrap;
   color: #333;
-  padding-left: 20%; /* ✅ 왼쪽에서 20% 떨어지게 */
+  padding-left: 20%; /*  왼쪽에서 20% 떨어지게 */
   word-break: break-word; /* 긴 단어도 끊어줌 (선택) */
 }
 
@@ -14252,6 +14255,36 @@ body.scrolled .main-image1::after {
   }
 }
 
+
+/* 리모컨 버튼 스타일 */
+.arch-remote-control {
+  position: fixed; /* 항상 화면에 표시되도록 고정 */
+  bottom: 15%; /* 화면 아래에서 20px 위 */
+  right: 18%; /* 화면 오른쪽에서 20px 왼쪽 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999; /* 다른 요소 위에 표시되도록 */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.arch-remote-control button {
+  background-color: rgba(162, 77, 103, 0.8); /* 투명한 팥색 */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.2rem;
+}
+
+.arch-remote-control button:hover {
+  background-color: rgba(162, 77, 103, 1);
+}
+
+
 /* hover 효과 */
 .achv-table td:hover img {
   transform: scale(1.1);
@@ -14356,7 +14389,7 @@ button:hover {
   margin: 10px;
   padding: 10px 25px;
   font-size: 1rem;
-  background: rgba(68, 68, 68, 0.4); /* 🔸 반투명 회색 */
+  background: rgba(68, 68, 68, 0.4); /*  반투명 회색 */
   color: white;
   border: none;
   border-radius: 20px;
@@ -14365,7 +14398,7 @@ button:hover {
   transition: background 0.3s ease, opacity 0.3s ease;
 }
 #flower-buttons button:hover {
-  background: #a24d67; /* 💖 진한 핑크톤 */
+  background: #a24d67; /*  진한 핑크톤 */
   opacity: 1;
 }
 .count {
@@ -14800,7 +14833,7 @@ body.loaded {
   z-index: 10;
   opacity: 0.95;
 
-  /* ✅ 추가 스타일 */
+  /*  추가 스타일 */
   background-color: white; /* 흰 배경 */
   width: 80%; /* 너비 전체 */
   display: inline-block; /* 인라인 텍스트여도 배경 적용 위해 */
@@ -14820,7 +14853,7 @@ body.loaded {
   z-index: 10;
   opacity: 0.8;
 
-  /* ✅ 추가 스타일 */
+  /*  추가 스타일 */
   background-color: white; /* 흰 배경 */
   width: 80%; /* 너비 전체 */
   display: inline-block; /* 인라인 텍스트여도 배경 적용 위해 */
@@ -15068,3 +15101,17 @@ body.loaded {
   color: black !important;
 }
 
+.fontPS{
+  transform: scaleX(0.97); /* 포토샵의 97% 설정 */
+  display: inline-block; /* transform을 적용하기 위해 필요 */
+  letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
+}
+
+.fontWide{
+  display: inline-block; /* transform을 적용하기 위해 필요 */
+  letter-spacing: 0.2em; 
+}
+
+.fontHL{
+  color: #a24d67; /* 원하는 색상으로 설정 */
+}
