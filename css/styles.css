@@ -13461,39 +13461,19 @@ body.scrolled .main-image1::after {
 }
 
 .cont1 {
+  position: fixed;
   top: 15%;
-  left: 72%;
+  left: 75%;
 }
 
 .cont2 {
-  top: 22%;
-  left: 65%;
-  /* background: #ffe0b2; */
-}
-
-.cont3 {
+  /* position: fixed; */
   top: 35%;
   left: 35%;
-}
-
-.cont4 {
-  top: 95%;
-  left: 65%;
   /* background: #ffe0b2; */
 }
 
-/* .first-title {
-  font-family: "Oswald", sans-serif;
-  font-size: 70px;
-  letter-spacing: 10px;
-  text-align: center;
-  color: var(--bs-black);
-  font-weight: 400;
-  text-transform: uppercase;
-  z-index: 10;
-  opacity: 0.9;
-  text-align: center;
-} */
+
 
 
 .image-wrapper {
@@ -13508,10 +13488,15 @@ body.scrolled .main-image1::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px; /* 이미지와 텍스트 사이 간격 */
+  display: block; /* 이미지를 블록 요소로 변환 */
+
 }
 
 .reveal-image {
-  width: 65vw; /* ← 여기만 변경 */
+  width: 100%; /* ← 여기만 변경 */
+  top: 10%;
+
   height: auto;
   opacity: 0;
   transform: scale(0.8) translateY(80px);
@@ -14259,8 +14244,8 @@ body.scrolled .main-image1::after {
 /* 리모컨 버튼 스타일 */
 .arch-remote-control {
   position: fixed; /* 항상 화면에 표시되도록 고정 */
-  bottom: 15%; /* 화면 아래에서 20px 위 */
-  right: 18%; /* 화면 오른쪽에서 20px 왼쪽 */
+  bottom: 3%; /* 화면 아래에서 20px 위 */
+  right: 3%; /* 화면 오른쪽에서 20px 왼쪽 */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -14417,7 +14402,7 @@ button:hover {
   overflow: hidden;
   box-sizing: border-box;
 
-  background-image: url("../assets/flower/fbg.avif");
+  background-image: url("../assets/bg/18-1.png");
   background-size: cover;         /* 꽉 차게 */
   background-position: center;    /* 중앙 정렬 */
   background-repeat: no-repeat;   /* 반복 방지 */
@@ -14531,6 +14516,18 @@ button:hover {
   opacity: 1;
   visibility: visible;
 }
+
+.footer-container {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  background-color: rgba(255, 255, 255, 0.5); /* 흰색 배경 + 50% 투명도 */
+  width: 100%;
+  height: 100px; /* 원하는 높이 설정 */
+  position: fixed; /* 화면 하단에 고정 (원하는 경우) */
+  bottom: 0;
+}
+
 
 /* 약력 숨기기 */
 /* 기본적으로 내용을 숨김 */
@@ -14759,7 +14756,24 @@ body.loaded {
   text-transform: uppercase;
   z-index: 10;
   opacity: 0.9;
+
+
 }
+#parallax-world-of-ugg h5 {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0.9;
+  transform: scaleX(0.97); /* 포토샵의 97% 설정 */
+  letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
+
+}
+
 #parallax-world-of-ugg h3 {
   font-family: "Oswald", sans-serif;
   font-size: 14px;
@@ -14824,8 +14838,7 @@ body.loaded {
 
 .first-title2 {
   font-family: "Oswald", sans-serif;
-  font-size: 70px;
-  letter-spacing: 10px;
+  font-size: 50px;
   text-align: center;
   color: var(--bs-black);
   font-weight: 400;
@@ -14983,7 +14996,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_2.jpg");
+  background-image: url("../assets/bg/27.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -14997,7 +15010,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_7.jpg");
+  background-image: url("../assets/bg/287.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15012,7 +15025,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_5.avif");
+  background-image: url("../assets/bg/18.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15026,7 +15039,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_1.jpg");
+  background-image: url("../assets/bg/6.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15040,7 +15053,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/bg_6.avif");
+  background-image: url("../assets/bg/8.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15059,6 +15072,12 @@ body.loaded {
 .line-break {
   border-bottom: 1px solid black;
   width: 150px;
+  margin: 0 auto;
+}
+
+.section-break {
+  border-bottom: 4px solid black;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -15114,4 +15133,15 @@ body.loaded {
 
 .fontHL{
   color: #a24d67; /* 원하는 색상으로 설정 */
+}
+
+.fontFoot{
+  transform: scaleX(0.97); /* 포토샵의 97% 설정 */
+  letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  background-color: rgba(255, 255, 255, 0); /* 흰색 배경 + 50% 투명도 */
+  width: 100%;
+  bottom: 0;
 }
