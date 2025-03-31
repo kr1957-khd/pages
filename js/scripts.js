@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 메인 스크롤 이벤트 최적화 
+// 메인 스크롤 이벤트 최적화
 document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById("mainNav");
   const blendedTextElements = document.querySelectorAll(".main-text1");
@@ -62,12 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollY = window.scrollY;
 
     blendedTextElements.forEach((element) => {
-      const opacity = 1 - Math.min(Math.max((scrollY - fadeStart) / fadeRange, 0), 1);
+      const opacity =
+        1 - Math.min(Math.max((scrollY - fadeStart) / fadeRange, 0), 1);
       element.style.opacity = opacity;
     });
   }
 
-  
   // 🔹 스크롤 연동 비디오 표시
   function handleVideoScroll() {
     const scrollY = window.scrollY;
@@ -89,64 +89,68 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying = true;
   }
 
+  // 🔹 reveal-container 애니메이션 처리
+  const revealOffsets = new Map();
+  const revealedContainers = new Set();
 
-// 🔹 reveal-container 애니메이션 처리
-const revealOffsets = new Map()
-const revealedContainers = new Set()
+  function handleRevealSections() {
+    const containers = document.querySelectorAll(".reveal-container");
+    const bgImage = document.querySelector(".reveal-image");
 
-function handleRevealSections() {
-  const containers = document.querySelectorAll('.reveal-container')
-  const bgImage = document.querySelector('.reveal-image')
+    containers.forEach((container) => {
+      const rect = container.getBoundingClientRect();
+      const scrollY = window.scrollY;
 
-  containers.forEach((container) => {
-    const rect = container.getBoundingClientRect()
-    const scrollY = window.scrollY
+      // 오프셋이 없으면 처음에만 생성
+      if (!revealOffsets.has(container)) {
+        const randomFactor = Math.random() * 0.2 + 0.8; // 0.5~0.7
+        revealOffsets.set(container, window.innerHeight * randomFactor);
+      }
 
-    // 오프셋이 없으면 처음에만 생성
-    if (!revealOffsets.has(container)) {
-      const randomFactor = Math.random() * 0.2 + 0.8 // 0.5~0.7
-      revealOffsets.set(container, window.innerHeight * randomFactor)
-    }
+      const threshold = revealOffsets.get(container);
 
-    const threshold = revealOffsets.get(container)
+      // ✅ 조건 충족 시: 등장 (랜덤 지연)
+      if (
+        scrollY > 400 &&
+        rect.top < threshold &&
+        !revealedContainers.has(container)
+      ) {
+        revealedContainers.add(container);
 
-    // ✅ 조건 충족 시: 등장 (랜덤 지연)
-    if (scrollY > 400 && rect.top < threshold && !revealedContainers.has(container)) {
-      revealedContainers.add(container)
+        const delay = Math.random() * 1000 + 300; // 300ms ~ 1000ms
+        setTimeout(() => {
+          // 다시 스크롤 내려갔다가 올라온 경우 방지
+          if (
+            scrollY > 400 &&
+            container.getBoundingClientRect().top < threshold
+          ) {
+            container.classList.add("visible");
 
-      const delay = Math.random() * 1000 + 300 // 300ms ~ 1000ms
-      setTimeout(() => {
-        // 다시 스크롤 내려갔다가 올라온 경우 방지
-        if (scrollY > 400 && container.getBoundingClientRect().top < threshold) {
-          container.classList.add('visible')
+            const messages = container.querySelectorAll(".message");
+            messages.forEach((msg, i) => {
+              msg.style.transitionDelay = `${i * 650}ms`;
+              msg.classList.add("show");
+            });
+            if (bgImage) bgImage.classList.add("visible");
+          }
+        }, delay);
+      }
 
-          const messages = container.querySelectorAll('.message')
-          messages.forEach((msg, i) => {
-            msg.style.transitionDelay = `${i * 650}ms`
-            msg.classList.add('show')
-          })
-          if (bgImage) bgImage.classList.add('visible')
+      // ⛔ 조건 불충족 시: 리셋 (스크롤이 위로 올라갔거나 화면에서 벗어난 경우)
+      if (scrollY <= 400 || rect.top >= window.innerHeight) {
+        container.classList.remove("visible");
+        const messages = container.querySelectorAll(".message");
+        messages.forEach((msg) => {
+          msg.classList.remove("show");
+          msg.style.transitionDelay = "0ms";
+        });
+        if (bgImage) bgImage.classList.remove("visible");
 
-        }
-      }, delay)
-    }
-
-    // ⛔ 조건 불충족 시: 리셋 (스크롤이 위로 올라갔거나 화면에서 벗어난 경우)
-    if (scrollY <= 400 || rect.top >= window.innerHeight) {
-      container.classList.remove('visible')
-      const messages = container.querySelectorAll('.message')
-      messages.forEach(msg => {
-        msg.classList.remove('show')
-        msg.style.transitionDelay = '0ms'
-      })
-      if (bgImage) bgImage.classList.remove('visible')
-
-      // 다시 등장 가능하도록 상태 초기화
-      revealedContainers.delete(container)
-    }
-  })
-}
-
+        // 다시 등장 가능하도록 상태 초기화
+        revealedContainers.delete(container);
+      }
+    });
+  }
 
   // 🔹 스크롤 이벤트 등록
   window.addEventListener("scroll", () => {
@@ -169,23 +173,23 @@ function handleRevealSections() {
   // 🔹 GSAP 애니메이션 등록
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: ".masthead",
-      scroller: window,
-      scrub: true,
-      pin: true,
-      pinSpacing: true,
-      start: "top top",
-      end: "+=1500",
-      anticipatePin: 1
-    }
-  }).to(".masthead", { opacity: 0 });
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".masthead",
+        scroller: window,
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        start: "top top",
+        end: "+=1500",
+        anticipatePin: 1,
+      },
+    })
+    .to(".masthead", { opacity: 0 });
 
   gsap.set("#about", { clearProps: "all" });
 });
-
-
 
 // // 메인 글씨 이벤트
 // document.addEventListener("DOMContentLoaded", () => {
@@ -283,7 +287,6 @@ function handleRevealSections() {
 //   homeAnimation1();
 // });
 
-
 // 스크롤에 따라 텍스트 나오기
 // function adjustBlendedTextOpacity2() {
 //   const textElements = [
@@ -344,8 +347,6 @@ function handleRevealSections() {
 
 // // 스크롤 이벤트 리스너 추가
 // window.addEventListener("scroll", adjustBlendedTextOpacity3);
-
-
 
 // main text 해암 스타일
 
@@ -418,7 +419,6 @@ function handleRevealSections() {
 //   homeAnimation1();
 //   // homeAnimation2();
 // });
-
 
 // PDF
 document.getElementById("openPdfBtn").addEventListener("click", function (e) {
@@ -544,7 +544,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // 1배 2배 2.0 3배 3.0 으로 설정
   }
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const images = [
@@ -826,8 +825,12 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch("assets/04_achv2/filetree_web.json")
   .then((res) => res.json())
   .then((data) => {
+    // console.log("✅ JSON 데이터 로드 성공:", data); // 전체 데이터를 콘솔에 출력
     const container = document.getElementById("dynamic-tree");
     container.appendChild(renderFolders(data));
+  })
+  .catch((error) => {
+    console.error("❌ JSON 데이터 로드 실패:", error);
   });
 
 function renderFolders(nodes) {
@@ -835,6 +838,7 @@ function renderFolders(nodes) {
 
   nodes.forEach((node, i) => {
     const folderId = `folder_${node.name}_${i}`.replace(/\s+/g, "_");
+    // console.log("🔍 노드 탐색 중:", node.name, node.type); // 탐색 중인 파일/폴더 출력
 
     if (node.type === "folder") {
       const folderDiv = document.createElement("div");
@@ -870,24 +874,68 @@ function renderFolders(nodes) {
 
       fragment.appendChild(folderDiv);
     } else if (node.type === "file") {
+      // console.log("📂 파일 발견:", node.name); // 파일 정보 출력
+
       const fileDiv = document.createElement("div");
+
       fileDiv.className = "file";
+      // 🔍 파일 확장자 추출하기
+      const fileExtension = node.name.split(".").pop().toLowerCase();
+
+      // 🔄 파일 유형별 아이콘 파일 경로 설정하기
+      let iconPath;
+      switch (fileExtension) {
+        case "mp3":
+        case "wav":
+        case "ogg":
+          iconPath = "assets/03_achv/mp3_icon.png"; //  음성 파일 아이콘
+          break;
+        case "mp4":
+        case "webm":
+        case "mov":
+          iconPath = "assets/03_achv/mp4_icon.png"; //  영상 파일 아이콘
+          break;
+        case "jpg":
+        case "jpeg":
+        case "png":
+        case "gif":
+          iconPath = "assets/03_achv/img_icon.png"; //  이미지 파일 아이콘
+          break;
+        // case 'txt':
+        //   iconPath = "assets/03_achv/file.png"; //  텍스트 파일 아이콘
+        //   break;
+        // case 'pdf':
+        //   iconPath = "assets/03_achv/icons/pdf.png"; //  PDF 파일 아이콘
+        //   break;
+        default:
+          iconPath = "assets/03_achv/file.png"; // 일반 파일 아이콘
+      }
+
+      //  파일 아이콘 및 이름 표시하기 (스타일 유지)
       fileDiv.innerHTML = `
-        <img src="assets/03_achv/file.png" class="icon-file" />
-        <div class="text">${node.name}</div>
-      `;
+    <div class="file-entry">
+      <img src="${iconPath}" class="icon-file" />
+      <div class="text">${node.name}</div>
+    </div>
+  `;
+
+      // 파일 아이콘 예제
+      // fileDiv.innerHTML = `
+      //   <img src="assets/03_achv/file.png" class="icon-file" />
+      //   <div class="text">${node.name}</div>
+      // `;
 
       fileDiv.addEventListener("click", () => {
         const openCheckbox = document.getElementById("open");
         if (openCheckbox) openCheckbox.checked = true;
 
         const contentEl = document.querySelector(".arch-content");
+
         const remoteControl = document.getElementById("archRemoteControl");
         if (remoteControl) {
           remoteControl.style.display = "flex";
-          setTimeout(() => remoteControl.style.opacity = "1", 10);
+          setTimeout(() => (remoteControl.style.opacity = "1"), 10);
         }
-
 
         if (node.name.toLowerCase().endsWith(".txt")) {
           fetch(node.path)
@@ -915,33 +963,61 @@ function renderFolders(nodes) {
         }
         // 음성파일 mp3
         else if (node.name.toLowerCase().endsWith(".mp3")) {
-          contentEl.innerHTML = `
-            <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
-            <div style="padding-left: 33%; margin-bottom: 20px;">
-            <br><br><br>  
-            <audio controls style="width: 400px;">
-                <source src="${node.path}" type="audio/mpeg">
-                브라우저에서 오디오를 지원하지 않습니다.
-            </audio>
-            <p style"transform: scaleX(0.97);
-            display: inline-block; 
-            letter-spacing: -0.03em;">
-            모바일 기기에서 재생 후 화면이 꺼진상태에서도 음성 파일을 들으실 수 있습니다.
-            </p>
-            </div>
-          `;
-        }
-        // 비디오 mp4 
-        else if (node.name.toLowerCase().endsWith(".mp4")) {
-          const baseName = node.name.replace(/\.mp4$/i, "");
-          const txtPath = node.path.replace(/\.mp4$/i, ".txt");
-        
+          const baseName = node.name.replace(/\.mp3$/i, ""); // 확장자 제거
+          const txtPath = node.path.replace(/\.mp3$/i, ".txt"); // 같은 이름의 .txt 파일 경로 추정
+
           fetch(txtPath)
-            .then(res => {
+            .then((res) => {
               if (!res.ok) throw new Error("관련 텍스트 없음");
               return res.text();
             })
-            .then(txt => {
+            .then((txt) => {
+              contentEl.innerHTML = `
+                <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
+                <div style="padding-left: 33%; margin-bottom: 20px;">
+                  <br><br><br>  
+                  <audio controls style="width: 400px;">
+                      <source src="${node.path}" type="audio/mpeg">
+                      브라우저에서 오디오를 지원하지 않습니다.
+                  </audio>
+                </div>
+                <div style="padding-left: 20%; margin-top: 30px;">
+                <p style="padding-left: 20%; margin-top: 30px;">오디오 스크립트</p>
+                  <pre style="white-space: pre-wrap; word-break: break-word; 
+                  transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
+                  ">${txt}</pre>
+                  <br>
+                </div>
+              `;
+            })
+            .catch(() => {
+              // 텍스트 없을 때는 오디오만 출력
+              contentEl.innerHTML = `
+                <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
+                <div style="padding-left: 33%; margin-bottom: 20px;">
+                  <br><br><br>  
+                  <audio controls style="width: 400px;">
+                      <source src="${node.path}" type="audio/mpeg">
+                      브라우저에서 오디오를 지원하지 않습니다.
+                  </audio>
+                  <p style="transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;">
+                  모바일 기기에서 재생 후 화면이 꺼진 상태에서도 음성 파일을 들으실 수 있습니다.
+                  </p>
+                </div>
+              `;
+            });
+        }
+        // 비디오 mp4
+        else if (node.name.toLowerCase().endsWith(".mp4")) {
+          const baseName = node.name.replace(/\.mp4$/i, "");
+          const txtPath = node.path.replace(/\.mp4$/i, ".txt");
+
+          fetch(txtPath)
+            .then((res) => {
+              if (!res.ok) throw new Error("관련 텍스트 없음");
+              return res.text();
+            })
+            .then((txt) => {
               contentEl.innerHTML = `
                 <h3 style="margin-left: 33%;">🎬 ${node.name}</h3>
                 <div style="padding-left: 32%; margin-bottom: 20px; transform: scaleX(0.97);
@@ -953,7 +1029,7 @@ function renderFolders(nodes) {
                   </video>
                 </div>
                 <div style="padding-left: 20%; margin-top: 30px; ">
-                  <h5 style="padding-left: 20%; margin-top: 30px;">📄 영상 스크립트</h5>
+                <p style="padding-left: 20%; margin-top: 30px;">영상 스크립트</p>
                   <pre style="white-space: pre-wrap; word-break: break-word; 
                   transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
                   ">${txt}</pre>
@@ -975,7 +1051,7 @@ function renderFolders(nodes) {
                 </div>
               `;
             });
-        } 
+        }
         // 이미지 파일 jpg jpeg png
         else if (
           node.name.toLowerCase().endsWith(".jpg") ||
@@ -994,9 +1070,7 @@ function renderFolders(nodes) {
               </a>
             </div>
           `;
-        }
-        
-        else {
+        } else {
           contentEl.innerHTML = `
             <h3 style="margin-left: 33%;">📄 ${node.name}</h3>
             <br><p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
@@ -1029,11 +1103,113 @@ function renderFolders(nodes) {
 //   });
 // }
 
-// 리모컨 버튼 기능 (arch-scrollTopBtn & arch-clearContentBtn)
+// 1 리모컨 버튼 기능 (arch-scrollTopBtn & arch-clearContentBtn)
+// const scrollTopBtn = document.getElementById("arch-scrollTopBtn");
+// const clearContentBtn = document.getElementById("arch-clearContentBtn");
+// const remoteControl = document.getElementById("archRemoteControl");
+// const targetContainer = document.getElementById("arch-container2"); // 리모컨을 표시할 기준 요소
+
+// //  스크롤 이동 함수 (공통으로 사용)
+// function scrollToTarget() {
+//   const target = document.getElementById("arch-container");
+//   if (target) {
+//     target.scrollIntoView({ behavior: "smooth" });
+//     console.log("arch-scrollTopBtn 버튼으로 이동됨.");
+//   }
+// }
+
+// if (scrollTopBtn) {
+//   scrollTopBtn.addEventListener("click", () => scrollToTarget());
+// }
+
+// if (clearContentBtn) {
+//   clearContentBtn.addEventListener("click", () => {
+// const contentEl = document.querySelector(".arch-content");
+// contentEl.innerHTML = ""; // 내용 초기화
+// const openCheckbox = document.getElementById("open");
+// if (openCheckbox) openCheckbox.checked = false;
+
+//     // 리모컨 숨기기
+//     if (remoteControl) {
+//       remoteControl.style.opacity = "0";
+//       setTimeout(() => (remoteControl.style.display = "none"), 300);
+//     }
+
+//     console.log("arch-clearContentBtn 버튼으로 초기화됨.");
+//     scrollToTarget();
+//   });
+// }
 const scrollTopBtn = document.getElementById("arch-scrollTopBtn");
 const clearContentBtn = document.getElementById("arch-clearContentBtn");
 const remoteControl = document.getElementById("archRemoteControl");
 const targetContainer = document.getElementById("arch-container2"); // 리모컨을 표시할 기준 요소
+
+let isFileOpened = false; //  파일이 열렸는지 여부를 저장
+
+//  리모컨 보이기 함수
+function showRemoteControl() {
+  if (!isFileOpened && remoteControl) {
+    remoteControl.style.display = "flex";
+    setTimeout(() => (remoteControl.style.opacity = "1"), 10);
+    isFileOpened = true;
+  }
+}
+
+//  리모컨 숨기기 함수
+function hideRemoteControl() {
+  if (remoteControl) {
+    remoteControl.style.opacity = "0";
+    setTimeout(() => (remoteControl.style.display = "none"), 300);
+  }
+  isFileOpened = false;
+}
+
+//  스크롤 감지 이벤트 추가하기
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  //  스크롤 위치가 10,000 이하이면 리모컨을 숨기기
+  if (scrollY <= 10000) {
+    // const contentEl = document.querySelector(".arch-content");
+    // contentEl.innerHTML = ""; // 내용 초기화
+    const openCheckbox = document.getElementById("open");
+    if (openCheckbox) openCheckbox.checked = false;
+
+    // 리모컨 숨기기
+    hideRemoteControl();
+    console.log("스크롤로 초기화됨.");
+    hideRemoteControl();
+  }
+});
+
+// Intersection Observer로 #arch-container2의 가시성을 감지하기
+if ("IntersectionObserver" in window && targetContainer) {
+  const observerOptions = {
+    root: null, // viewport 기준으로 관찰
+    threshold: 0.25, // 요소가 화면에 조금이라도 보이면 감지
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        // 🔒 #arch-container2가 화면에서 벗어나면 리모컨 숨기기
+        const openCheckbox = document.getElementById("open");
+        if (openCheckbox) openCheckbox.checked = false;
+        hideRemoteControl();
+        console.log("#arch-container2가 화면에서 사라짐.");
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(targetContainer);
+}
+
+//  파일 클릭 이벤트 추가하기 (리모컨을 표시할 트리거)
+document.querySelectorAll(".file").forEach((file) => {
+  file.addEventListener("click", () => {
+    showRemoteControl(); //  파일 클릭 시 리모컨 표시
+  });
+});
 
 //  스크롤 이동 함수 (공통으로 사용)
 function scrollToTarget() {
@@ -1044,10 +1220,17 @@ function scrollToTarget() {
   }
 }
 
+//  스크롤 맨 위로 이동 버튼 이벤트 (arch-scrollTopBtn)
 if (scrollTopBtn) {
-  scrollTopBtn.addEventListener("click", () => scrollToTarget());
+  scrollTopBtn.addEventListener("click", () => {
+    scrollToTarget();
+
+    //  리모컨도 보여주기 (스크롤 버튼을 눌렀을 때)
+    showRemoteControl();
+  });
 }
 
+//  컨텐츠 초기화 버튼 이벤트 (arch-clearContentBtn)
 if (clearContentBtn) {
   clearContentBtn.addEventListener("click", () => {
     const contentEl = document.querySelector(".arch-content");
@@ -1056,15 +1239,21 @@ if (clearContentBtn) {
     if (openCheckbox) openCheckbox.checked = false;
 
     // 리모컨 숨기기
-    if (remoteControl) {
-      remoteControl.style.opacity = "0";
-      setTimeout(() => remoteControl.style.display = "none",300);
-    }
-
+    hideRemoteControl();
     console.log("arch-clearContentBtn 버튼으로 초기화됨.");
+
+    // 맨 위로 스크롤 이동
     scrollToTarget();
   });
 }
+
+// 스크롤 위치 추적기
+const scrollDisplay = document.getElementById("scrollY");
+
+window.addEventListener("scroll", () => {
+  const y = window.scrollY;
+  scrollDisplay.textContent = y.toFixed(0);
+});
 
 // // 🔥 Intersection Observer로 리모컨 표시 제어하기
 // if (targetContainer && remoteControl) {
@@ -1081,11 +1270,9 @@ if (clearContentBtn) {
 //       }
 //     });
 //   }, { threshold: 0.1 }); // 요소의 10% 이상 보이면 활성화
-  
+
 //   observer.observe(targetContainer);
 // }
-
-
 
 // 파일 불러오기
 
@@ -1398,10 +1585,10 @@ function showLoadingMessage() {
 
 // labs
 document.getElementById("openLabsLink").addEventListener("click", function (e) {
-  e.preventDefault()
+  e.preventDefault();
   window.open(
     "assets/labs/labs.html",
     "_blank",
     "width=800,height=900,menubar=no,toolbar=no,location=no,status=no,fullscreen=yes"
-  )
-})
+  );
+});
