@@ -137,7 +137,7 @@
     "type": "folder",
     "children": [
       {
-        "name": "01_신은 존재하는가",
+        "name": "A. 신은 존재하는가",
         "type": "folder",
         "children": [
           {
@@ -163,7 +163,7 @@
         ]
       },
       {
-        "name": "02_종북 반미좌파들의 4대원수",
+        "name": "B. 종북 반미좌파들의 4대원수",
         "type": "folder",
         "children": [
           {
@@ -189,7 +189,7 @@
         ]
       },
       {
-        "name": "03_천국과 지옥은 실재하는가",
+        "name": "C. 천국과 지옥은 실재하는가",
         "type": "folder",
         "children": [
           {
@@ -215,7 +215,7 @@
         ]
       },
       {
-        "name": "04_성경으로 본공산주의",
+        "name": "D. 성경으로 본공산주의",
         "type": "folder",
         "children": [
           {
@@ -241,7 +241,7 @@
         ]
       },
       {
-        "name": "05_만약 적화통일이 된다면",
+        "name": "E. 만약 적화통일이 된다면",
         "type": "folder",
         "children": [
           {
@@ -339,7 +339,7 @@
     "type": "folder",
     "children": [
       {
-        "name": "링크.txt",
+        "name": "금란교회 홈페이지-불기둥의 목자 (새창열기)",
         "type": "file",
         "path": "assets/04_achv2/06_불기둥 설교(주일 설교)/링크.txt"
       },
