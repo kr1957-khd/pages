@@ -14437,6 +14437,28 @@ button:hover {
   filter: grayscale(100%);
 }
 
+.flower-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+/* 아이콘 애니메이션 스타일 */
+.floating-icon {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  transition: transform 1.2s, opacity 1.2s;
+  z-index: 9999;
+}
+/* 반짝이는 효과 스타일 */
+.shine-effect {
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none; /* 클릭을 방해하지 않도록 설정 */
+  z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+}
+
 #flower-buttons button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -15012,7 +15034,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/18.jpg");
+  background-image: url("../assets/bg/10.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15026,7 +15048,7 @@ body.loaded {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url("../assets/bg/6.jpg");
+  background-image: url("../assets/bg/9.jpg");
   background-attachment: fixed;
   background-size: cover;
   -moz-background-size: cover;
@@ -15034,9 +15056,9 @@ body.loaded {
   background-repeat: no-repeat;
   background-position: top center;
 }
-.parallax-5 {
-  padding-top: 200px;
-  padding-bottom: 200px;
+.parallax-foot {
+  padding-top: 100px;
+  padding-bottom: 100px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -15101,6 +15123,22 @@ body.loaded {
   }
 }
 
+#flBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+  padding: 6px 10px; /* 위아래 6px, 좌우 16px */
+  line-height: 1.4; /* 줄 간격 적당히 조정 */
+
+  border-radius: 6px;
+}
+
+#flBtn:hover {
+  background-color: rgba(162, 77, 103, 0.85); /* 팥색 a24d67 + 약간 투명 */
+  color: white;
+}
 .text20 {
   font-size: 18px !important;
   font-weight: 400 !important;
