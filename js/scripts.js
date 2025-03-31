@@ -936,8 +936,34 @@ function renderFolders(nodes) {
           remoteControl.style.display = "flex";
           setTimeout(() => (remoteControl.style.opacity = "1"), 10);
         }
+        // 링크 파일 '링크.txt' 처리 추가
+        if (
+          node.name.toLowerCase() ===
+          "금란교회 홈페이지-불기둥의 목자 (새창열기)"
+        ) {
+          // '링크.txt' 파일 처리
+          fetch(node.path)
+            .then((res) => {
+              if (!res.ok) throw new Error("파일 로드 실패");
+              return res.text();
+            })
+            .then((txt) => {
+              const linkURL = txt.trim(); // 링크 주소를 추출 (공백 제거)
 
-        if (node.name.toLowerCase().endsWith(".txt")) {
+              if (
+                linkURL.startsWith("http://") ||
+                linkURL.startsWith("https://")
+              ) {
+                // 🌐 링크를 새 창으로 열기
+                window.open(linkURL, "_blank"); // 새로운 창으로 URL 열기
+              } else {
+                contentEl.innerHTML = `<p>❌ 유효한 링크가 아닙니다: ${linkURL}</p>`;
+              }
+            })
+            .catch((err) => {
+              contentEl.innerHTML = `<p>❌ 파일을 불러올 수 없습니다: ${err.message}</p>`;
+            });
+        } else if (node.name.toLowerCase().endsWith(".txt")) {
           fetch(node.path)
             .then((res) => {
               if (!res.ok) throw new Error("파일 로드 실패");
@@ -1472,6 +1498,94 @@ function temporarilyDisableButtons(duration = 3000) {
   }, duration);
 }
 
+// 위치 샤이닝 이펙트
+
+function showShineEffect(xPercent, yPercent) {
+  const shine = document.createElement("img");
+  shine.src = "assets/flower/shine.png"; //  반짝이는 이미지 경로
+  shine.className = "shine-effect";
+  shine.style.position = "absolute";
+  shine.style.left = `${xPercent}%`;
+  shine.style.top = `${yPercent}%`;
+  shine.style.width = "50px";
+  shine.style.opacity = "0";
+
+  const flowerField = document.getElementById("flower-field");
+  flowerField.appendChild(shine);
+
+  //  반짝이는 애니메이션 효과
+  setTimeout(() => {
+    shine.style.opacity = "1";
+    shine.style.transform = "scale(1.5)";
+  }, 100);
+
+  setTimeout(() => {
+    shine.style.opacity = "0";
+    shine.style.transform = "scale(1)";
+  }, 350);
+
+  setTimeout(() => {
+    shine.style.opacity = "1";
+    shine.style.transform = "scale(1.5)";
+  }, 600);
+
+  setTimeout(() => {
+    shine.style.opacity = "0";
+    shine.style.transform = "scale(1)";
+    shine.remove(); // 애니메이션이 끝나면 자동으로 삭제
+  }, 850);
+}
+
+// 인스타처럼 라이크 나오고 사라지게 하기
+function showFloatingIcons(button) {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => createFloatingIcon(button), i * 200); // 💡 200ms 간격으로 생성
+  }
+}
+
+function createFloatingIcon(button) {
+  const icon = document.createElement("img");
+  icon.src = "assets/flower/likes.png"; // 🎯 아이콘 이미지 경로
+  icon.className = "floating-icon";
+
+  // 버튼의 위치와 크기 얻기
+  const buttonRect = button.getBoundingClientRect();
+  const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+  const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+  // 아이콘 위치 설정 (살짝 랜덤 위치)
+  const randomOffsetX = (Math.random() - 0.5) * 40; // -20 ~ 20 범위로 X축 랜덤 위치
+  const randomOffsetY = (Math.random() - 0.5) * 20; // -10 ~ 10 범위로 Y축 랜덤 위치
+  const offsetUp = 20; //  버튼보다 위로 이동할 거리 (px)
+
+  icon.style.left = `${buttonCenterX + randomOffsetX}px`;
+  icon.style.top = `${buttonCenterY + randomOffsetY - offsetUp}px`;
+
+  document.body.appendChild(icon);
+
+  //  이동 방향 랜덤 설정 (대각선 효과)
+  const baseAngle = 90; // 수직 방향 (위쪽)
+  const angleRange = 10; // 각도 범위 (±20도)
+
+  // 70도 ~ 110도 범위 내에서 랜덤 각도 설정
+  const randomAngle = baseAngle - angleRange + Math.random() * (angleRange * 2);
+
+  const distance = 80; // 이동 거리
+  const deltaX = Math.cos(randomAngle * (Math.PI / 180)) * distance;
+  const deltaY = Math.sin(randomAngle * (Math.PI / 180)) * distance * -1; // 위쪽 이동이므로 Y축을 반전
+
+  // 애니메이션 추가
+  setTimeout(() => {
+    icon.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    icon.style.opacity = "0";
+  }, 100);
+
+  // 아이콘 제거
+  setTimeout(() => {
+    icon.remove();
+  }, 1500);
+}
+
 document.querySelectorAll("#flower-buttons button").forEach((button) => {
   const key = button.dataset.type;
   const type = typeMap[key];
@@ -1484,6 +1598,7 @@ document.querySelectorAll("#flower-buttons button").forEach((button) => {
 
     // 🌸 시각적 피드백
     createFlower(type, x, y, rotation);
+    showFloatingIcons(button); // 🌟 새롭게 추가된 기능! 아이콘 표시
     // 🌸 로딩 메시지 표시
     // document.getElementById("flower-loader").style.display = "block";
     showLoadingMessage(); // ← 로딩 메시지 동작
@@ -1525,6 +1640,12 @@ function createFlower(type, x, y, rotation) {
   flower.style.transform = `rotate(${rotation}deg)`;
   flower.style.width = "40px";
   document.getElementById("flower-field").appendChild(flower);
+
+  const flowerField = document.getElementById("flower-field");
+  flowerField.appendChild(flower);
+
+  // 새로 붙인 위치를 반짝이게 만들기
+  showShineEffect(x, y);
 }
 
 // 꽃배달
@@ -1550,7 +1671,7 @@ function showLoadingMessage() {
   const message = document.getElementById("loader-message");
 
   loader.style.display = "block";
-  message.innerHTML = '🌸 천국에 꽃 배달 중<span id="loading-dots">.</span>';
+  message.innerHTML = ' 천국에 스티커 배달 중<span id="loading-dots">.</span>';
   startLoadingDots();
 
   // 2.5초 후 점 멈추고 메시지 전환
@@ -1582,6 +1703,45 @@ function showLoadingMessage() {
 //     });
 //   });
 // });
+
+// 후원자 리스트
+document.addEventListener3("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("flBtn"); // 버튼 가져오기
+  const toggleIcon = document.getElementById("toggleIcon");
+  const aboutContent = document.getElementById("founderList");
+  const toggleButton3 = document.getElementById("toggleButton-close3"); // 버튼 가져오기
+
+  toggleButton.addEventListener3("click", function () {
+    if (aboutContent.classList.contains("show")) {
+      aboutContent.style.maxHeight = "0px"; // 숨기기
+      aboutContent.style.opacity = "0"; // 투명하게
+      setTimeout(() => {
+        aboutContent.classList.remove("show");
+      }, 500); // 애니메이션 시간과 동일하게 설정 (0.5s)
+      // toggleIcon.src = "assets/03_achv/qmenu8.png"; // "더 보기" 아이콘으로 변경
+    } else {
+      aboutContent.classList.add("show");
+      aboutContent.style.display = "block"; // 표시되도록 변경
+      setTimeout(() => {
+        aboutContent.style.maxHeight = "800px"; // 충분한 높이 설정
+        aboutContent.style.opacity = "1"; // 완전히 보이도록 설정
+      }, 10); // display 속성이 적용된 후 max-height 변경 (애니메이션 적용)
+      // toggleIcon.src = "assets/03_achv/qmenu8.png"; // "접기" 아이콘으로 변경
+    }
+  });
+
+  // 닫기 버튼 클릭
+  toggleButton3.addEventListener3("click", () => {
+    if (aboutContent.classList.contains("show")) {
+      aboutContent.style.maxHeight = "0px";
+      aboutContent.style.opacity = "0";
+      setTimeout(() => {
+        aboutContent.classList.remove("show");
+        aboutContent.style.display = "none"; // ✅ 완전 숨김
+      }, 500);
+    }
+  });
+});
 
 // labs
 document.getElementById("openLabsLink").addEventListener("click", function (e) {
