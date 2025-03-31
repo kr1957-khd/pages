@@ -13084,9 +13084,6 @@ body {
   /* 더 밝은 흰색 */
 }
 
-
-
-
 /*main >>>*/
 /* masthead 스타일 */
 .masthead {
@@ -13218,7 +13215,6 @@ body {
   z-index: 2;
 }
 
-
 /* 스크롤을 내리면 새로운 배경이 보이도록 */
 body.scrolled .main-image1::after {
   opacity: 1;
@@ -13305,7 +13301,6 @@ body.scrolled .main-image1::after {
   border-radius: 0; /* 둥근 모서리 제거 (필요하면 추가 가능) */
 }
 
-
 .main-text1 {
   position: absolute;
   text-align: center; /* 텍스트 중앙 정렬 */
@@ -13324,9 +13319,8 @@ body.scrolled .main-image1::after {
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
 }
 
-
 /* `.subtx`가 추가된 경우 글자 크기 변경 */
-.main-text1.subtx{
+.main-text1.subtx {
   font-size: 2rem; /* `4rem → 2rem`으로 변경 */
   top: 54%; /* 상단에서 100px 아래 */
   font-family: "RockFont", sans-serif; /* rock.ttf 폰트 적용 */
@@ -13405,7 +13399,6 @@ body.scrolled .main-image1::after {
   transform: translate(-50%, -50%) translateY(0); /*  최종 위치로 복귀 */
 }
 
-
 .message {
   opacity: 0;
   transform: translateY(20px);
@@ -13417,16 +13410,15 @@ body.scrolled .main-image1::after {
   transform: translateY(0);
 }
 
-.tx1{
+.tx1 {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
   font-size: 16px;
   font-weight: 600;
   color: var(--bs-black);
   opacity: 0.9;
-
 }
-.tx2{
+.tx2 {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
   font-size: 12px;
@@ -13434,7 +13426,7 @@ body.scrolled .main-image1::after {
   color: var(--bs-black);
   opacity: 0.9;
 }
-.tx3{
+.tx3 {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
   font-size: 20px;
@@ -13442,22 +13434,21 @@ body.scrolled .main-image1::after {
   color: var(--bs-black);
   opacity: 0.9;
 }
-.tx4{
+.tx4 {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
   font-weight: 500;
   font-size: 16px;
   color: var(--bs-black);
-
 }
 
-.tx5{
+.tx5 {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
   font-weight: 500;
   font-size: 14px;
-  color: var(--bs-black);
-
+  color: var(--bs-gray-800);
+  color: rgba(0, 0, 0, 0.65); /* 블랙 색상에 투명도 80% 적용 */
 }
 
 .cont1 {
@@ -13473,9 +13464,6 @@ body.scrolled .main-image1::after {
   /* background: #ffe0b2; */
 }
 
-
-
-
 .image-wrapper {
   position: fixed;
   top: 70%;
@@ -13490,7 +13478,6 @@ body.scrolled .main-image1::after {
   align-items: center;
   gap: 8px; /* 이미지와 텍스트 사이 간격 */
   display: block; /* 이미지를 블록 요소로 변환 */
-
 }
 
 .reveal-image {
@@ -13508,9 +13495,6 @@ body.scrolled .main-image1::after {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
-
-
-
 
 /*table/profile >>>*/
 .about-section {
@@ -13708,6 +13692,7 @@ body.scrolled .main-image1::after {
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
   border: 2px solid transparent;
+  max-width: 15%; /* 개별 이미지의 최대 너비를 %로 지정 (반응형) */
 }
 
 .thumbnail:hover {
@@ -14040,7 +14025,7 @@ body.scrolled .main-image1::after {
 /* archive */
 
 .arch-container {
-  max-width: 900px;
+  max-width: 65%;
   min-height: 600px;
   margin: auto;
   background: white;
@@ -14240,43 +14225,51 @@ body.scrolled .main-image1::after {
   }
 }
 
-
 /* 리모컨 버튼 스타일 */
 .arch-remote-control {
-  position: fixed; /* 항상 화면에 표시되도록 고정 */
-  bottom: 3%; /* 화면 아래에서 20px 위 */
-  right: 3%; /* 화면 오른쪽에서 20px 왼쪽 */
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 9999; /* 다른 요소 위에 표시되도록 */
+  z-index: 9999;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 .arch-remote-control button {
-  background-color: rgba(162, 77, 103, 0.8); /* 투명한 팥색 */
-  color: white;
+  background-color: rgba(162, 77, 103, 0.8);
   border: none;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
 }
 
 .arch-remote-control button:hover {
   background-color: rgba(162, 77, 103, 1);
 }
 
-
-/* hover 효과 */
-.achv-table td:hover img {
-  transform: scale(1.1);
+.arch-remote-control img {
+  width: 28px;
+  height: 28px;
 }
 
-.achv-table td:hover a i {
-  transform: translateX(5px);
+.scroll-info {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 16px;
+  z-index: -1;
 }
 
 /* guestbook */
@@ -14403,10 +14396,9 @@ button:hover {
   box-sizing: border-box;
 
   background-image: url("../assets/bg/18-1.png");
-  background-size: cover;         /* 꽉 차게 */
-  background-position: center;    /* 중앙 정렬 */
-  background-repeat: no-repeat;   /* 반복 방지 */
-  
+  background-size: cover; /* 꽉 차게 */
+  background-position: center; /* 중앙 정렬 */
+  background-repeat: no-repeat; /* 반복 방지 */
 }
 .arch-container2 {
   position: relative;
@@ -14422,7 +14414,6 @@ button:hover {
   border: 2px solid #a24d67; /* 두께, 스타일, 색상 */
   border-radius: 8px; /* 모서리 둥글게 (선택 사항) */
 }
-
 
 .flower {
   position: absolute;
@@ -14527,7 +14518,6 @@ button:hover {
   position: fixed; /* 화면 하단에 고정 (원하는 경우) */
   bottom: 0;
 }
-
 
 /* 약력 숨기기 */
 /* 기본적으로 내용을 숨김 */
@@ -14756,8 +14746,6 @@ body.loaded {
   text-transform: uppercase;
   z-index: 10;
   opacity: 0.9;
-
-
 }
 #parallax-world-of-ugg h5 {
   font-family: "Oswald", sans-serif;
@@ -14771,7 +14759,6 @@ body.loaded {
   opacity: 0.9;
   transform: scaleX(0.97); /* 포토샵의 97% 설정 */
   letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
-
 }
 
 #parallax-world-of-ugg h3 {
@@ -14803,9 +14790,9 @@ body.loaded {
 .first-character2 {
   font-weight: 550;
   float: left;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 20px;
-  padding-top: 4px;
+  padding-top: 2px;
   padding-right: 8px;
   padding-left: 3px;
   font-family: "Source Sans Pro", sans-serif;
@@ -15120,22 +15107,22 @@ body.loaded {
   color: black !important;
 }
 
-.fontPS{
+.fontPS {
   transform: scaleX(0.97); /* 포토샵의 97% 설정 */
   display: inline-block; /* transform을 적용하기 위해 필요 */
   letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
 }
 
-.fontWide{
+.fontWide {
   display: inline-block; /* transform을 적용하기 위해 필요 */
-  letter-spacing: 0.2em; 
+  letter-spacing: 0.2em;
 }
 
-.fontHL{
+.fontHL {
   color: #a24d67; /* 원하는 색상으로 설정 */
 }
 
-.fontFoot{
+.fontFoot {
   transform: scaleX(0.97); /* 포토샵의 97% 설정 */
   letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
   display: flex;
