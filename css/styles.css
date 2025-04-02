@@ -13359,6 +13359,42 @@ body.scrolled .main-image1::after {
   top: 85%; /* 상단에서 100px 아래 */
 }
 
+/* 📱 991px 이하에서 위치 조정 */
+@media (max-width: 991px) {
+  .main-text1.right-bottom {
+    top: 60%;
+    right: 50%; /* 더 왼쪽으로 이동 */
+    font-size: 5.5rem; /* 크기 줄이기 */
+  }
+
+  .main-text1.subtx {
+    top: 85%;
+    right: 50%; /* 더 왼쪽으로 이동 */
+    font-size: 20px;
+  }
+
+  .main-text1.icon {
+    top: 120%;
+    right: 50%; /* 더 왼쪽으로 이동 */
+  }
+
+  .main-text1.scroll-icon {
+    top: 110%;
+    right: 50%; /* 더 왼쪽으로 이동 */
+  }
+}
+/* 📱 991px 이하에서 위치 조정 */
+@media (max-width: 400px) {
+  .main-text1.right-bottom {
+    font-size: 4rem; /* 크기 줄이기 */
+    top: 65%;
+  }
+  .main-text1.subtx {
+    font-size: 20px;
+    top: 82%;
+  }
+}
+
 /* main text output 250317 */
 
 @keyframes scroll-icon {
@@ -13452,9 +13488,8 @@ body.scrolled .main-image1::after {
 }
 
 .cont1 {
-  position: fixed;
-  top: 15%;
-  left: 75%;
+  top: 17%;
+  left: 72%;
 }
 
 .cont2 {
@@ -13482,7 +13517,7 @@ body.scrolled .main-image1::after {
 
 .reveal-image {
   width: 100%; /* ← 여기만 변경 */
-  top: 10%;
+  top: 70vh; /* ← 화면 높이의 70% 위치 (vh 사용) */
 
   height: auto;
   opacity: 0;
@@ -13494,6 +13529,175 @@ body.scrolled .main-image1::after {
 .reveal-image.visible {
   opacity: 1;
   transform: scale(1) translateY(0);
+}
+
+/* 🖥️ PC 화면 (넓은 화면) */
+@media (max-width: 1600px) {
+  .cont1 {
+    top: 20%;
+    left: 70%;
+  }
+
+  .cont2 {
+    top: 38%;
+    left: 30%;
+  }
+
+  .reveal-image {
+    width: 100%;
+  }
+}
+
+/* 💻 태블릿 (가로 모드) */
+@media (max-width: 1300px) {
+  .cont1 {
+    top: 25%;
+    left: 60%;
+  }
+
+  .cont2 {
+    top: 40%;
+    left: 40%;
+    transform: translateX(-50%);
+    width: 90%; /* ← 너비 설정 추가 */
+    padding: 10px; /* ← 텍스트가 잘리지 않도록 여백 추가 */
+    box-sizing: border-box; /* ← padding 포함하여 너비 계산 */
+    word-break: break-word; /* 긴 단어를 자동으로 줄바꿈 */
+  }
+
+  .reveal-image {
+    top: 60%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .cont1 {
+    top: 20%;
+    left: 50%;
+  }
+
+  .cont2 {
+    top: 40%;
+    left: 50%;
+  }
+
+  .reveal-image {
+    width: 100%;
+    position: relative; /* 또는 absolute, fixed - 원하는 방식으로 설정 */
+    top: 70%; /* ← 이미지를 아래로 내림 (값을 늘리면 더 내려감) */
+    margin: 0 auto;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 990px) {
+  .cont1 {
+    top: 35%;
+    left: 40%;
+  }
+
+  .cont2 {
+    top: 60%;
+    left: 50%;
+  }
+
+  .reveal-image {
+    width: 100%;
+    position: fixed; /* ← 화면 전체를 기준으로 이동 */
+    top: 14vh; /* ← 화면 높이의 70% 위치 */
+    /* left: 50%; */
+    transform: translateX(-50%);
+    margin: 0 auto;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 📱 작은 태블릿 (세로 모드) */
+@media (max-width: 768px) {
+  .cont1 {
+    top: 30%;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .cont2 {
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .reveal-image {
+    width: 100%;
+    position: fixed; /* ← 화면 전체를 기준으로 이동 */
+    top: 14vh; /* ← 화면 높이의 70% 위치 */
+    /* right: 30%; */
+    transform: translateX(-50%);
+    margin: 0 auto;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 📱 모바일 (아주 좁은 화면) */
+@media (max-width: 610px) {
+  .cont1 {
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80% !important;
+  }
+
+  .cont2 {
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80% !important;
+  }
+
+  .reveal-image {
+    width: 100%;
+    position: fixed; /* ← 화면 전체를 기준으로 이동 */
+    top: 25vh; /* ← 화면 높이의 70% 위치 */
+    /* right: 30%; */
+    transform: translateX(-50%);
+    margin: 0 auto;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (max-width: 400px) {
+  .cont1 {
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80% !important;
+  }
+
+  .cont2 {
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80% !important;
+  }
+
+  .reveal-image {
+    width: 100%;
+    position: fixed; /* ← 화면 전체를 기준으로 이동 */
+    top: 40vh; /* ← 화면 높이의 70% 위치 */
+    /* right: 30%; */
+    transform: translateX(-50%);
+    margin: 0 auto;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /*table/profile >>>*/
@@ -13537,34 +13741,6 @@ body.scrolled .main-image1::after {
 .custom-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.15);
   background-color: #e9ecef; /* 헤더 배경색 */
-}
-
-/* photo-album */
-
-.projects-section {
-  padding: 5rem 0;
-}
-
-.projects-section .featured-text {
-  padding: 1rem;
-}
-
-@media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 1rem;
-    border-left: 0.5rem solid #64a19d;
-  }
-}
-
-.projects-section .project-text {
-  padding: 1rem;
-  font-size: 90%;
-}
-
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
-  }
 }
 
 /* 메인 이미지 컨테이너 */
@@ -13664,6 +13840,17 @@ body.scrolled .main-image1::after {
 .next {
   right: 20%;
 }
+@media (max-width: 1050px) {
+  .prev {
+    left: 30%;
+    top: 95%;
+  }
+
+  .next {
+    right: 30%;
+    top: 95%;
+  }
+}
 
 /* 모달 애니메이션 */
 @keyframes fadeIn {
@@ -13703,6 +13890,19 @@ body.scrolled .main-image1::after {
   border-color: #007bff;
   opacity: 1;
 }
+/* 📱 500px 이하일 때 */
+@media (max-width: 500px) {
+  .thumbnail-gallery {
+    padding: 0 10px; /* ← 양쪽에 10px 패딩 추가 */
+    gap: 8px; /* ← 이미지 간격 줄이기 */
+    flex-wrap: wrap;
+    justify-content: center; /* 가운데 정렬 유지 */
+  }
+
+  .thumbnail {
+    width: 100px; /* ← 작은 화면에서 이미지 크기 줄이기 */
+  }
+}
 
 /* 약력 버튼 */
 #toggleButton {
@@ -13739,6 +13939,46 @@ body.scrolled .main-image1::after {
   color: white;
 }
 
+/* 천국환송예배 */
+.responsive-iframe {
+  width: 100%;
+  max-width: 600px; /* 최대 너비를 400px로 제한 */
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+.responsive-iframe iframe {
+  display: block;
+  width: 100%; /* 부모 요소의 너비를 따라감 (최대 400px) */
+  height: 400px; /* 높이를 300px로 고정 */
+  border: none;
+}
+@media (max-width: 770px) {
+  #fnr {
+    display: block !important; /* 절대로 block으로 유지 */
+    width: 100% !important; /* 부모 요소의 전체 너비 사용 */
+    padding: 0 !important; /* 여백 제거 */
+    margin: 0 auto !important; /* 중앙 정렬 */
+  }
+  .block {
+    display: block !important; /* 모든 .block 클래스를 강제로 block으로 설정 */
+  }
+
+  .responsive-iframe {
+    max-width: 100%; /* 화면 너비에 맞게 확장 */
+    padding: 0 20px; /* 양쪽 여백 추가 */
+  }
+  .responsive-iframe iframe {
+    width: 100%;
+    height: 225px; /* 16:9 비율로 줄이기 (400px x 300px -> 300px x 225px) */
+  }
+
+  .first-title2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 40px;
+    white-space: nowrap; /* ← 텍스트를 한 줄로 강제로 표시 */
+  }
+}
 /* pdf 리더 */
 .pdfcontainer {
   text-align: center;
@@ -14269,9 +14509,43 @@ body.scrolled .main-image1::after {
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
   font-size: 16px;
-  z-index: -1;
+  z-index: 999;
 }
 
+@media (max-width: 1160px) {
+  .arch-container {
+    max-width: 98%; /* 화면 너비의 98% 사용 */
+  }
+}
+
+@media (max-width: 790px) {
+  .arch-container {
+  }
+  #open:checked ~ .sidebar {
+    transform: translateX(-270px);
+  }
+}
+
+@media (max-width: 510px) {
+  .arch-container {
+  }
+  #open:checked ~ .sidebar {
+    transform: translateX(-280px);
+  }
+}
+@media (max-width: 400px) {
+  .arch-container {
+  }
+  #open:checked ~ .sidebar {
+    transform: translateX(-50px);
+  }
+  .sidebar {
+    width: 100px;
+  }
+  .sidebar .close {
+    left: 100px;
+  }
+}
 /* guestbook */
 #guestbook-form {
   background: white;
@@ -15057,8 +15331,8 @@ body.loaded {
   background-position: top center;
 }
 .parallax-foot {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -15070,12 +15344,46 @@ body.loaded {
   background-repeat: no-repeat;
   background-position: top center;
 }
-/* Extras */
-/**************************/
-#parallax-world-of-ugg .line-break {
-  border-bottom: 1px solid black;
-  width: 150px;
-  margin: 0 auto;
+
+/* 흰색 투명 레이어 추가 */
+.parallax-foot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8; /* 투명도 설정 (0 = 완전 투명, 1 = 완전 불투명) */
+  pointer-events: none; /* 클릭 방해하지 않도록 설정 */
+  z-index: 0;
+}
+
+@media (max-width: 550px) {
+  .parallax-1 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .parallax-2 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .parallax-3 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .parallax-4 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  #parallax-world-of-ugg h5 {
+    font-family: "Oswald", sans-serif;
+    font-size: 55x;
+  }
+  .first-title2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 40px;
+  }
 }
 
 .line-break {
