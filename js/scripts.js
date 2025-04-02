@@ -1274,12 +1274,25 @@ if (clearContentBtn) {
 }
 
 // 스크롤 위치 추적기
-const scrollDisplay = document.getElementById("scrollY");
+// const scrollDisplay = document.getElementById("scrollY");
 
-window.addEventListener("scroll", () => {
-  const y = window.scrollY;
-  scrollDisplay.textContent = y.toFixed(0);
-});
+// window.addEventListener("scroll", () => {
+//   const y = window.scrollY;
+//   scrollDisplay.textContent = y.toFixed(0);
+// });
+
+// 창 크기가 변경될 때마다 업데이트 (예: 창 크기를 줄이거나 늘릴 때)
+const scrollDisplayX = document.getElementById("scrollX");
+
+function updateWindowWidth() {
+  const width = window.innerWidth; // 현재 창의 너비 (px)
+  scrollDisplayX.textContent = width.toFixed(0);
+}
+// 초기값 설정 (페이지가 로드될 때)
+updateWindowWidth();
+
+// 창 크기 변경 이벤트 리스너 추가
+window.addEventListener("resize", updateWindowWidth);
 
 // // 🔥 Intersection Observer로 리모컨 표시 제어하기
 // if (targetContainer && remoteControl) {
