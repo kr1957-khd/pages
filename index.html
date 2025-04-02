@@ -139,13 +139,18 @@
 
       <section class="reveal-section image-section">
         <div class="image-wrapper">
-          <img src="assets/01_main/main_250330-1.png" alt="메인 이미지" class="reveal-image" /> <br>
+          <img src="assets/01_main/main_250330-1.png" alt="메인 이미지" class="reveal-image" /><br>
         </div>
       </section>
 
 
 
-          </header>
+    </header>
+
+
+      <!-- 스크롤 위치 추적기 -->
+      <div class="scroll-info">창 크기: <span id="scrollX">0</span>px</div>
+      
 
 <div>
   <br><br><br><br><br><br><br><br>
@@ -157,7 +162,7 @@
 
       <section>
         <div  id="about" class="parallax-1 ">
-          <h5>정암 김홍도 목사</p></h2>
+          <h5>정암 김홍도 목사</h5>
         </div>
       </section>
     
@@ -404,8 +409,9 @@
       <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
         <p class="line-break margin-top-10 "></p><br><br>
 
-        <div style="text-align: center; margin: 40px 0;">
-          <iframe width="600" height="400"
+        <div class="responsive-iframe">
+        <!-- <div style="text-align: center; margin: 40px 0;"> -->
+          <iframe 
             src="https://www.youtube.com/embed/QSqHfCe-l34?si=oDp9sgp5XnjeHHbZ"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1040,7 +1046,10 @@
     <!-- Footer -->
 
 
-<footer class="footer bg-white text-black-50 ">
+<div class="section-break margin-top-10"></div><br>
+
+<footer class="parallax-foot">
+
   <div class="container text-center fontFoot">
     <a href="https://kumnan.org/" target="_blank" rel="noopener noreferrer" class="footer-link">
       <img src="assets/foot/footer_logo.jpg" alt="금란교회 로고" class="footer-logo" style="width: auto; height: 50px;" />
@@ -1054,11 +1063,12 @@
   <div class="container text-center fontFoot">
     Copyright Kumnan Methodist Church. All rights reserved.
     Designed by 
-    <a href="#" id="openLabsLink">Kumnan Labs</a>
+    <a href="#" id="openLabsLink">&nbsp;Kumnan Labs</a>
     .    &copy; 2025
   </div>
-</footer>
-<footer class="parallax-foot"></footer> 
+
+
+</footer> 
 
 </body>
 </html>
