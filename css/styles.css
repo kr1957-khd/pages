@@ -13383,15 +13383,25 @@ body.scrolled .main-image1::after {
     right: 50%; /* 더 왼쪽으로 이동 */
   }
 }
-/* 📱 991px 이하에서 위치 조정 */
-@media (max-width: 400px) {
+/* 아이폰 이하에서 위치 조정 */
+@media (max-width: 410px) {
   .main-text1.right-bottom {
     font-size: 4rem; /* 크기 줄이기 */
-    top: 65%;
+    top: 40%;
+    right: 50%; /* 더 왼쪽으로 이동 */
   }
   .main-text1.subtx {
     font-size: 20px;
-    top: 82%;
+    top: 58%;
+  }
+
+  .main-text1.scroll-icon {
+    top: 100%;
+    right: 50%; /* 더 왼쪽으로 이동 */
+  }
+  .main-text1.icon {
+    top: 110%;
+    right: 50%; /* 더 왼쪽으로 이동 */
   }
 }
 
@@ -13416,7 +13426,7 @@ body.scrolled .main-image1::after {
 .reveal-container {
   position: fixed;
 
-  max-width: 800px;
+  max-width: 400px;
   margin: 0 auto;
   text-align: justify;
   word-break: keep-all;
@@ -13428,6 +13438,10 @@ body.scrolled .main-image1::after {
   opacity: 0;
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   z-index: 10;
+}
+
+.reveal-container.v2 {
+  max-width: 600px;
 }
 
 .reveal-container.visible {
@@ -13586,10 +13600,6 @@ body.scrolled .main-image1::after {
     width: 100%;
     position: relative; /* 또는 absolute, fixed - 원하는 방식으로 설정 */
     top: 70%; /* ← 이미지를 아래로 내림 (값을 늘리면 더 내려감) */
-    margin: 0 auto;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -13609,11 +13619,6 @@ body.scrolled .main-image1::after {
     position: fixed; /* ← 화면 전체를 기준으로 이동 */
     top: 14vh; /* ← 화면 높이의 70% 위치 */
     /* left: 50%; */
-    transform: translateX(-50%);
-    margin: 0 auto;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -13635,12 +13640,6 @@ body.scrolled .main-image1::after {
     width: 100%;
     position: fixed; /* ← 화면 전체를 기준으로 이동 */
     top: 14vh; /* ← 화면 높이의 70% 위치 */
-    /* right: 30%; */
-    transform: translateX(-50%);
-    margin: 0 auto;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -13648,7 +13647,7 @@ body.scrolled .main-image1::after {
 @media (max-width: 610px) {
   .cont1 {
     top: 40%;
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
     width: 80% !important;
   }
@@ -13665,23 +13664,27 @@ body.scrolled .main-image1::after {
     position: fixed; /* ← 화면 전체를 기준으로 이동 */
     top: 25vh; /* ← 화면 높이의 70% 위치 */
     /* right: 30%; */
-    transform: translateX(-50%);
-    margin: 0 auto;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 1;
-    transform: scale(1);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 410px) {
+  .reveal-container {
+    padding: 0 20px; /* 좌우 여백 추가 */
+  }
+
+  .message {
+    font-size: 14px; /* 글씨 크기를 줄이기 */
+    line-height: 1.5; /* 줄 간격을 조정 */
+  }
+
   .cont1 {
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     width: 80% !important;
   }
 
   .cont2 {
-    top: 90%;
+    top: 60%;
     left: 50%;
     transform: translateX(-50%);
     width: 80% !important;
@@ -13689,14 +13692,8 @@ body.scrolled .main-image1::after {
 
   .reveal-image {
     width: 100%;
-    position: fixed; /* ← 화면 전체를 기준으로 이동 */
-    top: 40vh; /* ← 화면 높이의 70% 위치 */
+    top: 20vh; /* ← 화면 높이의 70% 위치 */
     /* right: 30%; */
-    transform: translateX(-50%);
-    margin: 0 auto;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -13890,17 +13887,50 @@ body.scrolled .main-image1::after {
   border-color: #007bff;
   opacity: 1;
 }
+
+/* 📱 500px 이하일 때 */
+@media (max-width: 1600px) {
+  .main-image {
+    max-width: 600px; /* 작은 화면에서는 약간 줄이기 */
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-image {
+    max-width: 450px; /* 작은 화면에서는 약간 줄이기 */
+  }
+}
+
+/* 📱 500px 이하일 때 */
+@media (max-width: 700px) {
+  .main-image {
+    max-width: 350px; /* 작은 화면에서는 약간 줄이기 */
+  }
+}
+
 /* 📱 500px 이하일 때 */
 @media (max-width: 500px) {
+  .main-image {
+    max-width: 300px; /* 작은 화면에서는 약간 줄이기 */
+  }
   .thumbnail-gallery {
-    padding: 0 10px; /* ← 양쪽에 10px 패딩 추가 */
-    gap: 8px; /* ← 이미지 간격 줄이기 */
+    padding: 0 5px; /* ← 양쪽에 10px 패딩 추가 */
+    gap: 5px; /* ← 이미지 간격 줄이기 */
     flex-wrap: wrap;
     justify-content: center; /* 가운데 정렬 유지 */
   }
 
   .thumbnail {
-    width: 100px; /* ← 작은 화면에서 이미지 크기 줄이기 */
+    width: 40px; /* ← 작은 화면에서 이미지 크기 줄이기 */
+    height: auto;
+  }
+
+  #parallax-world-of-ugg .block {
+    width: 98% !important; /* 전체 너비로 확장 */
+    max-width: 98%; /* 부모 요소보다 약간 여백을 두고 넓게 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 10px; /* 좌우 패딩 추가 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
   }
 }
 
@@ -15378,11 +15408,38 @@ body.loaded {
   }
   #parallax-world-of-ugg h5 {
     font-family: "Oswald", sans-serif;
-    font-size: 55x;
+    font-size: 52px;
   }
   .first-title2 {
     font-family: "Oswald", sans-serif;
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 410px) {
+  .parallax-1 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .parallax-2 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .parallax-3 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .parallax-4 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  #parallax-world-of-ugg h5 {
+    font-family: "Oswald", sans-serif;
     font-size: 40px;
+  }
+  .first-title2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
   }
 }
 
@@ -15468,6 +15525,45 @@ body.loaded {
   color: #a24d67; /* 원하는 색상으로 설정 */
 }
 
+/* 장학재단  */
+
+.text-image-row {
+  display: flex; /* Flexbox 강제 적용 */
+  align-items: center; /* 세로로 가운데 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  gap: 20px; /* 이미지와 텍스트 사이의 간격 */
+  width: 100%; /* 부모 요소가 충분히 넓게 설정됨 */
+}
+
+/* 이미지 크기 조절 */
+.inline-image {
+  width: 400px; /* 이미지 크기 강제로 줄이기 */
+  height: auto;
+  border-radius: 8px;
+}
+/* 텍스트 크기 조절 */
+.foundation-text-content {
+  max-width: 250px !important; /* 텍스트 부분의 최대 너비를 줄임 */
+  text-align: left; /* 텍스트 정렬 방식 (가운데 정렬 원하면 'center'로 변경) */
+}
+
+@media (max-width: 1160px) {
+  .inline-image {
+    width: 350px;
+  }
+}
+
+@media (max-width: 550px) {
+  .inline-image {
+    width: 150px;
+  }
+
+  .text20 {
+    font-size: auto;
+  }
+}
+
+/* 풋터 */
 .fontFoot {
   transform: scaleX(0.97); /* 포토샵의 97% 설정 */
   letter-spacing: -0.03em; /* 포토샵의 -30 설정 */
