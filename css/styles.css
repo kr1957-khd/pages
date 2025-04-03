@@ -13691,9 +13691,12 @@ body.scrolled .main-image1::after {
   }
 
   .reveal-image {
-    width: 100%;
-    top: 20vh; /* ← 화면 높이의 70% 위치 */
-    /* right: 30%; */
+    width: 250%;
+    top: 14vh; /* ← 화면 높이의  위치 */
+    right: 0%; /* 오른쪽으로 밀어서 일부만 보이게 설정 */
+  }
+  .image-wrapper {
+    transform: translate(-30%, 0%);
   }
 }
 
