@@ -14574,7 +14574,7 @@ body.scrolled .main-image1::after {
     transform: translateX(-300px);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 410px) {
   .arch-container {
   }
   #open:checked ~ .sidebar {
