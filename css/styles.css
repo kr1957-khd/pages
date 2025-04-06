@@ -14568,24 +14568,59 @@ body.scrolled .main-image1::after {
 
 @media (max-width: 510px) {
   #arch-container2 {
-    margin-left: -70px; /* 컨텐츠를 왼쪽으로 20px 당기기 */
+    margin-left: -70px; /* 컨텐츠를 당기기 */
   }
   #open:checked ~ .sidebar {
-    transform: translateX(-300px);
+    transform: translateX(-330px);
+  }
+  #dynamic-tree {
+    font-size: 6px; /* 글씨 크기 줄이기 */
+    padding-left: 2px; /* 좌우 여백 줄이기 */
+    line-height: 1; /* 줄 간격 줄이기 */
+    overflow-y: auto;
+
+  }
+
+  .view .label, .view .file {
+    padding: 2px; /* 각 항목의 여백 줄이기 */
+  }
+
+  .view .text {
+    word-break: break-all; /* 글씨가 잘리지 않도록 줄바꿈 허용 */
   }
 }
 @media (max-width: 410px) {
   .arch-container {
   }
+
   #open:checked ~ .sidebar {
-    transform: translateX(-50px);
+    transform: translateX(-330px);
   }
   .sidebar {
-    width: 100px;
+    width: 330px;
   }
   .sidebar .close {
-    left: 100px;
+    left: 330px;
   }
+}
+
+@media (max-width: 300px) {
+    #arch-container2 {
+    margin-left: -50px; /* 컨텐츠를 당기기 */
+  }
+  .arch-container {
+  }
+  #open:checked ~ .sidebar {
+    transform: translateX(-300px);
+  }
+  .sidebar {
+    width: 300px;
+  }
+  .sidebar .close {
+    left: 300px;
+  }
+
+
 }
 /* guestbook */
 #guestbook-form {
