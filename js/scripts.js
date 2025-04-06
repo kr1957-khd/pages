@@ -937,6 +937,10 @@ function renderFolders(nodes) {
           setTimeout(() => (remoteControl.style.opacity = "1"), 10);
         }
         // 링크 파일 '링크.txt' 처리 추가
+        const adeptiveWidth = window.innerWidth <= 500 ? "260px" : "450px"; // 창 크기에 따라 크기 결정
+
+        
+        
         if (
           node.name.toLowerCase() ===
           "금란교회 홈페이지-불기둥의 목자 (새창열기)"
@@ -971,7 +975,13 @@ function renderFolders(nodes) {
             })
             .then((txt) => {
               contentEl.innerHTML = `
-                <h3 style="margin-left: 33%; 
+              <br>
+
+                <h3 style="margin-left: 33%;
+                transform: scaleX(0.97); 
+                display: inline-block;
+                letter-spacing: -0.03em; 
+                
                 ">📄 ${node.name}</h3>
                 <br>
                 <pre style="white-space: pre-wrap; word-break: break-word; padding-left: 20%;
@@ -998,11 +1008,20 @@ function renderFolders(nodes) {
               return res.text();
             })
             .then((txt) => {
+
+
               contentEl.innerHTML = `
-                <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
+              <br>
+
+                <h3 style="margin-left: 33%;
+                transform: scaleX(0.97); 
+                display: inline-block;
+                letter-spacing: -0.03em; 
+                
+                ">🎵 ${node.name}</h3>
                 <div style="padding-left: 33%; margin-bottom: 20px;">
                   <br><br><br>  
-                  <audio controls style="width: 400px;">
+                  <audio controls style="width: ${adeptiveWidth};">
                       <source src="${node.path}" type="audio/mpeg">
                       브라우저에서 오디오를 지원하지 않습니다.
                   </audio>
@@ -1019,10 +1038,16 @@ function renderFolders(nodes) {
             .catch(() => {
               // 텍스트 없을 때는 오디오만 출력
               contentEl.innerHTML = `
-                <h3 style="margin-left: 33%;">🎵 ${node.name}</h3>
+              <br>
+
+                <h3 style="margin-left: 33%;
+                transform: scaleX(0.97); 
+                display: inline-block;
+                letter-spacing: -0.03em; 
+                ">🎵 ${node.name}</h3>
                 <div style="padding-left: 33%; margin-bottom: 20px;">
                   <br><br><br>  
-                  <audio controls style="width: 400px;">
+                  <audio controls style="width: ${adeptiveWidth};">
                       <source src="${node.path}" type="audio/mpeg">
                       브라우저에서 오디오를 지원하지 않습니다.
                   </audio>
@@ -1045,11 +1070,18 @@ function renderFolders(nodes) {
             })
             .then((txt) => {
               contentEl.innerHTML = `
-                <h3 style="margin-left: 33%;">🎬 ${node.name}</h3>
-                <div style="padding-left: 32%; margin-bottom: 20px; transform: scaleX(0.97);
+              <br>
+
+                <h3 style="margin-left: 33%;
+                transform: scaleX(0.97); 
+                display: inline-block;
+                letter-spacing: -0.03em; 
+                
+                ">🎬 ${node.name}</h3>
+                <div style="padding-left: 33%; margin-bottom: 20px; transform: scaleX(0.97);
                 display: inline-block; letter-spacing: -0.03em;">
                   <br><br><br>
-                  <video controls style="width: 450px;">
+                  <video controls style="width: ${adeptiveWidth};">
                     <source src="${node.path}" type="video/mp4">
                     브라우저에서 비디오를 지원하지 않습니다.
                   </video>
@@ -1067,10 +1099,16 @@ function renderFolders(nodes) {
             .catch(() => {
               // 텍스트 없을 때는 영상만 출력
               contentEl.innerHTML = `
-                <h3 style="margin-left: 30%;">🎬 ${node.name}</h3>
+              <br>
+
+                <h3 style="margin-left: 30%;
+                transform: scaleX(0.97); 
+                display: inline-block;
+                letter-spacing: -0.03em; 
+                ">🎬 ${node.name}</h3>
                 <div style="padding-left: 35%; margin-bottom: 20px;">
                   <br><br><br>
-                  <video controls style="width: 400px;">
+                  <video controls style="width: ${audioWidth};">
                     <source src="${node.path}" type="video/mp4">
                     브라우저에서 비디오를 지원하지 않습니다.
                   </video>
@@ -1085,7 +1123,13 @@ function renderFolders(nodes) {
           node.name.toLowerCase().endsWith(".png")
         ) {
           contentEl.innerHTML = `
-            <h3 style="margin-left: 33%;">🖼️ ${node.name}</h3>
+          <br>
+
+            <h3 style="margin-left: 33%;
+            transform: scaleX(0.97); 
+            display: inline-block;
+            letter-spacing: -0.03em; 
+            ">🖼️ ${node.name}</h3>
             <div style="margin-left: 20%; text-align: center; margin-top: 30px; margin-bottom: 30px;
             transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
             ">
@@ -1098,7 +1142,13 @@ function renderFolders(nodes) {
           `;
         } else {
           contentEl.innerHTML = `
-            <h3 style="margin-left: 33%;">📄 ${node.name}</h3>
+          <br>
+
+            <h3 style="margin-left: 33%;
+            transform: scaleX(0.97); 
+            display: inline-block;
+            letter-spacing: -0.03em; 
+            ">📄 ${node.name}</h3>
             <br><p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
             ">경로: <code>${node.path}</code></p>
             <p style="margin-left: 25%; transform: scaleX(0.97); display: inline-block; letter-spacing: -0.03em;
